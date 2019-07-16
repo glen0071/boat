@@ -9,10 +9,12 @@
   .field
     = f.label :name
     = f.text_field :name
-  .field
-    = f.label :birth
-    = f.date_select :birth
-  .field
-    = f.label :death
-    = f.date_select :death
+
+  / only include this on edit screen
+    / .field
+    /   = f.label :birth
+    /   = f.date_select :birth
+    / .field
+    /   = f.label :death
+    /   = f.date_select :death
   .actions = f.submit

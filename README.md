@@ -1,24 +1,14 @@
-# README
+# Models
+## Future Enhancements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Author
+  - description
 
-Things you may want to cover:
+Organizations
+  - Name
+  - Location
+  - Leaders
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Subjects
+  - Name
+  - description

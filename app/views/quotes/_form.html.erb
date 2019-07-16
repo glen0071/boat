@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :author %>
+    <%= form.collection_select :author_id, Author.all, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
     <%= form.label :text %>
     <%= form.text_area :text %>
   </div>
