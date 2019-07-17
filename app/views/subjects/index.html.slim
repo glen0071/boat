@@ -1,4 +1,4 @@
-h1 Listing subjects
+h1 Listing themes
 
 table
   thead
@@ -10,14 +10,14 @@ table
       th
 
   tbody
-    - @subjects.each do |subject|
+    - @themes.each do |theme|
       tr
-        td = subject.name
-        td = subject.description
-        td = link_to 'Show', subject
-        td = link_to 'Edit', edit_subject_path(subject)
-        td = link_to 'Destroy', subject, data: { confirm: 'Are you sure?' }, method: :delete
+        td = theme.name
+        td = theme.description
+        td = link_to 'Show', theme
+        td = link_to 'Edit', edit_theme_path(theme)
+        td = link_to 'Destroy', theme, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Subject', new_subject_path
+= link_to 'New Theme', new_theme_path

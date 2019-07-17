@@ -1,2 +1,2 @@
-json.extract! subject, :id, :name, :description, :created_at, :updated_at
-json.url subject_url(subject, format: :json)
+json.extract! theme, :id, :name, :description, :created_at, :updated_at
+json.url theme_url(theme, format: :json)

@@ -2,11 +2,11 @@ p#notice = notice
 
 p
   strong Name:
-  = @subject.name
+  = @theme.name
 p
   strong Description:
-  = @subject.description
+  = @theme.description
 
-=> link_to 'Edit', edit_subject_path(@subject)
+=> link_to 'Edit', edit_theme_path(@theme)
 '|
-=< link_to 'Back', subjects_path
+=< link_to 'Back', themes_path

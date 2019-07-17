@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_142203) do
+ActiveRecord::Schema.define(version: 2019_07_17_150103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2019_07_16_142203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quote_themes", force: :cascade do |t|
+    t.bigint "theme_id"
+    t.bigint "quote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_id"], name: "index_quote_themes_on_quote_id"
+    t.index ["theme_id"], name: "index_quote_themes_on_theme_id"
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.text "text"
     t.datetime "created_at", null: false
@@ -32,12 +41,14 @@ ActiveRecord::Schema.define(version: 2019_07_16_142203) do
     t.index ["author_id"], name: "index_quotes_on_author_id"
   end
 
-  create_table "subjects", force: :cascade do |t|
+  create_table "themes", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "quote_themes", "quotes"
+  add_foreign_key "quote_themes", "themes"
   add_foreign_key "quotes", "authors"
 end

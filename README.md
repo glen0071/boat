@@ -9,6 +9,6 @@ Organizations
   - Location
   - Leaders
 
-Subjects
+Themes
   - Name
   - description

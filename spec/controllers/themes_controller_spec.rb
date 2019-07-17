@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe SubjectsController, type: :controller do
+RSpec.describe ThemesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Subject. As you add validations to Subject, be sure to
+  # Theme. As you add validations to Theme, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe SubjectsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # SubjectsController. Be sure to keep this updated too.
+  # ThemesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      Subject.create! valid_attributes
+      Theme.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -51,8 +51,8 @@ RSpec.describe SubjectsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      subject = Subject.create! valid_attributes
-      get :show, params: {id: subject.to_param}, session: valid_session
+      theme = Theme.create! valid_attributes
+      get :show, params: {id: theme.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe SubjectsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      subject = Subject.create! valid_attributes
-      get :edit, params: {id: subject.to_param}, session: valid_session
+      theme = Theme.create! valid_attributes
+      get :edit, params: {id: theme.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Subject" do
+      it "creates a new Theme" do
         expect {
-          post :create, params: {subject: valid_attributes}, session: valid_session
-        }.to change(Subject, :count).by(1)
+          post :create, params: {theme: valid_attributes}, session: valid_session
+        }.to change(Theme, :count).by(1)
       end
 
-      it "redirects to the created subject" do
-        post :create, params: {subject: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Subject.last)
+      it "redirects to the created theme" do
+        post :create, params: {theme: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Theme.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {subject: invalid_attributes}, session: valid_session
+        post :create, params: {theme: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe SubjectsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested subject" do
-        subject = Subject.create! valid_attributes
-        put :update, params: {id: subject.to_param, subject: new_attributes}, session: valid_session
-        subject.reload
+      it "updates the requested theme" do
+        theme = Theme.create! valid_attributes
+        put :update, params: {id: theme.to_param, theme: new_attributes}, session: valid_session
+        theme.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the subject" do
-        subject = Subject.create! valid_attributes
-        put :update, params: {id: subject.to_param, subject: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(subject)
+      it "redirects to the theme" do
+        theme = Theme.create! valid_attributes
+        put :update, params: {id: theme.to_param, theme: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(theme)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        subject = Subject.create! valid_attributes
-        put :update, params: {id: subject.to_param, subject: invalid_attributes}, session: valid_session
+        theme = Theme.create! valid_attributes
+        put :update, params: {id: theme.to_param, theme: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested subject" do
-      subject = Subject.create! valid_attributes
+    it "destroys the requested theme" do
+      theme = Theme.create! valid_attributes
       expect {
-        delete :destroy, params: {id: subject.to_param}, session: valid_session
-      }.to change(Subject, :count).by(-1)
+        delete :destroy, params: {id: theme.to_param}, session: valid_session
+      }.to change(Theme, :count).by(-1)
     end
 
-    it "redirects to the subjects list" do
-      subject = Subject.create! valid_attributes
-      delete :destroy, params: {id: subject.to_param}, session: valid_session
-      expect(response).to redirect_to(subjects_url)
+    it "redirects to the themes list" do
+      theme = Theme.create! valid_attributes
+      delete :destroy, params: {id: theme.to_param}, session: valid_session
+      expect(response).to redirect_to(themes_url)
     end
   end
 

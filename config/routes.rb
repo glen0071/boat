@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :subjects
+
+  resources :data_transfers, only: [:create, :new]
+  resources :themes
   resources :authors
   resources :quotes
 

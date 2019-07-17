@@ -1,0 +1,11 @@
+= form_with(model: @data_transfer, local: true) do |form|
+  .field
+    = form.hidden_field :direction, value: :import
+  .actions
+    = form.submit 'Import'
+
+= form_with(model: @data_transfer, local: true) do |form|
+  .field
+    = form.hidden_field :direction, value: :export
+  .actions
+    = form.submit 'Export'

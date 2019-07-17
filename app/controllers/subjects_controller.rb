@@ -1,74 +1,74 @@
-class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+class ThemesController < ApplicationController
+  before_action :set_theme, only: [:show, :edit, :update, :destroy]
 
-  # GET /subjects
-  # GET /subjects.json
+  # GET /themes
+  # GET /themes.json
   def index
-    @subjects = Subject.all
+    @themes = Theme.all
   end
 
-  # GET /subjects/1
-  # GET /subjects/1.json
+  # GET /themes/1
+  # GET /themes/1.json
   def show
   end
 
-  # GET /subjects/new
+  # GET /themes/new
   def new
-    @subject = Subject.new
+    @theme = Theme.new
   end
 
-  # GET /subjects/1/edit
+  # GET /themes/1/edit
   def edit
   end
 
-  # POST /subjects
-  # POST /subjects.json
+  # POST /themes
+  # POST /themes.json
   def create
-    @subject = Subject.new(subject_params)
+    @theme = Theme.new(theme_params)
 
     respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        format.json { render :show, status: :created, location: @subject }
+      if @theme.save
+        format.html { redirect_to @theme, notice: 'Theme was successfully created.' }
+        format.json { render :show, status: :created, location: @theme }
       else
         format.html { render :new }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
+        format.json { render json: @theme.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /subjects/1
-  # PATCH/PUT /subjects/1.json
+  # PATCH/PUT /themes/1
+  # PATCH/PUT /themes/1.json
   def update
     respond_to do |format|
-      if @subject.update(subject_params)
-        format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
-        format.json { render :show, status: :ok, location: @subject }
+      if @theme.update(theme_params)
+        format.html { redirect_to @theme, notice: 'Theme was successfully updated.' }
+        format.json { render :show, status: :ok, location: @theme }
       else
         format.html { render :edit }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
+        format.json { render json: @theme.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /subjects/1
-  # DELETE /subjects/1.json
+  # DELETE /themes/1
+  # DELETE /themes/1.json
   def destroy
-    @subject.destroy
+    @theme.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+      format.html { redirect_to themes_url, notice: 'Theme was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_subject
-      @subject = Subject.find(params[:id])
+    def set_theme
+      @theme = Theme.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def subject_params
-      params.require(:subject).permit(:name, :description)
+    def theme_params
+      params.require(:theme).permit(:name, :description)
     end
 end
