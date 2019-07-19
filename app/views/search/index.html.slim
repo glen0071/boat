@@ -1,0 +1,8 @@
+h1 Search Results
+
+-  @results.each do |result|
+  p
+    - if result.instance_of? Quote
+      = result.text
+    - elsif result.instance_of? Theme
+      = result.name

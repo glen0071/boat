@@ -21,7 +21,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link.disabled[href="#"]
           | Contact
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
-      button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-        | Search
+    / form.form-inline.my-2.my-lg-0
+    /   input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
+    /   button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
+    /     | Search
+    = form_for @query, url: search_path, class: 'form-inline my-2 my-lg-0' do |f|
+      = f.text_field :q, placeholder: 'search', class: 'form-control mr-sm-2'
+      = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
