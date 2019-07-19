@@ -9,8 +9,8 @@ class SearchController < ApplicationController
 
   def create
     # reorder by relevance?
-    quotes = Quote.where("text like ?", "%#{params[:query][:q]}%")
-    themes = Theme.where("name like ?", "%#{params[:query][:q]}%")
+    quotes = Quote.where("lower(text) like ?", "%#{params[:query][:q].downcase}%")
+    themes = Theme.where("lower(name) like ?", "%#{params[:query][:q].downcase}%")
     @results = quotes + themes
     render :index
   end
