@@ -1,0 +1,18 @@
+= form_with(model: quote, local: true) do |form|
+  - if quote.errors.any?
+    #error_explanation
+      h2
+        = pluralize(quote.errors.count, "error")
+        |  prohibited this quote from being saved:
+      ul
+        - quote.errors.full_messages.each do |message|
+          li
+            = message
+  .form-group
+    = form.label :author
+    = form.collection_select :author_id, Author.all, :id, :name, {prompt: true}, class: 'form-control'
+  .form-group
+    = form.label :text
+    = form.text_area :text, class: 'form-control'
+  .actions
+    = form.submit class: 'btn btn-primary'

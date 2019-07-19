@@ -6,11 +6,12 @@
         - @theme.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .form-group
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
   / Only dispaly on edit
-    / .field
+    / .fomr-group
     /   = f.label :description
     /   = f.text_area :description
-  .actions = f.submit
+  .actions
+    = f.submit class: 'btn btn-primary'

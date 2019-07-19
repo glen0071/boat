@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :quotes
 
   get '/about', to: 'home#about'
-  root 'home#index'
+  root 'quotes#index'
 end

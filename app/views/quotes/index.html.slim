@@ -1,0 +1,9 @@
+p#notice
+  = notice
+h1
+  | Quotes
+div
+  - @quotes.each do |quote|
+    p
+      = link_to quote.text, quote, class: 'quote-text'
+      span.author.d-flex.justify-content-end = quote.author.name if quote.author&.name

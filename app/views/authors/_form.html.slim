@@ -6,15 +6,15 @@
         - @author.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .form-group
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
 
   / only include this on edit screen
-    / .field
+    / .form-group
     /   = f.label :birth
     /   = f.date_select :birth
-    / .field
+    / .form-group
     /   = f.label :death
     /   = f.date_select :death
-  .actions = f.submit
+  .actions = f.submit class: 'btn btn-primary'
