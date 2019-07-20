@@ -1,11 +1,14 @@
 p#notice = notice
 
-p
-  strong Name:
+h5
   = @theme.name
+- if @theme.description
+  p
+    strong Description:
+    = @theme.description
 p
-  strong Description:
-  = @theme.description
+  - @theme.quotes.each do |quote|
+    = quote.text
 
 => link_to 'Edit', edit_theme_path(@theme)
 '|

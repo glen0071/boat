@@ -6,4 +6,5 @@ div
   - @quotes.each do |quote|
     p
       = link_to quote.text, quote, class: 'quote-text'
-      span.author.d-flex.justify-content-end = quote.author.name if quote.author&.name
+      span.author.d-flex.justify-content-end
+        = link_to quote.author.name, quote.author if quote.author&.name

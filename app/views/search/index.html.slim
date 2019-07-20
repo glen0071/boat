@@ -3,6 +3,6 @@ h1 Search Results
 -  @results.each do |result|
   p
     - if result.instance_of? Quote
-      = result.text
+      = link_to result.text, result
     - elsif result.instance_of? Theme
-      = result.name
+      = link_to result.name, result

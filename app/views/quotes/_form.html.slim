@@ -14,5 +14,11 @@
   .form-group
     = form.label :text
     = form.text_area :text, class: 'form-control'
+  .form-group
+    = form.label :source
+    = form.text_field :source, class: 'form-control'
+  .form-group
+    = form.label :source_link
+    = form.text_field :source_link, class: 'form-control'
   .actions
     = form.submit class: 'btn btn-primary'

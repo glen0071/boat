@@ -1,15 +1,18 @@
 p#notice = notice
-
-p
-  strong Name:
+h5
   = @author.name
+- if @author.birth
+  p
+    strong Birth:
+    = @author.birth
+- if @author.death
+  p
+    strong Death:
+    = @author.death
 p
-  strong Birth:
-  = @author.birth
-p
-  strong Death:
-  = @author.death
+  - @author.quotes.each do |quote|
+    = quote.text
 
 => link_to 'Edit', edit_author_path(@author)
 '|
-=< link_to 'Back', authors_path
+=< link_to 'Authors', authors_path
