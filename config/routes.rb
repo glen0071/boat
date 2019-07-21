@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :quotes
 
   get '/about', to: 'home#about'
-  root 'quotes#index'
+  get '/home', to: 'home#index'
+  root 'home#index'
 end

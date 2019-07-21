@@ -9,7 +9,6 @@ h5
 p
   - @quotes.each do |quote|
     = quote.text
-    - binding.pry
 
 = link_to 'Edit', edit_theme_path(@theme), class: 'basic-link'
 = link_to 'Back', themes_path, class: 'basic-link'

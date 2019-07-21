@@ -2,6 +2,6 @@
 
 = render 'form', quote: @quote
 
-= link_to 'Show', @quote
-= link_to 'Quotes', quotes_path
-= link_to 'Delete', @quote, method: :delete
+= link_to 'Cancel Edit', @quote, class: 'basic-link'
+= link_to 'Delete Quote', @quote, method: :delete, class: 'basic-link'
+= link_to 'Quotes list', quotes_path, class: 'basic-link'

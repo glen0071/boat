@@ -12,8 +12,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         a.nav-link[href="/about"]
           | About
       li.nav-item
-        a.nav-link[href="/search"]
-          | Search
+        a.nav-link[href="/quotes"]
+          | Browse
       li.nav-item.dropdown.active
         a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
           |  Add
@@ -23,10 +23,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           a.dropdown-item[href="/quotes/new"]
             | Add Quote
           a.dropdown-item[href="/themes/new"]
-            | Add Theme
+            | Add Topic
       / li.nav-item
       /   a.nav-link.disabled[href="#"]
       /     | Contact
     = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
-      = f.text_field :q, placeholder: 'search', class: 'form-control mr-sm-2'
+      = f.text_field :q, placeholder: 'text and topic search', class: 'form-control mr-sm-2'
       = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'

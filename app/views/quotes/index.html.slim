@@ -3,7 +3,7 @@ p#notice
 h1
   | Quotes
 div
-  - @quotes.each do |quote|
+  - @quotes.shuffle.each do |quote|
     p
       = link_to quote.text, quote, class: 'quote-text'
       span.author.d-flex.justify-content-end
