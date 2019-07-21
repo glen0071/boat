@@ -10,7 +10,7 @@
             = message
   .form-group
     = form.label :author
-    = form.collection_select :author_id, Author.all, :id, :name, {prompt: true}, class: 'form-control'
+    = form.collection_select :author_id, Author.all.order(:name), :id, :name, {prompt: true}, class: 'form-control'
   .form-group
     = form.label :text
     = form.text_area :text, class: 'form-control'

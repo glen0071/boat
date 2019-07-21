@@ -2,7 +2,11 @@ p#notice = notice
 
 p
   = @quote.text
+p
+  span.author.d-flex.justify-content-end
+    = link_to @quote.author.name, @quote.author if @quote.author&.name
 
+h6.topics-header Topics
 p
   - @quote.themes.uniq.each do |theme|
     = link_to theme.name, theme, class: 'theme-quote-show'
