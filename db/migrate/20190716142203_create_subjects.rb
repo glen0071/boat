@@ -1,6 +1,6 @@
-class CreateThemes < ActiveRecord::Migration[5.2]
+class CreateSubjects < ActiveRecord::Migration[5.2]
   def change
-    create_table :themes do |t|
+    create_table :subjects do |t|
       t.string :name
       t.text :description
 
