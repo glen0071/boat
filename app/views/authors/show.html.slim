@@ -13,6 +13,5 @@ p
   - @author.quotes.each do |quote|
     = quote.text
 
-=> link_to 'Edit', edit_author_path(@author)
-'|
-=< link_to 'Authors', authors_path
+= link_to 'Edit', edit_author_path(@author), class: 'basic-link'
+= link_to 'Authors', authors_path, class: 'basic-link'

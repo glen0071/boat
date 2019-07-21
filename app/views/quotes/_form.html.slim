@@ -21,7 +21,9 @@
     = form.label :source_link
     = form.text_field :source_link, class: 'form-control'
   .form-group
-    = form.label :themes
-    = form.collection_check_boxes :theme_ids, Theme.all, :id, :name, class: 'form-control'
+    = form.collection_check_boxes :theme_ids, Theme.all.order(:name), :id, :name do |b|
+      span.check-box
+        = b.label
+        = b.check_box class: 'actual-check-box'
   .actions
     = form.submit class: 'btn btn-primary'
