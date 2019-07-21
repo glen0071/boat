@@ -1,28 +1,22 @@
 class ThemesController < ApplicationController
   before_action :set_theme, only: [:show, :edit, :update, :destroy]
 
-  # GET /themes
-  # GET /themes.json
   def index
     @themes = Theme.all
   end
 
-  # GET /themes/1
-  # GET /themes/1.json
   def show
+    Quote.includes(:quote_themes).where("quote_themes.theme_id = ?", @theme.id).references(:quote_themes)
+    @quotes = @theme.quotes
   end
 
-  # GET /themes/new
   def new
     @theme = Theme.new
   end
 
-  # GET /themes/1/edit
   def edit
   end
 
-  # POST /themes
-  # POST /themes.json
   def create
     @theme = Theme.new(theme_params)
 
@@ -37,8 +31,6 @@ class ThemesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /themes/1
-  # PATCH/PUT /themes/1.json
   def update
     respond_to do |format|
       if @theme.update(theme_params)
@@ -51,8 +43,6 @@ class ThemesController < ApplicationController
     end
   end
 
-  # DELETE /themes/1
-  # DELETE /themes/1.json
   def destroy
     @theme.destroy
     respond_to do |format|
@@ -62,12 +52,10 @@ class ThemesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_theme
       @theme = Theme.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
       params.require(:theme).permit(:name, :description)
     end

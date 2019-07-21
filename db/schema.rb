@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_041824) do
+ActiveRecord::Schema.define(version: 2019_07_20_194138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_07_20_041824) do
     t.bigint "quote_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "relevance"
+    t.index ["quote_id", "theme_id"], name: "index_quote_themes_on_quote_id_and_theme_id", unique: true
     t.index ["quote_id"], name: "index_quote_themes_on_quote_id"
     t.index ["theme_id"], name: "index_quote_themes_on_theme_id"
   end

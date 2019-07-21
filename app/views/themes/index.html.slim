@@ -1,22 +1,9 @@
-h1 Listing themes
+h1 Themes
 
-table
-  thead
-    tr
-      th Name
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - @themes.each do |theme|
-      tr
-        td = theme.name
-        td = theme.description
-        td = link_to 'Show', theme
-        td = link_to 'Edit', edit_theme_path(theme)
-        td = link_to 'Destroy', theme, data: { confirm: 'Are you sure?' }, method: :delete
+- @themes.each do |theme|
+  div
+    = link_to theme.name, theme, class: 'theme-index'
+    |  #{theme.quotes.count} quotes
 
 br
 

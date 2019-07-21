@@ -7,9 +7,11 @@ h5
     strong Description:
     = @theme.description
 p
-  - @theme.quotes.each do |quote|
+  - @quotes.each do |quote|
     = quote.text
+    - binding.pry
 
 => link_to 'Edit', edit_theme_path(@theme)
 '|
 =< link_to 'Back', themes_path
+= link_to 'Delete', @theme, data: { confirm: 'Are you sure?' }, method: :delete

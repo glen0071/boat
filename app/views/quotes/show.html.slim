@@ -5,7 +5,7 @@ p
 
 p
   - @quote.themes.uniq.each do |theme|
-    = link_to theme.name, theme
+    = link_to theme.name, theme, class: 'theme-quote-show'
 
 = link_to 'Edit', edit_quote_path(@quote)
 = link_to 'Back', quotes_path

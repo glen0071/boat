@@ -20,5 +20,8 @@
   .form-group
     = form.label :source_link
     = form.text_field :source_link, class: 'form-control'
+  .form-group
+    = form.label :themes
+    = form.collection_check_boxes :theme_ids, Theme.all, :id, :name, class: 'form-control'
   .actions
     = form.submit class: 'btn btn-primary'
