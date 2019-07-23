@@ -32,12 +32,17 @@ group :development, :test do
 end
 
 group :development do
+  # Debugging
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # Testing
+  gem 'guard-rspec', '~> 4.7.3', require: false
+
+  # Work faster
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
 end
 
 gem 'simplecov', '~> 0.17.0', require: false, group: :test
