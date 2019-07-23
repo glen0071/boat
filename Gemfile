@@ -21,6 +21,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Testing
+  gem 'factory_bot_rails', '~> 5.0.2'
   gem 'rspec-rails', '~> 4.0.0.beta2'
 
   # Debugging
