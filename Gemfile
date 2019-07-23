@@ -23,6 +23,7 @@ group :development, :test do
   # Testing
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'shoulda', '~> 3.6.0'
 
   # Debugging
   gem 'pry-rails'
