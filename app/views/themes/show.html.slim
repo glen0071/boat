@@ -1,15 +1,15 @@
 p#notice = notice
 
 h5
-  = @theme.name
-- if @theme.description
+  = @topic.name
+- if @topic.description
   p
     strong Description:
-    = @theme.description
+    = @topic.description
 p
   - @quotes.each do |quote|
     = quote.text
 
-= link_to 'Edit', edit_theme_path(@theme), class: 'basic-link'
-= link_to 'Back', themes_path, class: 'basic-link'
-= link_to 'Delete', @theme, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'
+= link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
+= link_to 'Back', topics_path, class: 'basic-link'
+= link_to 'Delete', @topic, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'

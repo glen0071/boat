@@ -9,8 +9,8 @@ class SearchController < ApplicationController
 
   def create
     quotes = Quote.where("lower(text) like ?", "%#{params[:query][:q].downcase}%")
-    themes = Theme.where("lower(name) like ?", "%#{params[:query][:q].downcase}%")
-    @results = themes + quotes
+    topics = Topic.where("lower(name) like ?", "%#{params[:query][:q].downcase}%")
+    @results = topics + quotes
     render :index
   end
 

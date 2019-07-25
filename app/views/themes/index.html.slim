@@ -1,10 +1,10 @@
-h1 Themes
+h1 Topics
 
-- @themes.each do |theme|
+- @topics.each do |topic|
   div
-    = link_to theme.name, theme, class: 'theme-index'
-    |  #{theme.quotes.count} quotes
+    = link_to topic.name, topic, class: 'topic-index'
+    |  #{topic.quotes.count} quotes
 
 br
 
-= link_to 'New Theme', new_theme_path
+= link_to 'New Topic', new_topic_path

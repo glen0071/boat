@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :theme do
+  factory :topic do
     name { "Truthfulness" }
     description { "Foundation of all human virtues..." }
   end

@@ -24,7 +24,7 @@
     = form.label :year
     = form.text_field :year, class: 'form-control'
   .form-group
-    = form.collection_check_boxes :theme_ids, Theme.all.order(:name), :id, :name do |b|
+    = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
       span.check-box
         = b.label
         = b.check_box class: 'actual-check-box'

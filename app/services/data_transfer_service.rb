@@ -11,7 +11,7 @@ class DataTransferService
   end
 
   def export
-    klass_strings = ['Author', 'Theme', 'Quote', 'QuoteTheme']
+    klass_strings = ['Author', 'Topic', 'Quote', 'QuoteTopic']
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
