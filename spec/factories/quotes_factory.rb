@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :theme do
+  factory :quote do
     text { "Truthfulness" }
     source { "Source" }
     source_link { "source_link.com" }

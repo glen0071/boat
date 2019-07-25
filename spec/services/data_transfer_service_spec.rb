@@ -6,7 +6,7 @@ RSpec.describe DataTransferService, type: :service do
 
   end
 
-  describe "#export" do
-    DataTransferService.new(file_path).export
-  end
+  # describe "#export" do
+  #   DataTransferService.new(file_path).export
+  # end
 end

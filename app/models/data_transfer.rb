@@ -10,8 +10,8 @@ class DataTransfer
   end
 
   def self.create(attributes = {})
-    import_data if attributes[:direction] == 'import'
-    export_data if attributes[:direction] == 'export'
+    # import_data if attributes[:direction] == 'import'
+    # export_data if attributes[:direction] == 'export'
   end
 
   private
