@@ -14,19 +14,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link[href="/quotes"]
           | Browse
-      li.nav-item.dropdown.active
-        a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-          |  Add
-        .dropdown-menu[aria-labelledby="navbarDropdown"]
-          a.dropdown-item[href="/authors/new"]
-            | Add Author
-          a.dropdown-item[href="/quotes/new"]
-            | Add Quote
-          a.dropdown-item[href="/topics/new"]
-            | Add Topic
-      / li.nav-item
-      /   a.nav-link.disabled[href="#"]
-      /     | Contact
+      li.nav-item
+        a.nav-link[href="/quotes"]
+          | Contact
     = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
       = f.text_field :q, placeholder: 'text and topic search', class: 'form-control mr-sm-2'
       = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
