@@ -10,17 +10,17 @@ class DataTransfer
   end
 
   def self.create(attributes = {})
-    # import_data if attributes[:direction] == 'import'
-    # export_data if attributes[:direction] == 'export'
+    import_data if attributes[:direction] == 'import'
+    export_data if attributes[:direction] == 'export'
   end
 
   private
 
-  def import_data
-    DataTransferService.new(file).import
+  def self.import_data
+    DataTransferService.new(:import, file).import
   end
 
-  def export_data
-    DataTransferService.new(file).export
+  def self.export_data
+    DataTransferService.new(:export).export
   end
 end

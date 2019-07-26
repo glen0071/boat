@@ -1,10 +1,11 @@
 class DataTransfersController < ApplicationController
-  def create
-    DataTransfer.create(data_transfer_params)
-  end
-
   def new
     @data_transfer = DataTransfer.new
+  end
+
+  def create
+    DataTransfer.create(data_transfer_params)
+    render :new, notice: "#{data_transfer_params[:direction]} created successfully"
   end
 
   def data_transfer_params
