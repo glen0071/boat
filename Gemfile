@@ -20,6 +20,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+
+  # Deployment
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+
   # Testing
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'rspec-rails', '~> 4.0.0.beta2'
