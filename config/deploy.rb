@@ -1,4 +1,4 @@
-server '167.99.117.100', port: 80, roles: [:web, :app, :db], primary: true
+server '167.99.117.100', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:glen0071/boat.git'
 set :application,     'boat'
@@ -31,7 +31,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_files, %w{config/master.key}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
