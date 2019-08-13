@@ -1,6 +1,6 @@
-server '198.211.99.204', port: 80, roles: [:web, :app, :db], primary: true
+server '159.89.83.78', port: 80, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:glen0071/boat_one_click.git'
+set :repo_url,        'git@github.com:glen0071/boat.git'
 set :application,     'boat'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
