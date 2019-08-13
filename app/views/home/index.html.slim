@@ -1,5 +1,8 @@
 .text-center
 
-p.home-page-quote = link_to @quote.text, @quote, class: 'quote-text'
-span.author.d-flex.justify-content-end
-  = link_to @quote.author&.name, @quote.author if @quote.author
+
+-if @quote
+  p.front-page-header Random token of inspiration:
+  p.home-page-quote = link_to @quote&.text, @quote, class: 'quote-text'
+  span.author.d-flex.justify-content-end
+    = link_to @quote.author&.name, @quote&.author if @quote&.author

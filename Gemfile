@@ -6,6 +6,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 
 # Backend
+gem 'devise', '~> 4.6.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 

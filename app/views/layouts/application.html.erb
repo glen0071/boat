@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example</title>
+    <title>Boat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -22,7 +22,9 @@
 
   <body>
     <%= render partial: 'shared/navbar' %>
-    <%= render partial: 'shared/admin_navbar' %>
+    <% if current_user %>
+      <%= render partial: 'shared/admin_navbar' %>
+    <% end %>
     <div class="container">
       <%= yield %>
     </div>
