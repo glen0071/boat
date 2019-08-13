@@ -10,6 +10,8 @@ p
   - @quotes.each do |quote|
     = quote.text
 
-= link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
-= link_to 'Back', topics_path, class: 'basic-link'
-= link_to 'Delete', @topic, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'
+- if current_user
+  = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
+= link_to 'Topics', topics_path, class: 'basic-link'
+- if current_user
+  = link_to 'Delete', @topic, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'

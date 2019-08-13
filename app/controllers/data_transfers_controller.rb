@@ -1,4 +1,6 @@
 class DataTransfersController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @data_transfer = DataTransfer.new
   end

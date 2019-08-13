@@ -12,4 +12,5 @@ table
 
 br
 
-= link_to 'New Author', new_author_path
+- if current_user
+  = link_to 'New Author', new_author_path

@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
  def load_query_model
    @query = Query.new
  end
+
+ def authenticate_user!
+   redirect_to :root unless current_user
+ end
 end

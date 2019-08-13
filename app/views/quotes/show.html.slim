@@ -15,5 +15,6 @@ p
   - @quote.topics.uniq.each do |topic|
     = link_to topic.name, topic, class: 'topic-quote-show'
 
-= link_to 'Edit', edit_quote_path(@quote), class: 'basic-link'
-= link_to 'Back', quotes_path, class: 'basic-link'
+- if current_user
+  = link_to 'Edit', edit_quote_path(@quote), class: 'basic-link'
+= link_to 'Quotes', quotes_path, class: 'basic-link'
