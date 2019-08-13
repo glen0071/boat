@@ -1,4 +1,4 @@
-server '159.89.83.78', port: 80, roles: [:web, :app, :db], primary: true
+server '167.99.117.100', port: 80, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:glen0071/boat.git'
 set :application,     'boat'
