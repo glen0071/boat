@@ -8,7 +8,7 @@ RSpec.describe DataTransferService, type: :service do
     DataTransferService.new('export', nil).export
   end
 
-  # describe "#export" do
-  #   DataTransferService.new(file_path).export
-  # end
+  describe "#import" do
+    DataTransferService.new('import', "11-Aug-2019_14_39_40").import
+  end
 end

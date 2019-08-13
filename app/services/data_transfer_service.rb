@@ -6,17 +6,16 @@ class DataTransferService
   attr_accessor :dir, :direction
 
   def initialize(direction, dir = nil)
-    self.direction
-    self.dir
+    self.direction = direction
+    self.dir = dir
   end
 
   def import
     klass_strings = ['Author', 'Topic', 'Quote', 'QuoteTopic']
-
-    self.dir
+    full_path = Rails.root.join('data', 'exports', self.dir)
     klass_strings.each do |klass_string|
 
-      csv = CSV.read("#{self.dir}/#{klass_string}.csv")
+      csv = CSV.read("#{full_path}/#{klass_string}.csv", :headers => true)
       csv.each do |row|
         klass = Object.const_get klass_string
         klass.find_or_create_by(row.to_hash)
