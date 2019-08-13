@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: boat_production
-  username: rails
+  username: deploy
   password: <%= ENV['BOAT_DATABASE_PASSWORD'] %>
