@@ -3,4 +3,18 @@
   br
   br
   h5
-    | helping you navigate the accumulated wisdom of the ages
+    | I find it helpful to gather quotes like this:
+  -if @quote
+    p.about-page-quote = link_to @quote&.text, @quote, class: 'quote-text'
+    span.author.d-flex.justify-content-end
+      = link_to @quote.author&.name, @quote&.author if @quote&.author
+  - unless @quote.topics.empty?
+  p
+    | to categorize them with topics like&nbsp
+    - @quote.topics.each do |topic|
+      = link_to topic.name, topic
+  p
+    | and with other quotes by the #{link_to "author", @quote&.author if @quote&.author}
+  p
+    | let me know what you'd find helpful:
+    = link_to "@EddieGDotMe", href="https://twitter.com/eddiegdotme"

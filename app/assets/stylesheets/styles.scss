@@ -30,8 +30,9 @@
   }
 }
 
-.home-page-quote {
+.about-page-quote {
   margin-top: 10px;
+  font-style: italic;
 }
 
 .topics-header {
@@ -55,5 +56,32 @@
 
 .front-page-header {
   margin-top: 35px;
-  font-style: italic;
+}
+
+.home-header {
+  margin: 30px;
+}
+
+.main-search-form {
+  margin: 20px;
+}
+
+.search-div {
+  margin: 0 auto;
+  width: 70% !important;
+}
+
+.main-search-bar {
+  width: 60% !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-div {
+    margin: 0 auto;
+    width: 100% !important;
+  }
+
+  .main-search-bar {
+    width: 100% !important;
+  }
 }

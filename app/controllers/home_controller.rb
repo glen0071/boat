@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @quote = Quote.limit(1).order("RANDOM()").first
+    @hide_search = true
+    @topics = Topic.all
   end
 
-  def about; end
+  def about
+    @quote = Quote.where(good: true).limit(1).order("RANDOM()").first
+  end
 end

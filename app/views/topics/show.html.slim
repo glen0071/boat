@@ -8,7 +8,8 @@ h5
     = @topic.description
 p
   - @quotes.each do |quote|
-    = quote.text
+    p
+      = quote.text
 
 - if current_user
   = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'

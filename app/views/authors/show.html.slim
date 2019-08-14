@@ -11,7 +11,7 @@ h5
     = @author.death
 p
   - @author.quotes.each do |quote|
-    = quote.text
+    p = quote.text
 
 - if current_user
   = link_to 'Edit', edit_author_path(@author), class: 'basic-link'

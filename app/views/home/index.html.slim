@@ -1,8 +1,8 @@
 .text-center
+  h5.home-header
+    | helping you navigate the accumulated wisdom of the ages
 
-
--if @quote
-  p.front-page-header Random token of inspiration:
-  p.home-page-quote = link_to @quote&.text, @quote, class: 'quote-text'
-  span.author.d-flex.justify-content-end
-    = link_to @quote.author&.name, @quote&.author if @quote&.author
+    = form_for @query, url: search_path, html: { class: 'form-inline main-search-form' } do |f|
+      .search-div
+        = f.text_field :q, placeholder: 'Search by Text and Topic', class: 'form-control mr-sm-2 main-search-bar'
+        = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
