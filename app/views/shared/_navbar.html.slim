@@ -11,9 +11,14 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link[href="/about"]
           | About
-      li.nav-item
-        a.nav-link[href="/quotes"]
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
           | Browse
+        .dropdown-menu[aria-labelledby="navbarDropdown"]
+          a.dropdown-item[href="/topics"]
+            | Browse Topics
+          a.dropdown-item[href="/quotes"]
+            | Browse Quotes
     - unless @hide_search
       = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
         = f.text_field :q, placeholder: 'text and topic search', class: 'form-control mr-sm-2'
