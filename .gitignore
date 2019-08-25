@@ -24,13 +24,13 @@ app/assets/stylesheets/scaffolds.scss
 /node_modules
 /yarn-error.log
 
-/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 coverage
 
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules
