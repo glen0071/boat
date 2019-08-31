@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, skip: :registrations
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
@@ -11,4 +12,12 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about'
   get '/home', to: 'home#index'
   root 'home#index'
+
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
+  namespace :api do
+    resources :topics
+  end
 end

@@ -1,0 +1,8 @@
+= javascript_pack_tag 'admin_dashboard'
+p#notice = notice
+.container.admin-panel
+  = form_with(model: @data_transfer, local: true) do |form|
+    .field
+      = form.hidden_field :direction, value: :export
+    .actions
+      = form.submit 'Export', class: 'btn btn-info data-transfer-btn'

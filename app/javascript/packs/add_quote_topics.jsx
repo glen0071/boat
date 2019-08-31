@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const SearchBar = () => (
+const AddQuoteTopics = () => (
   <h1>
   </h1>
 )
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <SearchBar />,
+    <AddQuoteTopics />,
     document.body.appendChild(document.createElement('div')),
   )
 })

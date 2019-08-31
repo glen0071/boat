@@ -12,6 +12,7 @@ class QuotesController < ApplicationController
 
   def new
     @quote = Quote.new
+    @topics = Topic.all.to_json
   end
 
   def edit

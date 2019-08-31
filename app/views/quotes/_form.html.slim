@@ -1,3 +1,5 @@
+= javascript_pack_tag 'add_quote_topics'
+  var topics = "#{raw(@topics)}"
 = form_with(model: quote, local: true) do |form|
   - if quote.errors.any?
     #error_explanation

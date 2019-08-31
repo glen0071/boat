@@ -26,7 +26,7 @@ class DataTransferService
   def export
     klass_strings = ['Author', 'Topic', 'Quote', 'QuoteTopic']
     dir_path = Rails.root.join(
-      'data', self.direction.to_s, 'exports', DateTime.now.strftime('%v_%H_%M_%S')
+      'data', 'exports', DateTime.now.strftime('%v_%H_%M_%S')
     )
     FileUtils.mkdir_p dir_path
 
