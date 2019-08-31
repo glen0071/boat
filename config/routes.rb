@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
-
   devise_for :users, skip: :registrations
+
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
+
   resources :data_transfers, only: [:create, :new]
   resources :topics
   resources :authors
@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :topics
+    resources :topics, only: [:index]
   end
 end

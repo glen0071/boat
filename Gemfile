@@ -11,7 +11,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
 # Frontend
-gem 'jbuilder', '~> 2.5'
+gem 'active_model_serializers', '~> 0.10.10'
+gem 'responders'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails', '~> 3.2.0'
 gem 'slim', '~> 4.0.1'
