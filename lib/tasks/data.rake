@@ -1,7 +1,11 @@
 namespace :data do
-  desc "import data from dir of csvs"
-  task :import, [:import_dir] => [:environment] do |task, args|
-    DataTransferService.new('import', args.dir).import
+  desc "export data to dir of csvs"
+  task :import, [:file] => [:environment] do |task, args|
+    DataTransferJsonService.import(args.file)
   end
 
+  desc "export data to dir of csvs"
+  task :export => [:environment] do |task, args|
+    DataTransferJsonService.export
+  end
 end

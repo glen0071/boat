@@ -5,7 +5,7 @@ RSpec.describe DataTransferService, type: :service do
   # FactoryBot.create_list(:author, 10)
 
   describe ".new" do
-    # DataTransferService.new('export', nil).export
+    DataTransferService.new('export', nil).export
   end
 
   describe "#import" do
