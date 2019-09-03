@@ -9,7 +9,7 @@ h5
 p
   - @quotes.each do |quote|
     p
-      = quote.text
+      = link_to quote.text, edit_quote_path(quote), class: 'quote-text'
 
 - if current_user
   = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'

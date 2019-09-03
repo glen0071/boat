@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @rand_quote = Quote.where(good: true).sample
     @hide_search = true
     @topics = Topic.all
   end

@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-const AddQuoteTopics = () => (
-  <h1>
-  </h1>
-)
+const AddQuoteTopics = () => {
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(response => response.json())
+      .then(data => console.log(data))
+    }, [])
+
+    return (
+      <div>
+        <ul>
+          <li>test</li>
+        </ul>
+      </div>
+    )
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

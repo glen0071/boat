@@ -1,10 +1,13 @@
-= javascript_pack_tag 'search_bar'
+/ = javascript_pack_tag 'search_bar'
 .text-center
   h5.home-header
     | helping you navigate the accumulated wisdom of the ages
+  - if @rand_quote
+    p
+      = @rand_quote.text
   #search-bar-mount
 
-    / = form_for @query, url: search_path, html: { class: 'form-inline main-search-form' } do |f|
-    /   .search-div
-    /     = f.text_field :q, placeholder: 'Search by Text or Topic', class: 'form-control mr-sm-2 main-search-bar', id: 'main-search-input', autocomplete: 'off'
-    /     = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+    = form_for @query, url: search_path, html: { class: 'form-inline main-search-form' } do |f|
+      .search-div
+        = f.text_field :q, placeholder: 'Search by Text or Topic', class: 'form-control mr-sm-2 main-search-bar', id: 'main-search-input', autocomplete: 'off'
+        = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
