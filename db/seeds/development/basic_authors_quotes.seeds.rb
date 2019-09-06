@@ -41,7 +41,7 @@ obvious: it consumes the attention of its recipients. Hence a wealth of
 information creates a poverty of attention and a need to allocate that attention
 efficiently among the overabundance of information sources that might consume
 it.')
-Author.find_or_create_by({name: "Hebert Simon"}).quotes << concentrate_quote_two
+Author.find_or_create_by({name: "Herbert Simon"}).quotes << concentrate_quote_two
 concentrate_quote_two.topics << Topic.find_or_create_by(name: 'Concentration')
 concentrate_quote_two.topics << Topic.find_or_create_by(name: 'Information')
 

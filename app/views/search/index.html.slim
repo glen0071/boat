@@ -1,5 +1,3 @@
-h1 Search Results
-
 -  @results.each do |result|
   p
     - if result.instance_of? Quote
@@ -7,4 +5,6 @@ h1 Search Results
       span.d-flex.justify-content-end
         = result.author&.name
     - elsif result.instance_of? Topic
+      = link_to result.name, result
+    - elsif result.instance_of? Author
       = link_to result.name, result

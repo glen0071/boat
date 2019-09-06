@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
   def show
     Quote.includes(:quote_topics).where("quote_topics.topic_id = ?", @topic.id).references(:quote_topics)
     @quotes = @topic.quotes
+    @authors = @topic.authors
   end
 
   def new

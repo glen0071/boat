@@ -9,7 +9,9 @@ h5
 p
   - @quotes.each do |quote|
     p
-      = link_to quote.text, edit_quote_path(quote), class: 'quote-text'
+      = link_to quote.text, quote_path(quote), class: 'quote-text'
+      span.author.d-flex.justify-content-end
+        = link_to quote.author.name, quote.author if quote.author&.name
 
 - if current_user
   = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'

@@ -1,10 +1,13 @@
-h1 Topics
+h2 Topics
+.toipcs-index-container
 
-- @topics.each do |topic|
-  div
-    = link_to topic.name, topic, class: 'topic-index'
-    |  #{topic.quotes.count} quotes
+  - @topics.each do |topic|
+    .topic-card
+      = link_to topic.name, topic, class: 'topic-index'
+      .topic.data
+        |  #{topic.quotes.count} quotes
+        |  #{topic.authors.uniq.count} authors
 
-br
-- if current_user
-  = link_to 'New Topic', new_topic_path
+  br
+  - if current_user
+    = link_to 'New Topic', new_topic_path

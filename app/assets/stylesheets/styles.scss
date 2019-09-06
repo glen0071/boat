@@ -8,7 +8,8 @@
 }
 
 .topic-index {
-  color: 'black'
+  color: 'black';
+  font-size: 1.3em;
 }
 
 .topic-quote-show {
@@ -67,7 +68,7 @@
 }
 
 .search-div {
-  margin: 0 auto;
+  margin: 10% auto;
   width: 70% !important;
 }
 
@@ -125,4 +126,14 @@ sidebar-nav {
   left: 10px;
   top: 11px;
   left: -6px;
+}
+
+// Topics
+.toipcs-index-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-card {
+  margin: 5px auto;
 }
