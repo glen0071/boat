@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sources
   devise_for :users, skip: :registrations
 
   get '/search', to: 'search#new'

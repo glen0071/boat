@@ -11,7 +11,7 @@ const AddQuoteTopics = () => {
     return (
       <div>
         <ul>
-          <li>test</li>
+          <li></li>
         </ul>
       </div>
     )

@@ -4,7 +4,7 @@
     | helping you navigate the accumulated wisdom of the ages
   - if @rand_quote
     p
-      = @rand_quote.text
+      = link_to @rand_quote.text, @rand_quote, class: 'quote-text'
   #search-bar-mount
 
     = form_for @query, url: search_path, html: { class: 'form-inline main-search-form' } do |f|

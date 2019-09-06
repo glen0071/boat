@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_014825) do
+ActiveRecord::Schema.define(version: 2019_09_06_031719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2019_08_14_014825) do
     t.index ["author_id"], name: "index_quotes_on_author_id"
   end
 
+  create_table "sources", force: :cascade do |t|
+    t.string "name"
+    t.bigint "author_id"
+    t.string "pub_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_sources_on_author_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -69,4 +78,5 @@ ActiveRecord::Schema.define(version: 2019_08_14_014825) do
   add_foreign_key "quote_topics", "quotes"
   add_foreign_key "quote_topics", "topics"
   add_foreign_key "quotes", "authors"
+  add_foreign_key "sources", "authors"
 end

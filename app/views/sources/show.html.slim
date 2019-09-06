@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @source.name
+p
+  strong Author:
+  = @source.author
+p
+  strong Pub date:
+  = @source.pub_date
+
+=> link_to 'Edit', edit_source_path(@source)
+'|
+=< link_to 'Back', sources_path

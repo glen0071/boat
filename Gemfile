@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.3'
 gem 'devise', '~> 4.6.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'seedbank', '~> 0.5.0'
 
 # Frontend
 gem 'active_model_serializers', '~> 0.10.10'
