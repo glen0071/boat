@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-const AddQuoteTopics = () => {
+const TopicsArray = () => {
+  const [topicsArray, setTopicsArray] = React.useState([]);
+
   useEffect(() => {
     fetch('/api/topics')
       .then(response => response.json())
-      .then(data => console.log(data))
-    }, [])
+      .then(data => {
+        setTopicsArray(data)
+      })
+    }, []) // maybe remove square brackets so component did update?
 
     return (
-      <div>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
+      <ol>
+        {topicsArray.map((topic) =>
+          <li key={topic.id}>{topic.name}</li>
+        )}
+      </ol>
     )
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <AddQuoteTopics />,
+    <TopicsArray />,
     document.body.appendChild(document.createElement('div')),
   )
 })
