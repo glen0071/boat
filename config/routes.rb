@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :topics, only: [:index]
+    resources :quotes, only: [:index, :edit]
   end
 end

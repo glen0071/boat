@@ -24,13 +24,6 @@
   margin: 10px;
 }
 
-.check-box {
-  margin: 20px;
-  .actual-check-box {
-    margin: 5px;
-  }
-}
-
 .about-page-quote {
   margin-top: 10px;
   font-style: italic;
@@ -140,4 +133,21 @@ sidebar-nav {
 
 .flash {
   color: blue;
+}
+
+.topic-checkbox-label {
+  width: 150px;
+}
+
+.topic-checkbox-label:hover {
+  color: rgba(255,255,255,1);
+  background-color: rgba(25, 162, 184, .5);
+}
+
+.check-box-span {
+  margin: 5px;
+}
+
+.check-box {
+  display: none;
 }

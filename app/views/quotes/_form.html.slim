@@ -1,4 +1,4 @@
-/ = javascript_pack_tag 'add_quote_topics' # uncomment to see topics from ajax
+= javascript_pack_tag 'AddQuoteTopics'
 = form_with(model: quote, local: true) do |form|
   - if quote.errors.any?
     #error_explanation
@@ -29,8 +29,8 @@
     = form.check_box :good, class: 'form-control'
   .form-group
     = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
-      span.check-box
-        = b.label
-        = b.check_box class: 'actual-check-box'
+      span.check-box-span
+        = b.label class: 'btn btn-outline-info topic-checkbox-label'
+        = b.check_box class: 'check-box'
   .actions
     = form.submit class: 'btn btn-primary'
