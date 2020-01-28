@@ -29,5 +29,3 @@ class FavoritesController < ApplicationController
       @user = current_user
     end
 end
-
-end
