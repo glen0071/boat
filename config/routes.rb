@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :sources
+  get 'favorites/create'
+  get 'favorites/destroy'
   devise_for :users, skip: :registrations
 
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
 
   resources :data_transfers, only: [:create, :new]
+  resources :sources
   resources :topics
   resources :authors
   resources :quotes
+  resources :users, only: :show
 
   get '/about', to: 'home#about'
   get '/home', to: 'home#index'

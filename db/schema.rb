@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_031719) do
+ActiveRecord::Schema.define(version: 2020_01_28_042642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2019_09_06_031719) do
     t.string "birth_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "author_id"
+    t.bigint "topic_id"
+    t.bigint "quote_id"
+    t.index ["author_id"], name: "index_favorites_on_author_id"
+    t.index ["quote_id"], name: "index_favorites_on_quote_id"
+    t.index ["topic_id"], name: "index_favorites_on_topic_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "quote_topics", force: :cascade do |t|
@@ -75,6 +86,10 @@ ActiveRecord::Schema.define(version: 2019_09_06_031719) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "authors"
+  add_foreign_key "favorites", "quotes"
+  add_foreign_key "favorites", "topics"
+  add_foreign_key "favorites", "users"
   add_foreign_key "quote_topics", "quotes"
   add_foreign_key "quote_topics", "topics"
   add_foreign_key "quotes", "authors"

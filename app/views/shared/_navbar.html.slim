@@ -19,7 +19,12 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             | Browse Topics
           a.dropdown-item[href="/quotes"]
             | Browse Quotes
+          a.dropdown-item[href="/authors"]
+            | Browse Authors
     - unless @hide_search
       = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
         = f.text_field :q, placeholder: 'text and topic search', class: 'form-control mr-sm-2'
         = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+    - if current_user
+      a.nav-link[href="/users/#{current_user.id}"]
+        | MyPage

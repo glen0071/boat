@@ -19,6 +19,7 @@ gem 'slim-rails', '~> 3.2.0'
 gem 'slim', '~> 4.0.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 4.x'
+gem "font-awesome-rails"
 
 # Faster
 gem 'bootsnap', '>= 1.1.0', require: false

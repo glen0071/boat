@@ -7,6 +7,16 @@
   }
 }
 
+.quote-show-text-div {
+  display: flex;
+  .fave-btn {
+    margin: 1em;
+    border: none;
+    background-color: transparent;
+    color: gold;
+  }
+}
+
 .topic-index {
   color: 'black';
   font-size: 1.3em;
@@ -152,4 +162,13 @@ sidebar-nav {
 
 .check-box {
   display: none;
+}
+.my-header {
+  width: 100%;
+}
+.my-page {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+  flex-direction: column;
 }

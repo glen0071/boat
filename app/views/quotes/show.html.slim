@@ -1,7 +1,8 @@
 p#notice.flash = notice
 
-p
-  = @quote.text
+div.quote-show-text-div
+  button.fa.fa-star.fave-btn
+  div = @quote.text
 p
   span.author.d-flex.justify-content-end
     = link_to @quote.author.name, @quote.author if @quote.author&.name
