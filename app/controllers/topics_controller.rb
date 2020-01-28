@@ -7,8 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    Quote.includes(:quote_topics).where("quote_topics.topic_id = ?", @topic.id).references(:quote_topics)
-    @quotes = @topic.quotes
+    @quotes = @topic.ranked_quotes
     @authors = @topic.authors
   end
 

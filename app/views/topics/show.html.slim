@@ -9,6 +9,10 @@ h5
 p
   - @quotes.each do |quote|
     p
+      div
+        span.fa.fa-arrow-up
+        span = quote.quote_topics.first.points
+        span.fa.fa-arrow-down
       = link_to quote.text, quote_path(quote), class: 'quote-text'
       span.author.d-flex.justify-content-end
         = link_to quote.author.name, quote.author if quote.author&.name

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_042642) do
+ActiveRecord::Schema.define(version: 2020_01_28_210810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_042642) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "relevance"
+    t.integer "points", default: 0, null: false
     t.index ["quote_id", "topic_id"], name: "index_quote_topics_on_quote_id_and_topic_id", unique: true
     t.index ["quote_id"], name: "index_quote_topics_on_quote_id"
     t.index ["topic_id"], name: "index_quote_topics_on_topic_id"
@@ -53,8 +54,9 @@ ActiveRecord::Schema.define(version: 2020_01_28_042642) do
     t.bigint "author_id"
     t.string "source"
     t.string "source_link"
-    t.string "year"
+    t.string "date"
     t.boolean "good", default: false
+    t.string "context"
     t.index ["author_id"], name: "index_quotes_on_author_id"
   end
 

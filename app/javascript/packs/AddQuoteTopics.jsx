@@ -47,6 +47,7 @@ if ( a.name > b.name ){
 }
 
 const TopicsArray = () => {
+  console.log('here')
   const [topicsArray, setTopicsArray] = React.useState([]);
 
   useEffect(() => {
