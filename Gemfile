@@ -10,6 +10,7 @@ gem 'devise', '~> 4.6.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'seedbank', '~> 0.5.0'
+gem 'graphql', '~> 1.10.1'
 
 # Frontend
 gem 'active_model_serializers', '~> 0.10.10'
@@ -56,6 +57,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'graphiql-rails'
 end
 
 gem 'simplecov', '~> 0.17.0', require: false, group: :test
+
+gem 'graphiql-rails', group: :development

@@ -1,10 +1,8 @@
+= javascript_pack_tag 'app'
+
 p
   = notice
 p
   | A random list of quotes for you to browse
 div
-  - @quotes.shuffle.each do |quote|
-    p
-      = link_to quote.text, quote, class: 'quote-text'
-      span.author.d-flex.justify-content-end
-        = link_to quote.author.name, quote.author if quote.author&.name
+  #root
