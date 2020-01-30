@@ -1,22 +1,21 @@
+# frozen_string_literal: true
+
 class QuotesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_quote, only: %i[show edit update destroy]
 
   def index
     @quotes = Quote.all
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @quote = Quote.new
     @topics = Topic.all.to_json
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @quote = Quote.new(quote_params)
@@ -53,11 +52,13 @@ class QuotesController < ApplicationController
   end
 
   private
-    def set_quote
-      @quote = Quote.find(params[:id])
-    end
 
-    def quote_params
-      params.require(:quote).permit(:text, :source, :source_link, :author_id, :good, topic_ids: [])
-    end
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  def quote_params
+    params.require(:quote).permit(:text, :source, :source_link, :author_id,
+                                  :good, :context, :date, topic_ids: [])
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     @rand_quote = Quote.where(good: true).sample
@@ -6,6 +8,6 @@ class HomeController < ApplicationController
   end
 
   def about
-    @quote = Quote.where(good: true).limit(1).order("RANDOM()").first
+    @quote = Quote.where(good: true).limit(1).order('RANDOM()').first
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 baha_sources = [
   {
     name: "Gleanings from the writings of Baha'u'llah",
@@ -5,7 +7,7 @@ baha_sources = [
   }
 ]
 
-baha = Author.find_by("name like ?", "Bah%")
+baha = Author.find_by('name like ?', 'Bah%')
 
 baha_sources.each do |source|
   baha.sources << Source.create(source)

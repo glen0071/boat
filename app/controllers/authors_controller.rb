@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AuthorsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_author, only: %i[show edit update destroy]
 
   def index
     @authors = Author.all.order(:name)
@@ -49,12 +51,11 @@ class AuthorsController < ApplicationController
 
   private
 
-    def set_author
-      @author = Author.find(params[:id])
-    end
+  def set_author
+    @author = Author.find(params[:id])
+  end
 
-
-    def author_params
-      params.require(:author).permit(:name, :birth, :death)
-    end
+  def author_params
+    params.require(:author).permit(:name, :birth, :death)
+  end
 end

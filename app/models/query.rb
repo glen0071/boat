@@ -1,5 +1,6 @@
-class Query
+# frozen_string_literal: true
 
+class Query
   attr_accessor :q
 
   include ActiveModel::Conversion
@@ -8,5 +9,4 @@ class Query
   def persisted?
     false
   end
-
 end

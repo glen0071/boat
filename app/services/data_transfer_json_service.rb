@@ -4,10 +4,9 @@ require 'json'
 require 'fileutils'
 
 class DataTransferJsonService
-
   def self.export
     filepath = File.join(Rails.root, 'data',
-      DateTime.now.strftime('%v_%H_%M_%S') + '.json')
+                         DateTime.now.strftime('%v_%H_%M_%S') + '.json')
 
     export_data = []
     Author.all.each do |author|
@@ -24,7 +23,7 @@ class DataTransferJsonService
         quote_hash[:topics] = []
         quote.topics.each do |topic|
           topic_hash = {}
-          Topic.column_names.reject { |column| column =='id' }.each do |attr|
+          Topic.column_names.reject { |column| column == 'id' }.each do |attr|
             topic_hash[attr.to_sym] = topic.send(attr)
           end
           quote_hash[:topics] << topic_hash

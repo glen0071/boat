@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
-  post "/graphql", to: "graphql#execute"
+  post '/graphql', to: 'graphql#execute'
   get 'favorites/create'
   get 'favorites/destroy'
   devise_for :users, skip: :registrations
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
 
-  resources :data_transfers, only: [:create, :new]
+  resources :data_transfers, only: %i[create new]
   resources :sources
   resources :topics
   resources :authors
@@ -27,6 +29,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :topics, only: [:index]
-    resources :quotes, only: [:index, :edit]
+    resources :quotes, only: %i[index edit]
   end
 end

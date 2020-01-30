@@ -8,9 +8,20 @@ p
     = link_to @quote.author.name, @quote.author if @quote.author&.name
 
 p
-  - if @quote.source_link
+  - unless @quote.source_link.empty?
     span.author.d-flex.justify-content-end
-      = link_to 'See context', @quote.source_link, target: '_blank'
+      = link_to 'visit source', @quote.source_link, target: '_blank'
+
+p
+  - if @quote.context
+    span
+      | Context: #{@quote.context}
+
+
+p
+  - if @quote.date
+    span
+      | Date: #{@quote.date}
 
 - if current_user
   | Good: #{@quote.good}

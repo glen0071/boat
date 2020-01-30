@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Topic < ApplicationRecord
   has_many :quote_topics, dependent: :destroy
   has_many :quotes, through: :quote_topics
@@ -8,10 +10,10 @@ class Topic < ApplicationRecord
   def ranked_quotes
     quotes
       .includes(:quote_topics)
-      .where("quote_topics.topic_id = ?", id)
+      .where('quote_topics.topic_id = ?', id)
       .references(:quote_topics)
-      .sort { |a,b|
-        b.quote_topics.first.points <=> a.quote_topics.first.points 
-      }
+      .sort do |a, b|
+        b.quote_topics.first.points <=> a.quote_topics.first.points
+      end
   end
 end

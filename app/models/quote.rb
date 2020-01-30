@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Quote < ApplicationRecord
   belongs_to :author, optional: true
   has_many :quote_topics, dependent: :destroy

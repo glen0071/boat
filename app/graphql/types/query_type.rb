@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < Types::BaseObject
     field :quote, QuoteType, null: true do
-      description "Find a quote by ID"
+      description 'Find a quote by ID'
       argument :id, ID, required: true
     end
 
@@ -10,7 +12,7 @@ module Types
     end
 
     field :quotes, [QuoteType], null: true do
-      description "All quotes"
+      description 'All quotes'
     end
 
     def quotes

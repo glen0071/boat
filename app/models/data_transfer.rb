@@ -1,5 +1,6 @@
-class DataTransfer
+# frozen_string_literal: true
 
+class DataTransfer
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 

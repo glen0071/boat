@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
   # If accessing from outside this domain, nullify the session
@@ -15,8 +17,9 @@ class GraphqlController < ApplicationController
     }
     result = ExampleSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
-  rescue => e
+  rescue StandardError => e
     raise e unless Rails.env.development?
+
     handle_error_in_development e
   end
 
