@@ -24,11 +24,11 @@ const TopicShowCounter = props => {
   if (data != undefined) {
     quote_list = data.quotes.map((quote) =>
       <p key={quote.id}>
-        <a href={`/quotes/${quote.id}`} className="quote-text">
+        <a href={'/quotes/' + quote.id} className="quote-text">
           {quote.text}
         </a>
         <span className="author d-flex justify-content-end">
-          <a href={`/authors/${quote.author.id}`}>
+          <a href={'/authors/' + quote.author.id}>
             {quote.author.name}
           </a>
         </span>

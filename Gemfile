@@ -5,10 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Essentials
 ruby '2.6.5'
-gem 'rails', '~> 5.2.4.1'
+gem 'rails', '~> 6.0.2.1'
 
 # Backend
-gem 'devise', '~> 4.6.2'
+gem 'devise'
 gem 'graphql', '~> 1.10.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -17,7 +17,7 @@ gem 'seedbank', '~> 0.5.0'
 # Frontend
 gem 'active_model_serializers', '~> 0.10.10'
 gem 'font-awesome-rails'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'slim', '~> 4.0.1'
 gem 'slim-rails', '~> 3.2.0'
 gem 'uglifier', '>= 1.3.0'
@@ -28,8 +28,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Testing
-  gem 'rspec-rails', '~> 4.0.0.beta2'
-  gem 'shoulda', '~> 3.6.0'
+  gem 'rspec-rails'
+  gem 'shoulda'
 
   # Debugging
   gem 'pry-byebug', '~> 3.7'
@@ -47,7 +47,7 @@ group :development do
 
   # Work faster
   gem 'graphiql-rails'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
