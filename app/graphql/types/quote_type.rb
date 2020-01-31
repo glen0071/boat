@@ -3,6 +3,7 @@
 module Types
   class QuoteType < Types::BaseObject
     field :author, Types::AuthorType, null: true
+    field :quote_topics, [Types::QuoteTopicType], null: true
 
     field :id, ID, null: true
     field :text, String, null: true

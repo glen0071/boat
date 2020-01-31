@@ -1,3 +1,4 @@
+= javascript_pack_tag 'topic_show_app'
 p#notice.flash = notice
 
 h5
@@ -22,3 +23,4 @@ p
 = link_to 'Topics', topics_path, class: 'basic-link'
 - if current_user
   = link_to 'Delete', @topic, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'
+#root

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
-import TopicsList from './topics_index.jsx'
+import TopicShow from './topic_show.jsx'
 
 
 const client = new ApolloClient({
@@ -11,7 +11,7 @@ const client = new ApolloClient({
 
 const TopicsApp = props => (
   <div>
-   <TopicsList />
+   <TopicShow />
   </div>
 )
 
