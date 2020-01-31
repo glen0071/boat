@@ -2,6 +2,16 @@
 
 module Types
   class QueryType < Types::BaseObject
+    # Quotes
+    ########
+    field :quotes, [QuoteType], null: true do
+      description 'All quotes'
+    end
+
+    def quotes
+      Quote.all
+    end
+
     field :quote, QuoteType, null: true do
       description 'Find a quote by ID'
       argument :id, ID, required: true
@@ -11,12 +21,23 @@ module Types
       Quote.find(id)
     end
 
-    field :quotes, [QuoteType], null: true do
-      description 'All quotes'
+    # Topics
+    ########
+    field :topics, [TopicType], null: true do
+      description 'All topics'
     end
 
-    def quotes
-      Quote.all
+    def topics
+      Topic.all
+    end
+
+    field :topic, TopicType, null: true do
+      description 'Find a topic by ID'
+      argument :id, ID, required: true
+    end
+
+    def topic(id:)
+      Topic.find(id)
     end
   end
 end

@@ -137,10 +137,13 @@ sidebar-nav {
 .toipcs-index-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .topic-card {
   margin: 5px auto;
+  max-width: 250px;
+  text-align: center;
 }
 
 .flash {
