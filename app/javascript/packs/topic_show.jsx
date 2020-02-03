@@ -11,28 +11,20 @@ const GET_TOPIC = gql`
       id
       name
       description
-      quotes {
+      quoteTopics {
         id
+        topicId
+        points
         text
-        author {
-          id
-          name
-        }
-        quoteTopics {
-          id
-          topicId
-          points
-        }
+        author
+          {
+            id
+            name
+          }
       }
     }
   }
 `
-
-const findPoints = (topic_id, quoteTopics) => {
-  let quoteTopic = quoteTopics.find(quoteTopic => parseInt(quoteTopic.topicId) === topic_id)
-  const qt_data = {points: quoteTopic.points, qt_id: quoteTopic.id}
-  return qt_data
-}
 
 const TopicShow = props => {
   const topic_id = parseInt(window.location.pathname.match(/\d+/)[0])
@@ -40,21 +32,28 @@ const TopicShow = props => {
     GET_TOPIC, { variables: { topic_id: topic_id } }
   )
 
+  const sortedQTs = (qts) => {
+    return qts.slice().sort((a,b) => {
+      return a.points-b.points
+    })
+  }
+
   let quotes_list = []
+
   if (data != undefined) {
-    quotes_list = data.topic.quotes.map((quote) =>
-      <div key={quote.id} className="quote-card">
+    quotes_list = sortedQTs(data.topic.quoteTopics).map((quoteTopic) =>
+      <div key={quoteTopic.id} className="quoteTopic-card">
         <FaveCounter
-        quoteTopicId={parseInt(findPoints(topic_id, quote.quoteTopics).qt_id)}
-        points={findPoints(topic_id, quote.quoteTopics).points} />
-        <a href={`/quotes/${quote.id}`} className="topic-index">
-          {quote.text}
+        quoteTopicId={parseInt(quoteTopic.id)}
+        points={parseInt(quoteTopic.points)} />
+        <a href={`/quotes/${quoteTopic.id}`} className="topic-index">
+          {quoteTopic.text}
         </a>
         <div>
           {
-            quote.author != undefined ? (
-              <a href={`/authors/${quote.author.id}`}>
-                {quote.author.name}
+            quoteTopic.author != undefined ? (
+              <a href={`/authors/${quoteTopic.author.id}`}>
+                {quoteTopic.author.name}
               </a>
             ) : (
               null

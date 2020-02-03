@@ -5,4 +5,7 @@ class QuoteTopic < ApplicationRecord
   belongs_to :quote
 
   validates :quote_id, uniqueness: { scope: :topic_id }
+
+  delegate :text, to: :quote
+  delegate :author, to: :quote
 end
