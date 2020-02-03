@@ -46,7 +46,7 @@ group :development do
   gem 'guard-rspec', '~> 4.7.3', require: false
 
   # Work faster
-  gem 'graphiql-rails'
+  gem 'graphiql-rails', require: false
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
