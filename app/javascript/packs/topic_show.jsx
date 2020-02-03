@@ -33,9 +33,7 @@ const TopicShow = props => {
   )
 
   const sortedQTs = (qts) => {
-    return qts.slice().sort((a,b) => {
-      return a.points-b.points
-    })
+    return qts.slice().sort((a,b) => (b.points-a.points))
   }
 
   let quotes_list = []
