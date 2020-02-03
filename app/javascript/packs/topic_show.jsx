@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { gql } from "apollo-boost"
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, gql } from '@apollo/client'
+
+import FaveCounter from './fave_counter.jsx'
 
 const GET_TOPIC = gql`
   query Topic($topic_id: ID!){
@@ -27,35 +28,39 @@ const GET_TOPIC = gql`
   }
 `
 
-const TopicShowCounter = props => {
-  const topic_id = parseInt(window.location.pathname.match(/\d+/)[0])
+const findPoints = (topic_id, quoteTopics) => {
+  let quoteTopic = quoteTopics.find(quoteTopic => parseInt(quoteTopic.topicId) === topic_id)
+  const qt_data = {points: quoteTopic.points, qt_id: quoteTopic.id}
+  return qt_data
+}
 
+const TopicShow = props => {
+  const topic_id = parseInt(window.location.pathname.match(/\d+/)[0])
   const { loading, error, data } = useQuery(
-    GET_TOPIC,
-    {
-      variables: { topic_id: topic_id }
-    }
+    GET_TOPIC, { variables: { topic_id: topic_id } }
   )
 
   let quotes_list = []
   if (data != undefined) {
     quotes_list = data.topic.quotes.map((quote) =>
       <div key={quote.id} className="quote-card">
-        <div>
-        <span className="fa fa-arrow-up">
-        </span>
-        <span>
-          {quote.quoteTopics.find(quoteTopic => parseInt(quoteTopic.topicId) === topic_id).points}
-        </span>
-        <span className="fa fa-arrow-down"></span>
-        </div>
+        <FaveCounter
+        quoteTopicId={parseInt(findPoints(topic_id, quote.quoteTopics).qt_id)}
+        points={findPoints(topic_id, quote.quoteTopics).points} />
         <a href={`/quotes/${quote.id}`} className="topic-index">
           {quote.text}
         </a>
         <div>
-          <a href={`/authors/${quote.author.id}`}>
-            {quote.author.name}
-          </a>
+          {
+            quote.author != undefined ? (
+              <a href={`/authors/${quote.author.id}`}>
+                {quote.author.name}
+              </a>
+            ) : (
+              null
+            )
+          }
+
         </div>
       </div>
     )
@@ -68,4 +73,4 @@ const TopicShowCounter = props => {
   )
 }
 
-export default TopicShowCounter
+export default TopicShow

@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
 import TopicsList from './topics_index.jsx'
 
-
 const client = new ApolloClient({
-  uri: '/graphql',
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: '/graphql',
+  })
 })
 
 const TopicsApp = props => (

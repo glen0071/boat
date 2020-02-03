@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { gql } from "apollo-boost"
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, gql } from '@apollo/client'
+
 
 const GET_TOPICS = gql`
   {

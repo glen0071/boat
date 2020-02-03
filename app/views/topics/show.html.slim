@@ -1,26 +1,3 @@
 = javascript_pack_tag 'topic_show_app'
 p#notice.flash = notice
-
-h5
-  = @topic.name
-- if @topic.description
-  p
-    strong Description:
-    = @topic.description
-p
-  - @quotes.each do |quote|
-    p
-      div
-        span.fa.fa-arrow-up
-        span = quote.quote_topics.first.points
-        span.fa.fa-arrow-down
-      = link_to quote.text, quote_path(quote), class: 'quote-text'
-      span.author.d-flex.justify-content-end
-        = link_to quote.author.name, quote.author if quote.author&.name
-
-- if current_user
-  = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
-= link_to 'Topics', topics_path, class: 'basic-link'
-- if current_user
-  = link_to 'Delete', @topic, data: { confirm: 'Are you sure?' }, method: :delete, class: 'basic-link'
 #root
