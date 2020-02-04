@@ -8,7 +8,7 @@ p
     = link_to @quote.author.name, @quote.author if @quote.author&.name
 
 p
-  - unless @quote.source_link.empty?
+  - unless @quote.source_link.blank?
     span.author.d-flex.justify-content-end
       = link_to 'visit source', @quote.source_link, target: '_blank'
 

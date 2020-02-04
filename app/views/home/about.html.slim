@@ -8,7 +8,7 @@
     p.about-page-quote = link_to @quote&.text, @quote, class: 'quote-text'
     span.author.d-flex.justify-content-end
       = link_to @quote.author&.name, @quote&.author if @quote&.author
-  - unless @quote.topics.empty?
+  - unless @quote.topics.blank?
   p
     | to categorize them with topics like&nbsp
     - @quote.topics.each do |topic|
