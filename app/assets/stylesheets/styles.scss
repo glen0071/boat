@@ -17,6 +17,24 @@
   }
 }
 
+.topics-index-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .topics-index-filter-input {
+    padding: .2em;
+    border-radius: 5%;
+  }
+}
+.topics-index-container {
+  display: flex;
+  flex-wrap: wrap;
+  .topic-card {
+    padding: 1em;
+    background-color: lightblue;
+  }
+}
+
 .topic-index {
   color: black;
   font-size: 1.3em;
