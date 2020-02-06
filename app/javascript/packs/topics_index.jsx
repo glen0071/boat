@@ -18,8 +18,14 @@ const TopicShowCounter = props => {
   console.log(data)
   let topics_list = []
 
+  const abcOrder = (toipcs) => {
+    return toipcs.slice().sort((a,b) =>
+      a.name.localeCompare(b.name)
+    )
+  }
+
   if (data != undefined) {
-    topics_list = data.topics.map((topic) =>
+    topics_list = abcOrder(data.topics).map((topic) =>
       <div key={topic.id} className="topic-card">
         <a href={`/topics/${topic.id}`} className="topic-index">
           {topic.name}
