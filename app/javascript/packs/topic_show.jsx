@@ -16,6 +16,7 @@ const GET_TOPIC = gql`
         topicId
         points
         text
+        quoteId
         author
           {
             id
@@ -44,7 +45,7 @@ const TopicShow = props => {
         <FaveCounter
         quoteTopicId={parseInt(quoteTopic.id)}
         points={parseInt(quoteTopic.points)} />
-        <a href={`/quotes/${quoteTopic.id}`} className="topic-index">
+        <a href={`/quotes/${quoteTopic.quoteId}`} className="topic-index">
           {quoteTopic.text}
         </a>
         <div>
