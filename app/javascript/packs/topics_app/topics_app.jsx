@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
-import TopicsList from './topics_index.jsx'
+import TopicsList from './topics_index_container.jsx'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),

@@ -33,11 +33,27 @@
     padding: 1em;
     background-color: lightblue;
   }
+  .topics-filter-input {
+    text-align: center;
+    font-size: 1em;
+    font-size: 1.4em;
+    &:focus {
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
 }
 
 .topic-index {
   color: black;
   font-size: 1.3em;
+}
+
+.topics-index-filter {
+  height: 10px;
+  weight: 10px;
+  background-color:blue;
 }
 
 .topic-quote-show {

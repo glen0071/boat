@@ -9,6 +9,12 @@
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
+    = f.label :birth
+    = f.text_field :birth, class: 'form-control'
+    = f.label :death
+    = f.text_field :death, class: 'form-control'
+    = f.label :about
+    = f.text_area :about, class: 'form-control'
 
   / only include this on edit screen
     / .form-group

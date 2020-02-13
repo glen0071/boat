@@ -9,6 +9,10 @@ h5
   p
     strong Death:
     = @author.death
+- if @author.about
+  p
+    strong About:
+    = @author.about
 p
   - @author.quotes.each do |quote|
     p = quote.text

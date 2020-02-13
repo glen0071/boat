@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mutations
   class VoteQuoteTopic < BaseMutation
     field :quote_topic, Types::QuoteTopicType, null: false
