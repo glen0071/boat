@@ -1,10 +1,14 @@
--  @results.each do |result|
-  p
-    - if result.instance_of? Quote
-      = link_to result.text, result, class: 'quote-text'
-      span.d-flex.justify-content-end
-        = result.author&.name
-    - elsif result.instance_of? Topic
-      = link_to result.name, result
-    - elsif result.instance_of? Author
-      = link_to result.name, result
+.search-results
+  - if @results.empty?
+    h5 Couldn't find any quotes about that.
+  - else
+    -  @results.each do |result|
+      p
+        - if result.instance_of? Quote
+          = link_to result.text, result, class: 'quote-text'
+          span.d-flex.justify-content-end
+            = result.author&.name
+        - elsif result.instance_of? Topic
+          = link_to result.name, result
+        - elsif result.instance_of? Author
+          = link_to result.name, result

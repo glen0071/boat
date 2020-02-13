@@ -3,23 +3,25 @@ p#notice.flash = notice
 div.quote-show-text-div
   button.fa.fa-star.fave-btn
   div = @quote.text
-p
-  span.author.d-flex.justify-content-end
+
+span
+  span.author.d-flex.justify-content-end.author-metadata
     = link_to @quote.author.name, @quote.author if @quote.author&.name
 
-p
-  - unless @quote.source_link.blank?
-    span.author.d-flex.justify-content-end
-      = link_to 'visit source', @quote.source_link, target: '_blank'
+- unless @quote.source.blank?
+  span.author.d-flex.justify-content-end.author-metadata
+    = @quote.source
+- unless @quote.source_link.blank?
+  span.author.d-flex.justify-content-end.author-metadata
+    = link_to "visit source", @quote.source_link, target: '_blank'
+
+- unless @quote.context.blank?
+  span
+    | Context: #{@quote.context}
+
 
 p
-  - if @quote.context
-    span
-      | Context: #{@quote.context}
-
-
-p
-  - if @quote.date
+  - unless @quote.date.blank?
     span
       | Date: #{@quote.date}
 

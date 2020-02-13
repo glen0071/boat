@@ -7,6 +7,20 @@
   }
 }
 
+.random-toast {
+  animation: fadeout 3s;
+  opacity:0;
+}
+
+@keyframes fadeout {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
 .quote-show-text-div {
   display: flex;
   .fave-btn {
@@ -208,4 +222,14 @@ sidebar-nav {
   justify-content: center;
   margin: 1em;
   flex-direction: column;
+}
+
+.search-results {
+  margin-top: 2em;
+}
+
+// Author Show
+.author-metadata {
+  margin: 0px;
+  padding: 0px;
 }

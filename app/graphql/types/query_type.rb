@@ -10,7 +10,7 @@ module Types
     end
 
     def quotes
-      Quote.all
+      Quote.all.shuffle
     end
 
     field :quote, QuoteType, null: true do
