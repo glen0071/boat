@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @fave_quotes = Favorite.includes(:quote).where(user: @user).where.not(quote: nil)
-    @fave_topics = Favorite.includes(:topic).where(user: @user).where.not(topics: nil)
-    @fave_authors = Favorite.includes(:author).where(user: @user).where.not(authors: nil)
+    @fave_topics = Favorite.includes(:topic).where(user: @user).where.not(topic: nil)
+    @fave_authors = Favorite.includes(:author).where(user: @user).where.not(author: nil)
   end
 
   private

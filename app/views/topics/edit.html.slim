@@ -2,5 +2,6 @@ h1 Editing topic
 
 == render 'form'
 
-= link_to 'Show', @topic, class: 'basic-link'
-= link_to 'Back', topics_path, class: 'basic-link'
+= link_to 'Cancel Edit', @topic, class: 'basic-link'
+= link_to 'Delete', @topic, method: :delete, class: 'basic-link'
+= link_to 'Topics List', topics_path, class: 'basic-link'

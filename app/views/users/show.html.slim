@@ -2,12 +2,13 @@
   h1.my-header My Page
 
   .my-faves
-    h3.my-quotes
+    | My favorites
+    h4.my-quotes Quotes
     - @fave_quotes.each do |fave_quote|
       div = fave_quote.quote.text
-    h3.my-topics
+    h4.my-topics Topics
     - @fave_topics.each do |fave_topic|
       div = fave_topic.topic.name
-    h3.my-authors
+    h4.my-authors Authors
     - @fave_authors.each do |fave_author|
       div = fave_author.author.name
