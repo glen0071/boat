@@ -210,7 +210,6 @@ BAHA_TABLETS_ARRAY = [
   {
     title: 'Tajallíyát',
     alt_title: 'Effulgences',
-    alt_title: 'Tablet of the World',
     pub_date: '1879-1891',
     location: "Mazra'ih and Bahjí",
     notes: ""
@@ -218,7 +217,6 @@ BAHA_TABLETS_ARRAY = [
   {
     title: 'Kalimát-i-Firdawsíyyih',
     alt_title: 'Words of Paradise',
-    alt_title: 'Tablet of the World',
     pub_date: '1879-1891',
     location: "Mazra'ih and Bahjí",
   },
@@ -252,36 +250,59 @@ BAHA_TABLETS_ARRAY = [
   },
   {
     title: 'Lawḥ-i-Maqṣúd',
-    alt_title: 'Tablet of Maqṣúd',
-
+    alt_title: 'Tablet of The Desired One [maqsúd]',
+    pub_date: '1882',
+    location: 'Mazraʼih and Bahjí',
+    notes: ""
   },
   {
     title: 'Súriy-i-Vafá',
-    alt_title: 'Tablet of Vafá'
+    alt_title: "Tablet to Muhammad Husayn, 'Vafá [fidelity]",
+    pub_date: '1879–91',
+    location: 'Mazraʼih and Bahjí',
+    notes: ""
   },
   {
     title: 'Lawḥ-i-Siyyid-i-Mihdíy-i-Dahají',
-    alt_title: 'Tablet to Siyyid Mihdíy-i-Dahají'
+    alt_title: 'Tablet to Siyyid Mihdíy-i-Dahají',
+    pub_date: 'after 1974',
+    location: 'Baghdad, Iraq',
+    notes: ""
   },
   {
     title: 'Lawḥ-i-Burhán',
-    alt_title: 'Tablet of the Proof'
+    alt_title: 'Tablet of the Proof',
+    pub_date: '1877–79',
+    location: 'Baghdad, Iraq',
+    notes: ""
   },
   {
     title: 'Kitáb-i-`Ahd',
-    alt_title: 'Book of the Covenant'
+    alt_title: 'Book of the Covenant',
+    pub_date: '1879–91',
+    location: 'Mazraʼih and Bahjí',
+    notes: ""
   },
   {
     title: 'Lawḥ-i-Arḍ-i-Bá',
-    alt_title: 'Tablet of the Land of Bá'
+    alt_title: "Tablet of the Land of 'B' [Beirut]",
+    pub_date: '1879–91',
+    location: 'Mazraʼih and Bahjí',
+    notes: ""
   },
   {
     title: 'Kitáb-i-Aqdas',
-    alt_title: 'Kitáb-i-Aqdas'
+    alt_title: 'Kitáb-i-Aqdas',
+    pub_date: '1873',
+    location: "'Akká",
+    notes: ""
   },
   {
-    title: 'Letter to Shaykh Muhammad Taqi',
-    alt_title: 'Epistle to the Son of the Wolf'
+    title: 'Lawh-i-Ibn-i-Dhib',
+    alt_title: 'Letter to Shaykh Muhammad Taqi, Epistle to the Son of the Wolf',
+    pub_date: '1877–79',
+    location: 'Baghdad, Iraq',
+    notes: ""
   },
   {
     title: 'Javáhiru’l-Asrár',
@@ -408,8 +429,9 @@ baha_sources = [
   }
 ]
 
-baha = Author.find_by('title like ?', 'Bah%')
+baha = Author.find_by('name like ?', 'Bah%')
 
-baha_sources.each do |source|
+# Bahá'u'lláh's tablets = BAHA_TABLETS_ARRAY
+BAHA_TABLETS_ARRAY.each do |source|
   baha.sources << Source.create(source)
 end

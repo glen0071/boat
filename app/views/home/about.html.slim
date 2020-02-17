@@ -3,18 +3,24 @@
   br
   br
   h5
-    | I find it helpful to gather quotes like this:
+    | I find it interesting and educational to gather and categorize quotes.
+
+    br
+    br
+    br
+
   -if @quote
-    p.about-page-quote = link_to @quote&.text, @quote, class: 'quote-text'
-    span.author.d-flex.justify-content-end
-      = link_to @quote.author&.name, @quote&.author if @quote&.author
-  - unless @quote.topics.blank?
-  p
-    | to categorize them with topics like&nbsp
-    - @quote.topics.each do |topic|
-      = link_to topic.name, topic
-  p
-    | and with other quotes by the #{link_to "author", @quote&.author if @quote&.author}
-  p
-    | let me know what you'd find helpful:
-    = link_to "@EddieGDotMe", href="https://twitter.com/eddiegdotme"
+    p For example, this one:
+    p.about-page-quote
+
+      = link_to @quote&.text, @quote, class: 'quote-text'
+  - unless @quote&.topics.blank?
+    br
+    p
+      - named_author = @quote&.author&.name ? "author, #{@quote&.author&.name}" : "author"
+      | is grouped with other quotes with the same topics, like #{link_to @quote&.topics.first.name, @quote&.topics.first},
+      |  and with other quotes by the #{link_to named_author, @quote&.author if @quote&.author}
+
+  br
+  br
+  p #{link_to "@EddieGDotMe", href="https://twitter.com/eddiegdotme"} put this together. Send questions, comments, and suggestions that way.
