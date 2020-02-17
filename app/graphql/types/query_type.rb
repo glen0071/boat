@@ -22,6 +22,16 @@ module Types
       Quote.find(id)
     end
 
+    field :favorite, FavoriteType, null: true do
+      argument :klass, String, required: true
+      argument :id, ID, required: true
+      argument :user_id, ID, required: true
+    end
+
+    def favorite(klass:, user_id:, id:)
+      klass.constantize.find(id).favorites.where(user_id: user_id).first
+    end
+
     ##########
     # Topics #
     ##########

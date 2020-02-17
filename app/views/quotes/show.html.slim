@@ -1,7 +1,9 @@
+#user_id data="#{current_user.id}"
+= javascript_pack_tag 'quote_show_app/app'
 p#notice.flash = notice
 
 div.quote-show-text-div
-  button.fa.fa-star.fave-btn
+  button#fave-btn.hide-button-defaults
   div = @quote.text
 
 span
@@ -18,7 +20,6 @@ span
 - unless @quote.context.blank?
   span
     | Context: #{@quote.context}
-
 
 p
   - unless @quote.date.blank?

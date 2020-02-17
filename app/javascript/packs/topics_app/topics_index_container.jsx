@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { useQuery, gql } from '@apollo/client'
-import TopicsIndexPresenter from './topics_index'
+import TopicsIndexPresenter from './topics_index_presenter'
 
 const GET_TOPICS = gql`
   {

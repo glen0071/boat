@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Topic < ApplicationRecord
+  include FavoriteModule
+
   has_many :quote_topics, dependent: :destroy
   has_many :quotes, through: :quote_topics
   has_many :authors, through: :quotes

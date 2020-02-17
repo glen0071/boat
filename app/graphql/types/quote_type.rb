@@ -11,7 +11,5 @@ module Types
     field :source_link, String, null: true
     field :date, String, null: true
     field :good, Boolean, null: true
-    # Change "context" to "comment"
-    # field :context, String, null: true
   end
 end

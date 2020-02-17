@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Author < ApplicationRecord
+  include FavoriteModule
+
   has_many :quotes, dependent: :destroy
   has_many :quote_topics, through: :quotes
   has_many :topics, through: :quote_topics

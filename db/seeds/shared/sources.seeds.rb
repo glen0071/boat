@@ -334,7 +334,7 @@ BAHA_TABLETS_ARRAY = [
   },
   {
     title: "Súriy-i-Nush",
-    alt_title: 'Súrih of Counsel'
+    alt_title: 'Súrih of Counsel',
     pub_date: '1857-1863',
     location: 'Baghdad, Iraq',
     notes: ""
