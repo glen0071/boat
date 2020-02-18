@@ -14,7 +14,7 @@ const VOTE_QUOTE_TOPIC = gql`
   }
 `
 
-const FaveCounter = ({ quoteTopicId, points }) => {
+const VoteCounter = ({ quoteTopicId, points }) => {
 const [voteQuoteTopic, { data }] = useMutation(VOTE_QUOTE_TOPIC)
 
   return (
@@ -42,12 +42,12 @@ const [voteQuoteTopic, { data }] = useMutation(VOTE_QUOTE_TOPIC)
   )
 }
 
-FaveCounter.propTypes = {
+VoteCounter.propTypes = {
   points: PropTypes.number
 }
 
-FaveCounter.defaultProps = {
+VoteCounter.defaultProps = {
   points: 0
 }
 
-export default FaveCounter
+export default VoteCounter

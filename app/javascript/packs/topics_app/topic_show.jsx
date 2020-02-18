@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { useQuery, gql } from '@apollo/client'
 
-import FaveCounter from './fave_counter.jsx'
+import VoteCounter from './vote_counter.jsx'
 
 const GET_TOPIC = gql`
   query Topic($topic_id: ID!){
@@ -42,7 +42,7 @@ const TopicShow = props => {
   if (data != undefined) {
     quotes_list = sortedQTs(data.topic.quoteTopics).map((quoteTopic) =>
       <div key={quoteTopic.id} className="quoteTopic-card">
-        <FaveCounter
+        <VoteCounter
         quoteTopicId={parseInt(quoteTopic.id)}
         points={parseInt(quoteTopic.points)} />
         <a href={`/quotes/${quoteTopic.quoteId}`} className="topic-index">
