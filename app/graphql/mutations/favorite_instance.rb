@@ -11,7 +11,6 @@ module Mutations
     argument :id, ID, required: true
     argument :user_id, ID, required: true
 
-
     def resolve(klass:, id:, user_id:)
       instance = klass.constantize.find(id)
       fave = instance.favorites.new(user_id: user_id, klass: klass)

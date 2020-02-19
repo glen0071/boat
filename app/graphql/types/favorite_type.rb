@@ -6,6 +6,7 @@ module Types
     field :quote, Types::QuoteType, null: true
     field :topic, Types::TopicType, null: true
 
+    field :klass, String, null: true
     field :id, ID, null: true
   end
 end

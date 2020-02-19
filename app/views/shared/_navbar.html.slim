@@ -13,13 +13,13 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           | About
       li.nav-item
         a.nav-link[href="/topics"]
-          | Browse Topics
+          | Topics
       li.nav-item
         a.nav-link[href="/quotes"]
-          | Browse Quotes
+          | Quotes
       li.nav-item
         a.nav-link[href="/authors"]
-          | Browse Authors
+          | Authors
     - unless @hide_search
       = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
         = f.text_field :q, placeholder: 'text and topic search', class: 'form-control mr-sm-2'
