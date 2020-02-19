@@ -1,14 +1,8 @@
 h1 Listing authors
 
-table
-  thead
-    tr
-      th Name
-
-  tbody
-    - @authors.each do |author|
-      tr
-        td = link_to author.name, author
+.author-index
+- @authors.each do |author|
+     p = link_to author.name, author
 
 br
 

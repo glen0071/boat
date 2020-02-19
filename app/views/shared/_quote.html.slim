@@ -1,0 +1,5 @@
+p
+  = link_to quote.text, quote_path(quote), class: 'quote-text'
+  - if quote.author
+    span.author.d-flex.justify-content-end
+      = link_to quote.author.name, quote_path(quote.author)

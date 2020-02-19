@@ -5,7 +5,7 @@
     | My favorites
     h4.my-quotes Quotes
     - @fave_quotes.each do |fave_quote|
-      div = fave_quote.quote.text
+      = render partial: 'shared/quote', locals: {quote: fave_quote.quote}
     h4.my-topics Topics
     - @fave_topics.each do |fave_topic|
       div = fave_topic.topic.name
