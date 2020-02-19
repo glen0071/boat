@@ -11,35 +11,22 @@ RSpec.describe Quote, type: :model do
 
 
 
-  let(:source) { FactoryBot.create(:source,
-    title: 'Primero Tableta',
-    alt_title: 'First Tablet',
-    ) }
+  let(:source) { FactoryBot.create(:source) }
   let(:quote) { FactoryBot.create(:quote, source: source) }
-
-  let(:sourceless_quote) { FactoryBot.create(:quote, source: nil, source_title: 'Source Title') }
 
   describe '#best_title' do
     it "return the combined string title" do
-      expect(quote.best_title).to eq 'Primero Tableta (First Tablet)'
+      expect(quote.best_title).to eq 'Primero Tableta (First Tablet), p. 7'
     end
 
-    it "return title if alt_title '' or nil" do
+    it "return title with page if alt_title '' or nil" do
       source.update alt_title: nil
-      expect(quote.best_title).to eq 'Primero Tableta'
-      source.update alt_title: ''
-      expect(quote.best_title).to eq 'Primero Tableta'
-    end
-
-    it "return alt_title if title '' or nil" do
-      source.update title: nil
-      expect(quote.best_title).to eq 'First Tablet'
-      source.update title: ''
-      expect(quote.best_title).to eq 'First Tablet'
+      expect(quote.best_title).to eq 'Primero Tableta, p. 7'
     end
 
     it "return quote.source_title if no source" do
-      expect(sourceless_quote.best_title).to eq 'Source Title'
+      quote.update source: nil
+      expect(quote.best_title).to eq 'Source Title'
     end
   end
 end

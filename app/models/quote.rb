@@ -12,13 +12,10 @@ class Quote < ApplicationRecord
   validates :text, presence: true, uniqueness: true
 
   def best_title
-    return source_title if source&.title.blank? && source&.alt_title.blank?
-    if source&.title.blank?
-      source&.alt_title
-    elsif source&.alt_title.blank?
-      source&.title
-    else
-      "#{source&.title} (#{source&.alt_title})".strip
-    end
+    return source_title if source.nil?
+    title = source.title
+    title += " (#{source.alt_title})" unless source.alt_title.blank?
+    title += ", #{page}" unless page.blank?
+    title
   end
 end

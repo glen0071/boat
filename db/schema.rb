@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_200358) do
+ActiveRecord::Schema.define(version: 2020_02_19_211729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_200358) do
     t.boolean "good", default: false
     t.string "context"
     t.bigint "source_id"
+    t.string "page"
     t.index ["author_id"], name: "index_quotes_on_author_id"
     t.index ["source_id"], name: "index_quotes_on_source_id"
   end
