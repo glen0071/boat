@@ -1,16 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useMutation, useQuery, gql } from '@apollo/client'
-
+import axios from 'axios'
+import { useMutation, gql } from '@apollo/client'
 import style from 'react'
-
-const GET_FAVORITE = gql`
-  query Favorite($klass: String!, $userId: ID!, $id: ID!){
-    favorite(klass: $klass, userId: $userId, id: $id) {
-      id
-    }
-  }
-`
 
 const FAVORITE_INSTANCE = gql`
   mutation FavoriteInstance($klass: String!, $id: Int!, $userId: Int!){
@@ -37,54 +29,53 @@ const UNFAVORITE_INSTANCE = gql`
 `
 
 const Star = props => {
-  const [favoriteId, setFavoriteId] = useState(0);
+  const [favoriteId, setFavoriteId] = useState(0)
+  const [favorited, setFavorited] = useState(false)
+  useEffect(() => { getAxios() })
+
   const quoteId = parseInt(window.location.pathname.match(/\d+/)[0])
   const userId = props.userId
+
+  const GET_FAVORITE = `
+    query GetFavorite{
+      favorite(klass:"Quote", id: ${quoteId}, userId: ${userId}){
+        id
+      }
+    }
+  `
+
   const [favoriteInstance, { data: favoriteData }] = useMutation(FAVORITE_INSTANCE)
   const [unfavoriteInstance, { data: unfavoriteData }] = useMutation(UNFAVORITE_INSTANCE)
-  const { loading, error, data: queryData } = useQuery(
-    GET_FAVORITE, { variables: {
-      klass: 'Quote',
-      id: quoteId,
-      userId: userId
-    } }
-  )
 
+  const getAxios = () => {
+    axios({
+      url: '/graphql',
+      method: 'post',
+      data: {
+        query: GET_FAVORITE,
+      }
+    }).then((result) => {
+      if (result.data.data.favorite != null) {
+        setFavoriteId(result.data.data.favorite.id)
+        setFavorited(true)
+      } else {
+        setFavorited(false)
+      }
+    })
+  }
+
+  const sharedVariables = { klass: 'Quote', id: quoteId, userId: userId, }
+  const unfaveVariables = { ...sharedVariables, favoriteId: favoriteId }
 
   return (
-    <div>
-      {
-        queryData != undefined && queryData.favorite != null ? (
-          <div
-            className="fa fa-star"
-            style={{ margin: '1em', color: 'gold' }}
-            onClick={() => {
-              unfavoriteInstance(
-                {variables: {
-                  klass: 'Quote',
-                  id: quoteId,
-                  userId: userId,
-                  favoriteId: queryData.favorite.id
-                }}
-              )
-            }}>
-          </div>
-        ) : (
-          <div
-            className="fa fa-star-o"
-            style={{ margin: '1em', color: 'gold' }}
-            onClick={() => {
-              favoriteInstance(
-                {variables: {
-                  klass: 'Quote',
-                  id: quoteId,
-                  userId: userId
-                }}
-              )
-            }}>
-          </div>
-        )
-      }
+    <div
+      className={favorited ? "fa fa-star" : "fa fa-star-o"}
+      style={{ margin: '1em', color: 'gold' }}
+      onClick={() => { favorited ?
+        unfavoriteInstance( {variables: unfaveVariables} )
+        :
+        favoriteInstance( {variables: sharedVariables} )
+      }}>
     </div>
   )
 }
