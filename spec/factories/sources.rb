@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :source do
-    name { 'MyString' }
-    author { nil }
-    pub_date { 'MyString' }
+    title { 'Primero Tableta' }
+    alt_title { 'First Tablet' }
+    association :author
+    pub_date { 'May 22, 1844' }
   end
 end

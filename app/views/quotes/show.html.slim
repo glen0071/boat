@@ -11,9 +11,9 @@ span
   span.author.d-flex.justify-content-end.author-metadata
     = link_to @quote.author.name, @quote.author if @quote.author&.name
 
-- unless @quote.source.blank?
+- unless @quote.best_title.blank?
   span.author.d-flex.justify-content-end.author-metadata
-    = @quote.source
+    = @quote.best_title
 - unless @quote.source_link.blank?
   span.author.d-flex.justify-content-end.author-metadata
     = link_to "visit source", @quote.source_link, target: '_blank'

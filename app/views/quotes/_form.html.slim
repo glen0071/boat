@@ -11,6 +11,10 @@
   .form-group
     = form.label :author
     = form.collection_select :author_id, Author.all.order(:name), :id, :name, {prompt: true}, class: 'form-control'
+  - if Source.count > 0
+    .form-group
+      = form.label :source
+      = form.collection_select :source_id, Source.all.order(:title), :id, :combined_titles, {prompt: true}, class: 'form-control'
   .form-group
     = form.label :text
     = form.text_area :text, class: 'form-control'
@@ -18,8 +22,8 @@
     = form.label :context
     = form.text_field :context, class: 'form-control'
   .form-group
-    = form.label :source
-    = form.text_field :source, class: 'form-control'
+    = form.label :source_title
+    = form.text_field :source_title, class: 'form-control'
   .form-group
     = form.label :source_link
     = form.text_field :source_link, class: 'form-control'

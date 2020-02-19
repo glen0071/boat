@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_035557) do
+ActiveRecord::Schema.define(version: 2020_02_19_200358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,14 @@ ActiveRecord::Schema.define(version: 2020_02_17_035557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id"
-    t.string "source"
+    t.string "source_title"
     t.string "source_link"
     t.string "date"
     t.boolean "good", default: false
     t.string "context"
+    t.bigint "source_id"
     t.index ["author_id"], name: "index_quotes_on_author_id"
+    t.index ["source_id"], name: "index_quotes_on_source_id"
   end
 
   create_table "sources", force: :cascade do |t|
@@ -100,5 +102,6 @@ ActiveRecord::Schema.define(version: 2020_02_17_035557) do
   add_foreign_key "quote_topics", "quotes"
   add_foreign_key "quote_topics", "topics"
   add_foreign_key "quotes", "authors"
+  add_foreign_key "quotes", "sources"
   add_foreign_key "sources", "authors"
 end
