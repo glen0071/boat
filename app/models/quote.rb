@@ -13,6 +13,7 @@ class Quote < ApplicationRecord
 
   def best_title
     return source_title if source.nil?
+
     title = source.title
     title += " (#{source.alt_title})" unless source.alt_title.blank?
     title += ", #{page}" unless page.blank?

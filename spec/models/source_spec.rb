@@ -3,5 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Source, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:author) }
+  it { is_expected.to have_many(:topics) }
+  it { is_expected.to have_many(:quotes) }
+
 end

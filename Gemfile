@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Testing
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta'
   gem 'shoulda'
 
   # Debugging

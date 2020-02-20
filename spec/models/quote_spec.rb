@@ -9,13 +9,11 @@ RSpec.describe Quote, type: :model do
   it { is_expected.to have_many(:topics) }
   it { is_expected.to have_many(:favorites) }
 
-
-
   let(:source) { FactoryBot.create(:source) }
   let(:quote) { FactoryBot.create(:quote, source: source) }
 
   describe '#best_title' do
-    it "return the combined string title" do
+    it 'return the combined string title' do
       expect(quote.best_title).to eq 'Primero Tableta (First Tablet), p. 7'
     end
 
@@ -24,7 +22,7 @@ RSpec.describe Quote, type: :model do
       expect(quote.best_title).to eq 'Primero Tableta, p. 7'
     end
 
-    it "return quote.source_title if no source" do
+    it 'return quote.source_title if no source' do
       quote.update source: nil
       expect(quote.best_title).to eq 'Source Title'
     end

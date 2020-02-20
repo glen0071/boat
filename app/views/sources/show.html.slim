@@ -2,10 +2,13 @@ p#notice.flash = notice
 
 p
   strong Name:
-  = @source.name
+  = @source.title
+p
+  strong Name:
+  = @source.alt_title
 p
   strong Author:
-  = @source.author
+  = @source.author&.name
 p
   strong Pub date:
   = @source.pub_date

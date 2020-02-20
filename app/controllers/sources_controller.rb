@@ -1,26 +1,21 @@
 # frozen_string_literal: true
 
 class SourcesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!, except: %i[index show]
   before_action :set_source, only: %i[show edit update destroy]
 
-  # GET /sources
   def index
     @sources = Source.all
   end
 
-  # GET /sources/1
   def show; end
 
-  # GET /sources/new
   def new
     @source = Source.new
   end
 
-  # GET /sources/1/edit
   def edit; end
 
-  # POST /sources
   def create
     @source = Source.new(source_params)
 
@@ -31,7 +26,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /sources/1
   def update
     if @source.update(source_params)
       redirect_to @source, notice: 'Source was successfully updated.'
@@ -40,7 +34,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  # DELETE /sources/1
   def destroy
     @source.destroy
     redirect_to sources_url, notice: 'Source was successfully destroyed.'
@@ -48,13 +41,12 @@ class SourcesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_source
     @source = Source.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def source_params
-    params.require(:source).permit(:name, :author_id, :pub_date)
+    params.require(:source).permit(:title, :alt_title, :location, :notes,
+                                   :author_id, :pub_date)
   end
 end

@@ -20,6 +20,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link[href="/authors"]
           | Authors
+      li.nav-item
+        a.nav-link[href="/sources"]
+          | Sources
     - unless @hide_search
       = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
         = f.text_field :q, placeholder: 'Search', class: 'form-control mr-sm-2'

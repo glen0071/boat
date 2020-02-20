@@ -1,24 +1,14 @@
 h1 Listing sources
 
-table
-  thead
-    tr
-      th Title
-      th Author
-      th Pub date
-      th
-      th
-      th
-
-  tbody
-    - @sources.each do |source|
-      tr
-        td = source.title
-        td = source.author.name
-        td = source.pub_date
-        td = link_to 'Show', source
-        td = link_to 'Edit', edit_source_path(source)
-        td = link_to 'Destroy', source, data: { confirm: 'Are you sure?' }, method: :delete
+div
+  - @sources.each do |source|
+    .sources-index-cards
+      = link_to source.title, source
+      -if source.author&.name
+        div by #{source.author.name}
+      div published in #{source.pub_date}
+      div = link_to 'Edit', edit_source_path(source)
+      div = link_to 'Destroy', source, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

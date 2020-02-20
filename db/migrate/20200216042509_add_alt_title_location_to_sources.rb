@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAltTitleLocationToSources < ActiveRecord::Migration[6.0]
   def change
     add_column :sources, :alt_title, :string
