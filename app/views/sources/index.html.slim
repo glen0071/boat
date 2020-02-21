@@ -7,8 +7,6 @@ div
       -if source.author&.name
         div by #{source.author.name}
       div published in #{source.pub_date}
-      div = link_to 'Edit', edit_source_path(source)
-      div = link_to 'Destroy', source, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

@@ -20,6 +20,6 @@ p
 - @author.sources.each do |source|
   p = source.title
 
-- if current_user
+- if current_user&.admin?
   = link_to 'Edit', edit_author_path(@author), class: 'basic-link'
 = link_to 'Authors', authors_path, class: 'basic-link'
