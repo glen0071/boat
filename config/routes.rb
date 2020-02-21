@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/graphql', to: 'graphql#execute'
   get 'favorites/create'
   get 'favorites/destroy'
-  devise_for :users, skip: :registrations
+  devise_for :users
 
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about'
   get '/home', to: 'home#index'
+  get '/home/check_admin_user', to: 'home#check_admin_user'
   root 'home#index'
 
   namespace :admin do

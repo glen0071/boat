@@ -10,4 +10,13 @@ class HomeController < ApplicationController
   def about
     @quote = Quote.where(good: true).limit(1).order('RANDOM()').first
   end
+
+  def check_admin_user
+    if current_user&.admin?
+      render json: { logged_in: true }, layout: false
+    else
+
+      render json: { logged_in: false }, layout: false
+    end
+  end
 end

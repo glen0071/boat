@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { useMutation, gql } from '@apollo/client'
+import axios from 'axios'
 
 const VOTE_QUOTE_TOPIC = gql`
   mutation VoteQuoteTopic($quoteTopicId: ID!, $change: Int!){
@@ -16,28 +17,40 @@ const VOTE_QUOTE_TOPIC = gql`
 
 const VoteCounter = ({ quoteTopicId, points }) => {
 const [voteQuoteTopic, { data }] = useMutation(VOTE_QUOTE_TOPIC)
+const [loggedIn, setLoggedIn] = useState(false)
+useEffect(() => { checkAdminUser() })
+const checkAdminUser = () => {
+  axios({
+    url: '/home/check_admin_user',
+    method: 'get',
+  }).then((result) => {
+    setLoggedIn(result.data.logged_in)
+  })
+}
+
+const checkLoggedIn = (change) => {
+  if (loggedIn) {
+    voteQuoteTopic(
+      {variables: {
+        quoteTopicId: quoteTopicId,
+        change: change
+      }}
+    )
+  } else {
+    return false
+  }
+}
 
   return (
-    <div>
-      <span className="fa fa-arrow-up"
-        onClick={() => {
-          voteQuoteTopic(
-            {variables: {
-              quoteTopicId: quoteTopicId,
-              change: 1
-            }}
-          )
-        }}></span>
-      <span> {points} </span>
-      <span className="fa fa-arrow-down"
-        onClick={() => {
-          voteQuoteTopic(
-            {variables: {
-              quoteTopicId: quoteTopicId,
-              change: -1
-            }}
-          )
-        }}></span>
+    <div className="vote-counter">
+      <span className={"fa fa-arrow-up " + (loggedIn ? 'show' : 'disabled')}
+        onClick={() => { checkLoggedIn(1) }}>
+      </span>
+      <span className="points bg-light"> {points} </span>
+      <span className={"fa fa-arrow-down " + (loggedIn ? 'show' : 'disabled')}
+        onClick={() => { checkLoggedIn(-1) }}>
+      </span>
+      <span className="gotta-login">gotta login first</span>
     </div>
   )
 }

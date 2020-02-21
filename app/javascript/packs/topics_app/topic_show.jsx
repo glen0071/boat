@@ -41,10 +41,12 @@ const TopicShow = props => {
 
   if (data != undefined) {
     quotes_list = sortedQTs(data.topic.quoteTopics).map((quoteTopic) =>
-      <div key={quoteTopic.id} className="quoteTopic-card">
+      <div key={quoteTopic.id} className="quote-topic-card">
         <VoteCounter
-        quoteTopicId={parseInt(quoteTopic.id)}
-        points={parseInt(quoteTopic.points)} />
+          quoteTopicId={parseInt(quoteTopic.id)}
+          points={parseInt(quoteTopic.points)}
+          className
+          />
         <a href={`/quotes/${quoteTopic.quoteId}`} className="topic-index">
           {quoteTopic.text}
         </a>

@@ -29,6 +29,8 @@
   }
 }
 
+// Topics Index
+
 .topics-index-wrapper {
   display: flex;
   align-items: center;
@@ -68,8 +70,32 @@
   background-color:blue;
 }
 
+// Topic Show
+
 .topic-quote-show {
   padding: 4px;
+}
+
+.vote-counter {
+  padding: 0 1em;
+}
+
+.points {
+  border: lightgray 1px solid;
+  border-radius: 50%;
+  padding: .5em
+}
+
+.disabled {
+  opacity: 35%;
+  cursor: not-allowed;
+}
+
+.gotta-login {
+  padding: 0 1em;
+  color: darkblue;
+  text-decoration: underline;
+  visibility: hidden;
 }
 
 .form-field-topic-quote-show {
