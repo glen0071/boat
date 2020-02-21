@@ -21,9 +21,7 @@
 
   <body>
     <%= render partial: 'shared/navbar' %>
-    <% if current_user %>
-      <%= render partial: 'shared/admin_navbar' %>
-    <% end %>
+    <%= render partial: 'shared/admin_navbar' %>
     <div class="container">
       <%= yield %>
     </div>

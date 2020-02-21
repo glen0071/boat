@@ -33,9 +33,10 @@
   .form-group
     = form.label :date
     = form.text_field :date, class: 'form-control'
-  .form-group
-    = form.label :good
-    = form.check_box :good, class: 'form-control'
+  - if current_user&.admin?
+    .form-group
+      = form.label :good
+      = form.check_box :good, class: 'form-control'
   .form-group
     = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
       span.check-box-span
