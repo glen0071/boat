@@ -11,6 +11,7 @@ module Types
     field :best_title, String, null: true
     field :source_link, String, null: true
     field :date, String, null: true
+    field :page, String, null: true
     field :good, Boolean, null: true
   end
 end
