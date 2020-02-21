@@ -29,7 +29,7 @@ const checkAdminUser = () => {
 }
 
 const checkLoggedIn = (change) => {
-  if (loggedIn) {
+  if (true) {
     voteQuoteTopic(
       {variables: {
         quoteTopicId: quoteTopicId,
@@ -43,11 +43,11 @@ const checkLoggedIn = (change) => {
 
   return (
     <div className="vote-counter">
-      <span className={"fa fa-arrow-up " + (loggedIn ? 'show' : 'disabled')}
+      <span className={"fa fa-arrow-up " + (loggedIn ? 'show' : '')}
         onClick={() => { checkLoggedIn(1) }}>
       </span>
       <span className="points bg-light"> {points} </span>
-      <span className={"fa fa-arrow-down " + (loggedIn ? 'show' : 'disabled')}
+      <span className={"fa fa-arrow-down " + (loggedIn ? 'show' : '')}
         onClick={() => { checkLoggedIn(-1) }}>
       </span>
       <span className="gotta-login">gotta login first</span>

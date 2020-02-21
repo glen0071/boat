@@ -14,7 +14,7 @@ module Mutations
 
     def resolve(klass:, id:, user_id:, favorite_id:)
       favorite = Favorite.find(favorite_id)
-      favorite.destroy if favorite.user_id == user_id && favorite.klass == klass
+      favorite.destroy if favorite.user_id == JSON.parse(user_id) && favorite.klass == klass
       if favorite.persisted?
         {
           errors: ['unable to destroy instance'],
