@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'games/index'
+  get 'games/hide_words'
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
@@ -16,7 +18,9 @@ Rails.application.routes.draw do
   resources :sources
   resources :topics
   resources :authors
-  resources :quotes
+  resources :quotes do
+    get '/study', to: 'games#hide_words'
+  end
   resources :users, only: :show
 
   get '/about', to: 'home#about'
