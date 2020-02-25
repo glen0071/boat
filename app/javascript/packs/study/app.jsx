@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
-import HideText from './hide_text.jsx'
+import StudyScreen from './study_screen.jsx'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -13,7 +13,7 @@ const client = new ApolloClient({
 const App = props =>  {
   return (
   <div>
-    <HideText />
+    <StudyScreen />
   </div>
 )}
 
@@ -24,6 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>,
-    document.getElementById('hide-word'),
+    document.getElementById('study'),
   )
 })

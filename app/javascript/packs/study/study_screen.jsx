@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { useQuery, gql } from '@apollo/client'
 import Word from './word'
+import HideWords from './hide_words.jsx'
 
 const quoteId = parseInt(window.location.pathname.match(/\d+/)[0])
-
 const GET_QUOTE = gql`
 query Quote{
   quote(id: ${quoteId}){
@@ -18,18 +18,14 @@ query Quote{
 
 const HideWord = props => {
   const { loading, error, data } = useQuery(GET_QUOTE)
-  let quoteArray = []
-
-  if (data != undefined) {
-    quoteArray = data.quote.text.split(' ')
-  }
 
   return (
     <div style={quoteDiv}>
       {
-        quoteArray.map((word, index) =>
-          <Word word={word} key={index}/>
-        )
+        data != undefined ?
+        <HideWords quote={data.quote.text} />
+        :
+        null
       }
     </div>
   )
