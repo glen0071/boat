@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Word from './word'
+import HideableWord from './hideable_word'
 
 const HideWords = props => {
   let quoteArray = props.quote.split(' ')
@@ -9,7 +9,7 @@ const HideWords = props => {
     <div style={quoteDiv}>
       {
         quoteArray.map((word, index) =>
-          <Word word={word} key={index}/>
+          <HideableWord word={word} key={index}/>
         )
       }
     </div>

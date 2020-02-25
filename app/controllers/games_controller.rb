@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class GamesController < ApplicationController
-  def hide_words; end
-  def hide_words; end
+  def study_quote
+    @quote = Quote.find(params[:quote_id])
+  end
 end

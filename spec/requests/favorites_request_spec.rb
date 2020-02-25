@@ -6,7 +6,7 @@ RSpec.describe 'Favorites', type: :request do
   before do
     sign_in FactoryBot.create(:user)
   end
-  
+
   describe 'GET /create' do
     it 'returns http success' do
       get '/favorites/create'

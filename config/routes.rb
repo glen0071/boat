@@ -17,8 +17,7 @@ Rails.application.routes.draw do
   resources :topics
   resources :authors
   resources :quotes do
-    get '/study', to: 'games#hide_words'
-    get '/complete', to: 'games#complete_quote'
+    get '/study', to: 'games#study_quote'
   end
   resources :users, only: :show
 

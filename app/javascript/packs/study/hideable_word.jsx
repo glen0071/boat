@@ -7,6 +7,8 @@ const HideableWord = props => {
 
   return (
     <span
+      onClick={() => {setVisibility(!visibility)}}
+      className={visibility ? 'show' : 'hide'}
       style={{padding: '.1em', fontSize: '1.2rem'}}>
       {props.word}
     </span>
