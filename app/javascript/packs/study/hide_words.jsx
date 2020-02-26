@@ -7,11 +7,16 @@ const HideWords = props => {
 
   return (
     <div style={quoteDiv}>
-      {
-        quoteArray.map((word, index) =>
-          <HideableWord word={word} key={index}/>
-        )
-      }
+      <div style={{padding: '.4em 0'}}>
+        <em>Click a word to hide it</em>
+      </div>
+      <div style={quoteDiv}>
+        {
+          quoteArray.map((word, index) =>
+            <HideableWord word={word} key={index}/>
+          )
+        }
+      </div>
     </div>
   )
 }

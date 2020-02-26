@@ -9,28 +9,26 @@ const HideWords = props => {
   const [inputValue, setInputValue] = useState('')
 
   const revealNextWord = () => {
-    console.log(wordIndex)
     setWordIndex(wordIndex + 1)
     setDisplayWords(allWords.slice(0, wordIndex))
-    console.log(wordIndex)
   }
 
   const checkWord = (event) => {
     setInputValue(event.target.value.replace(/\s/g, ''))
 
-    if (currentWord()  === '.' ) {
+    if (currentWord()  === '.') {
       wordMatched()
-    } else if (currentWord() === event.target.value.replace(/\s/g, '')) {
+    } else if (currentWord() === event.target.value.replace(/\s/g, '').toLowerCase()) {
       wordMatched()
     }
   }
 
   const stripPunctiation = (str) => {
-    return str.replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"")
+    return str.replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||_|\+|=)/g,"")
   }
 
   const currentWord = () => {
-    return stripPunctiation(allWords[wordIndex - 1])
+    return stripPunctiation(allWords[wordIndex - 1]).toLowerCase()
   }
 
   const wordMatched = () => {
@@ -70,5 +68,3 @@ const quoteDiv = {
 }
 
 export default HideWords
-
-// <button onClick={() => {console.log(wordIndex)}}>clickity</button>

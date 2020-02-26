@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :authors
   resources :quotes do
     get '/study', to: 'games#study_quote'
+    get '/guess_quote', to: 'games#study_quote'
+    get '/fill_blanks', to: 'games#study_quote'
   end
   resources :users, only: :show
 

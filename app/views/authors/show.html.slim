@@ -15,7 +15,7 @@ h5
     = @author.about
 p
   - @author.quotes.each do |quote|
-    p = quote.text
+    p = link_to quote.text, quote, class: 'quote-text'
 
 - @author.sources.each do |source|
   p = source.title

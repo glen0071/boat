@@ -36,7 +36,6 @@ const TopicShowCounter = props => {
               null
             )
           }
-
         </span>
       </p>
     )
