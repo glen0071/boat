@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
 import { useQuery, gql } from '@apollo/client'
-import HideWords from './hide_words.jsx'
-import CompleteQuote from './complete_quote.jsx'
-import FillBlanks from './fill_blanks.jsx'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom"
+
+import HideWords from './HideWords.jsx'
+import CompleteQuote from './CompleteQuote.jsx'
+import FillBlanks from './FillInBlanks.jsx'
 
 const quoteId = parseInt(window.location.pathname.match(/\d+/)[0])
 const GET_QUOTE = gql`

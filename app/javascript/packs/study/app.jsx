@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
-import StudyScreen from './study_screen.jsx'
+import StudyScreen from './StudyScreen.jsx'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),

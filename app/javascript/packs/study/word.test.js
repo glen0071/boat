@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Word from './word.jsx'
+import Word from './Word.jsx'
 
 test('it renders a word', () => {
   const component = renderer.create(

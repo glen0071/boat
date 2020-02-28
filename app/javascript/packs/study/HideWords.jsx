@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HideableWord from './hideable_word'
+import HideableWord from './HideableWord'
+import PropTypes from 'prop-types'
 
 const HideWords = props => {
   let quoteArray = props.quote.split(' ')
@@ -24,6 +25,10 @@ const HideWords = props => {
 const quoteDiv = {
   display: 'flex',
   flexWrap: 'wrap',
+}
+
+HideWords.propTypes = {
+  quote: PropTypes.string
 }
 
 export default HideWords

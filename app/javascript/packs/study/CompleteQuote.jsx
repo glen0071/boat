@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import Word from './word'
+import Word from './Word'
+import PropTypes from 'prop-types'
 
-const HideWords = props => {
+const CompleteQuote = props => {
   const [allWords, setAllWords] = useState(props.quote.split(' '))
   const [displayWords, setDisplayWords] = useState([])
   const [wordIndex, setWordIndex] = useState(1)
@@ -67,4 +68,8 @@ const quoteDiv = {
   flexWrap: 'wrap',
 }
 
-export default HideWords
+CompleteQuote.propTypes = {
+  quote: PropTypes.string
+}
+
+export default CompleteQuote

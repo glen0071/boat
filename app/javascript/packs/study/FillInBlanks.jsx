@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import BlankableWord from './blankable_word'
+import BlankableWord from './BlankableWord'
 import Slider from 'rc-slider'
+import PropTypes from 'prop-types'
 
 const FillBlanks = props => {
   const [difficulty, setDifficulty] = useState(10)
@@ -52,6 +53,10 @@ const marks = {
 const quoteDiv = {
   display: 'flex',
   flexWrap: 'wrap',
+}
+
+FillBlanks.propTypes = {
+  quote: PropTypes.string
 }
 
 export default FillBlanks

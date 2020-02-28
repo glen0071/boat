@@ -35,4 +35,9 @@ const HideableWord = props => {
   )
 }
 
+HideableWord.propTypes = {
+  word: PropTypes.string,
+  blank: PropTypes.bool
+}
+
 export default HideableWord
