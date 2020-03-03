@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     topics = Topic.where('lower(name) like ?', "%#{params[:query][:q].downcase}%")
     topic_descriptions = Topic.where('lower(description) like ?', "%#{params[:query][:q].downcase}%")
     authors = Author.where('lower(name) like ?', "%#{params[:query][:q].downcase}%")
-    @results = topics + topic_descriptions + quotes + authors
+    @results = (topics + topic_descriptions + quotes + authors).uniq
     render :index
   end
 
