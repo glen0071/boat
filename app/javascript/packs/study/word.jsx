@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-const HideableWord = props => {
+const Word = props => {
   const [visibility, setVisibility] = useState(true);
 
   return (
@@ -13,8 +13,8 @@ const HideableWord = props => {
   )
 }
 
-HideableWord.propTypes = {
+Word.propTypes = {
   word: PropTypes.string
 }
 
-export default HideableWord
+export default Word
