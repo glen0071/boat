@@ -16,10 +16,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-env": "^7.8.7",
     "babel-jest": "^25.1.0",
     "jest": "^25.1.0",
     "react-test-renderer": "^16.13.0",
