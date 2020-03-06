@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import Word from './Word'
+import Word from './Word.jsx'
 import PropTypes from 'prop-types'
 
 const CompleteQuote = props => {
