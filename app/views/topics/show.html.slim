@@ -2,3 +2,6 @@
 p#notice.flash = notice
 h3 #{@topic.name}
 #root
+
+= link_to 'Topics', topics_path, class: 'basic-link'
+= link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
