@@ -1,0 +1,13 @@
+.latest-index.row
+  .col-md
+    h5 New Quotes
+    - @quotes.each do |quote|
+      p = link_to quote.text, quote, class: 'quote-text'
+  .col-md.offset-lg-1
+    h5 New Topics
+    - @topics.each do |topic|
+      p = link_to topic.name, topic, class: 'quote-text'
+  .col-md
+    h5 New Authors
+    - @authors.each do |author|
+      p = link_to author.name, author, class: 'quote-text'

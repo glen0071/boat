@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :quote do
-    text { 'Truthfulness' }
+    sequence(:text) { |n| " Truthfulness quote #{n}" }
     association :source
     source_link { 'source_link.com' }
     source_title { 'Source Title' }

@@ -27,10 +27,11 @@ gem 'webpacker', '~> 4.x'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Testing
+  # Testing & Code Quality
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0.0.beta'
   gem 'shoulda'
+  gem 'rubocop'
 
   # Debugging
   gem 'pry-byebug', '~> 3.7'

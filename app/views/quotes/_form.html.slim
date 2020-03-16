@@ -37,6 +37,10 @@
     .form-group
       = form.label :good
       = form.check_box :good, class: 'form-control'
+  - if current_user
+    .form-group
+      = form.label :locked
+      = form.check_box :locked, class: 'form-control'
   .form-group
     = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
       span.check-box-span

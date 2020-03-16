@@ -4,6 +4,8 @@ class QuotesController < ApplicationController
   # before_action :authenticate_user!, except: %i[index show]
   before_action :set_quote, only: %i[show edit update destroy]
 
+  LOCK_NOTICE = 'This quote has been locked, only its author can edit'
+
   def index
     @quotes = Quote.all.shuffle
   end
@@ -15,7 +17,9 @@ class QuotesController < ApplicationController
     @topics = Topic.all.to_json
   end
 
-  def edit; end
+  def edit
+    redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?
+  end
 
   def create
     @quote = Quote.new(quote_params)
@@ -32,6 +36,8 @@ class QuotesController < ApplicationController
   end
 
   def update
+    return redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?
+
     respond_to do |format|
       if @quote.update(quote_params)
         format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
@@ -60,6 +66,10 @@ class QuotesController < ApplicationController
   def quote_params
     params.require(:quote).permit(:text, :source_title, :source_link, :author_id,
                                   :source_id, :good, :context, :date, :page,
-                                  topic_ids: [])
+                                  :locked, topic_ids: [])
+  end
+
+  def current_user_locked_out?
+    @quote.locked && @quote.user != current_user
   end
 end

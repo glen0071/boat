@@ -3,6 +3,7 @@
 class Quote < ApplicationRecord
   include FavoriteModule
 
+  belongs_to :user, optional: true
   belongs_to :author, optional: true
   belongs_to :source, optional: true
   has_many :quote_topics, dependent: :destroy

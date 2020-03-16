@@ -1,34 +1,21 @@
 .text-center
   br
-  br
-  br
   h5
-    | I find it interesting and educational to gather and categorize quotes.
-
-    br
-    br
-    br
+    | helping you navigate the accumulated wisdom of the ages.
 
   -if @quote
-    p For example, this one:
+    p A quote like this:
     p.about-page-quote
 
       = link_to @quote&.text, @quote, class: 'quote-text'
   - unless @quote&.topics.blank?
-    br
     p
       - named_author = @quote&.author&.name ? "author, #{@quote&.author&.name}" : "author"
-      | is grouped with other quotes with the same topics, like #{link_to @quote&.topics.first.name, @quote&.topics.first},
+      | is grouped with other quotes with the same topic, like #{link_to @quote&.topics.first.name, @quote&.topics.first},
       |  and with other quotes by the #{link_to named_author, @quote&.author if @quote&.author}
 
   br
-  br
-  p My name is <a href="https://twitter.com/eddiegdotme" target="_blank">Eddie</a>. My friends and I put this site together for our own use, so the interpretations and categorizations of quotes reflect our own biases.
-  p After it was done we thought we might as well share it. If people actually use it in the world, we'll refine it.
 
+  p You are invited to add quotes, authors, and topics of your own.
   br
-  br
-  h6 Less obvious features:
-  ul
-    div 1. The quotes within each topic can be ranked by relevance if you click the up and down arrows.
-    div 2. If you create an account you can hit the <i class="fa fa-star-o"></i> next to a quote to "favorite" it, and then you can see it on "MyPage".
+  p Contact <a href="https://twitter.com/eddiegdotme" target="_blank">Eddie</a> with questions or comments.
