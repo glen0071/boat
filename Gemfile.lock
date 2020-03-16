@@ -163,7 +163,7 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
-    puma (3.12.2)
+    puma (3.12.4)
     rack (2.2.2)
     rack-proxy (0.6.5)
       rack
@@ -316,7 +316,7 @@ DEPENDENCIES
   pry-byebug (~> 3.7)
   pry-rails
   pry-remote
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.2.1)
   rspec-rails (~> 4.0.0.beta)
   rubocop
