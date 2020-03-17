@@ -3,9 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe QuotesController, type: :controller do
-  let(:user) { FactoryBot.create(:user, email: 'quotes_ctrl_spec@mail.com') }
+  let(:user) { FactoryBot.create(:user) }
   let(:quote) { FactoryBot.create(:quote) }
-  let(:user_created_quote) { FactoryBot.create(:quote, user: user) }
   let(:quote_attributes) { FactoryBot.attributes_for(:quote) }
   let(:new_attributes) do
     FactoryBot.attributes_for(:quote,
@@ -60,27 +59,6 @@ RSpec.describe QuotesController, type: :controller do
         get :edit, params: { id: quote.to_param }
         expect(response).to be_successful
       end
-
-      context 'quote is locked' do
-        before do
-          quote.update(locked: true) # locked by someone else
-          user_created_quote.update(locked: true) # locked by logged in user
-        end
-
-        context 'quote does not belong to curernt_user' do
-          it 'redirects to show page' do
-            get :edit, params: { id: quote.to_param }
-            expect(response).to redirect_to(quote)
-          end
-        end
-
-        context 'quote belongs to curernt_user' do
-          it 'returns success' do
-            get :edit, params: { id: user_created_quote.to_param }
-            expect(response).to be_successful
-          end
-        end
-      end
     end
 
     describe 'PUT #update' do
@@ -103,36 +81,6 @@ RSpec.describe QuotesController, type: :controller do
         it "returns a success response (i.e. to display the 'edit' template)" do
           put :update, params: { id: quote.to_param, quote: { text: '' } }
           expect(response).to be_successful
-        end
-      end
-
-      context 'quote is locked' do
-        before(:each) do
-          quote.update(locked: true) # locked by someone else
-          user_created_quote.update(locked: true) # locked by logged in user
-        end
-
-        context 'quote does not belong to curernt_user' do
-          before do
-            put :update, params: { id: quote.to_param, quote: new_attributes }
-            quote.reload
-          end
-
-          it 'redirects to quote show page' do
-            expect(response).to redirect_to(quote)
-          end
-        end
-
-        context 'quote belongs_to current_user' do
-          before do
-            put :update, params: { id: user_created_quote.to_param, quote: new_attributes }
-            user_created_quote.reload
-          end
-
-          it 'returns success' do
-            expect(response).to redirect_to(user_created_quote)
-            expect(user_created_quote.text).to eq new_attributes[:text]
-          end
         end
       end
     end

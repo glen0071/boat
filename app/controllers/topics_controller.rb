@@ -17,7 +17,9 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
-  def edit; end
+  def edit
+    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+  end
 
   def create
     @topic = Topic.new(topic_params)
@@ -34,6 +36,8 @@ class TopicsController < ApplicationController
   end
 
   def update
+    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
@@ -46,6 +50,8 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+
     @topic.destroy
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
