@@ -1,21 +1,29 @@
 .text-center
   br
   h5
-    | helping you navigate the accumulated wisdom of the ages.
+    | helping me navigate the accumulated wisdom of the ages
+
+  br
+  br
+  p.about-page
+    | Sometimes I stumble upon pearls of wisdom that I want to keep in arm's reach. This app helps me find them whenever I need.
+  br
+  p.about-page
+    | Figured I might as well share it.
 
   -if @quote
-    p A quote like this:
-    p.about-page-quote
+    p.about-page A quote like this:
+    p.about-page.about-page-quote
 
       = link_to @quote&.text, @quote, class: 'quote-text'
   - unless @quote&.topics.blank?
-    p
+    p.about-page
       - named_author = @quote&.author&.name ? "author, #{@quote&.author&.name}" : "author"
       | is grouped with other quotes with the same topic, like #{link_to @quote&.topics.first.name, @quote&.topics.first},
       |  and with other quotes by the #{link_to named_author, @quote&.author if @quote&.author}
 
   br
 
-  p You are invited to add quotes, authors, and topics of your own.
+  p.about-page You are invited to add quotes, authors, and topics of your own. And you can sign up if you want to save a short list of your favorites.
   br
-  p Contact <a href="https://twitter.com/eddiegdotme" target="_blank">Eddie</a> with questions or comments.
+  p.about-page And let <a href="https://twitter.com/eddiegdotme" target="_blank">me</a> know of any other features you'd like to see here.

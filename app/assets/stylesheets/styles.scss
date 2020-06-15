@@ -106,11 +106,6 @@
   margin: 10px;
 }
 
-.about-page-quote {
-  margin-top: 10px;
-  font-style: italic;
-}
-
 .topics-header {
   text-decoration: underline;
   margin: 30px;
@@ -262,4 +257,15 @@ sidebar-nav {
 .sources-index-cards {
   margin: 10px;
   padding: 10px;
+}
+
+// About Page
+p.about-page {
+  max-width: 400px;
+  margin: auto;
+}
+
+.about-page-quote {
+  margin-top: 10px;
+  font-style: italic;
 }
