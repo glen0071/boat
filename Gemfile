@@ -11,7 +11,7 @@ gem 'rails', '~> 6.0.2.1'
 gem 'devise'
 gem 'graphql', '~> 1.10.1'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'seedbank', '~> 0.5.0'
 
 # Frontend
