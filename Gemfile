@@ -21,7 +21,6 @@ gem 'sass-rails'
 gem 'slim', '~> 4.0.1'
 gem 'slim-rails', '~> 3.2.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 4.x'
 
 # Faster
 gem 'bootsnap', '>= 1.1.0', require: false
