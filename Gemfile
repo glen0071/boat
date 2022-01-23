@@ -4,36 +4,35 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Essentials
-ruby '2.6.5'
-gem 'rails', '~> 6.0.2.1'
+gem 'rails'
 
 # Backend
 gem 'devise'
-gem 'graphql', '~> 1.10.1'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
-gem 'seedbank', '~> 0.5.0'
+gem 'graphql'
+gem 'pg'
+gem 'puma'
+gem 'seedbank'
 
 # Frontend
-gem 'active_model_serializers', '~> 0.10.10'
+gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'sass-rails'
-gem 'slim', '~> 4.0.1'
-gem 'slim-rails', '~> 3.2.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'slim'
+gem 'slim-rails'
+gem 'uglifier'
 
 # Faster
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap'
 
 group :development, :test do
   # Testing & Code Quality
   gem 'factory_bot_rails'
-  gem 'rspec-rails', '~> 4.0.0.beta'
+  gem 'rspec-rails'
   gem 'shoulda'
   gem 'rubocop'
 
   # Debugging
-  gem 'pry-byebug', '~> 3.7'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-remote'
 end
@@ -44,13 +43,13 @@ group :development do
   gem 'binding_of_caller'
 
   # Testing
-  gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'guard-rspec'
 
   # Work faster
   gem 'graphiql-rails'
   gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
-gem 'simplecov', '~> 0.17.0', require: false, group: :test
+gem 'simplecov'
