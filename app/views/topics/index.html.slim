@@ -1,0 +1,27 @@
+
+.container.text-center
+  h1 Topics
+
+  .filter 
+    input#topicFilterInput placeholder="filter..." oninput="filterTopics()"
+
+  .d-flex.flex-wrap
+    - @topics.order(:name).each do |topic|
+      div = link_to  topic.name, topic, class: 'btn btn-sm btn-light plain-anchor-tag rounded-0 m-1 topic-button'
+
+  = link_to 'New Topic', new_topic_path, class: 'm-5'
+
+javascript: 
+  const filterTopics = function () {
+    const inputValue = document.getElementById('topicFilterInput').value
+    const topics = document.getElementsByClassName('topic-button')
+
+    for (let i = 0; i < topics.length; i++) {
+      let topicLabel = topics[i].textContent.toLowerCase()
+      if (topicLabel.includes(inputValue)) {
+        topics[i].style.display = "inline-block";
+      } else {
+        topics[i].style.display = "none";
+      }
+    }
+  }

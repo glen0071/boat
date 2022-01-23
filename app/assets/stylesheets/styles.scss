@@ -269,3 +269,8 @@ p.about-page {
   margin-top: 10px;
   font-style: italic;
 }
+
+.plain-anchor-tag, .plain-anchor-tag:hover  {
+  text-decoration: none;
+  color: black;
+}
