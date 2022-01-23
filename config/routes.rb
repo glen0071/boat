@@ -2,10 +2,6 @@
 
 Rails.application.routes.draw do
   get 'latest/index', as: :latest
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
-  end
-  post '/graphql', to: 'graphql#execute'
   get 'favorites/create'
   get 'favorites/destroy'
   devise_for :users

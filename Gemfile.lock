@@ -111,10 +111,6 @@ GEM
     formatador (1.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    graphiql-rails (1.8.0)
-      railties
-      sprockets-rails
-    graphql (1.13.6)
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -335,8 +331,6 @@ DEPENDENCIES
   devise
   factory_bot_rails
   font-awesome-rails
-  graphiql-rails
-  graphql
   guard-rspec
   listen
   pg

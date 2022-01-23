@@ -9,7 +9,6 @@ gem 'rails'
 
 # Backend
 gem 'devise'
-gem 'graphql'
 gem 'pg'
 gem 'puma'
 gem 'seedbank'
@@ -47,7 +46,6 @@ group :development do
   gem 'guard-rspec'
 
   # Work faster
-  gem 'graphiql-rails'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
