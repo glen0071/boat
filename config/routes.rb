@@ -28,9 +28,4 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
   end
-
-  namespace :api do
-    resources :topics, only: [:index]
-    resources :quotes, only: %i[index edit]
-  end
 end
