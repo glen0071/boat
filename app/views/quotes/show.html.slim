@@ -32,7 +32,7 @@ p
 h6.topics-header Topics
 p
   - @quote.topics.uniq.each do |topic|
-    = link_to topic.name, topic, class: 'topic-quote-show'
+    = link_to topic.name, topic, class: 'topic-quote-show btn btn-sm btn-light'
 
 
 = link_to 'Edit', edit_quote_path(@quote), class: 'basic-link'

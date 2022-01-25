@@ -47,9 +47,12 @@
   - if current_user
     .form-group
       = form.label :locked, 'Lock'
-      = form.check_box :locked, class: 'm-1'
+      - if @quote.persisted?
+        = form.check_box :locked, class: 'm-1'
+      - else
+        = form.check_box :locked, class: 'm-1', checked: true
   .filter 
-    input#topicFilterInput placeholder="filter..." oninput="filterTopics()"
+    input#topicFilterInput placeholder="Topics Filter..." oninput="filterTopics()" class="form-control mb-3"
   .form-group
     = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
       span.check-box-span
@@ -60,7 +63,7 @@
     = form.text_field :new_topics, placeholder: 'new Topics', class: 'form-control'
 
   .actions
-    = form.submit class: 'btn btn-primary'
+    = form.submit class: 'btn btn-primary my-2'
 
 javascript: 
   var topicButtons = document.getElementsByClassName('topic-button')
