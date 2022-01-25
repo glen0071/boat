@@ -7,7 +7,6 @@ class Source < ApplicationRecord
   has_many :quotes
 
   validates :title, presence: true, uniqueness: true
-  validates :alt_title, presence: true, uniqueness: true, allow_nil: true
 
   def combined_titles
     "#{title}, (#{alt_title})"

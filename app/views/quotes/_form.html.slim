@@ -9,15 +9,22 @@
           li
             = message
   .form-group
-    = form.label :author
-    = form.collection_select :author_id, Author.all.order(:name), :id, :name, {prompt: true}, class: 'form-control'
-  - if Source.count > 0
-    .form-group
-      = form.label :source
-      = form.collection_select :source_id, Source.all.order(:title), :id, :combined_titles, {prompt: true}, class: 'form-control'
+    = form.text_area :text, class: 'form-control', placeholder: 'Text'
+  
   .form-group
-    = form.label :text
-    = form.text_area :text, class: 'form-control'
+    = form.label :author
+    = form.collection_select :author_id, Author.all.order(:name).to_a.push(OpenStruct.new( name: 'Add New', id: '' )), :id, :name, {prompt: true}, class: 'form-control'
+
+  .form-group.my-2
+    = form.text_field :new_author, placeholder: 'new author', class: 'form-control'
+    
+  .form-group
+    = form.label :source
+    = form.collection_select :source_id, Source.all.order(:title).to_a.push(OpenStruct.new( combined_titles: 'Add New', id: '' )), :id, :combined_titles, {prompt: true}, class: 'form-control'
+
+  .form-group.my-2
+    = form.text_field :new_source, placeholder: 'new source', class: 'form-control'
+
   .form-group
     = form.label :context
     = form.text_field :context, class: 'form-control'
@@ -35,16 +42,78 @@
     = form.text_field :date, class: 'form-control'
   - if current_user&.admin?
     .form-group
-      = form.label :good
-      = form.check_box :good, class: 'form-control'
+      = form.label :good, 'Encouraging'
+      = form.check_box :good, class: 'm-1'
   - if current_user
     .form-group
-      = form.label :locked
-      = form.check_box :locked, class: 'form-control'
+      = form.label :locked, 'Lock'
+      = form.check_box :locked, class: 'm-1'
+  .filter 
+    input#topicFilterInput placeholder="filter..." oninput="filterTopics()"
   .form-group
     = form.collection_check_boxes :topic_ids, Topic.all.order(:name), :id, :name do |b|
       span.check-box-span
-        = b.label class: 'btn btn-outline-info topic-checkbox-label'
+        = b.label class: 'btn btn-outline-info topic-checkbox-label topic-button'
         = b.check_box class: 'check-box'
+
+  .form-group.my-2
+    = form.text_field :new_topics, placeholder: 'new Topics', class: 'form-control'
+
   .actions
     = form.submit class: 'btn btn-primary'
+
+javascript: 
+  var topicButtons = document.getElementsByClassName('topic-button')
+  for (let i = 0; i < topicButtons.length; i++) {
+    topicButtons[i].addEventListener('click', function() {
+      if (topicButtons[i].nextSibling.checked == true) {
+        topicButtons[i].classList.remove('active')  
+      } else {
+        topicButtons[i].classList.add('active')  
+      }
+    });
+    if (topicButtons[i].nextSibling.checked == true) {
+      topicButtons[i].classList.add('active')
+    }
+  }
+
+  // new author
+  var authorSelect = document.getElementById('quote_author_id')
+  var newAuthorInput = document.getElementById('quote_new_author')
+
+  newAuthorInput.style.display = "none";
+  authorSelect.addEventListener('change', function() {
+    if (authorSelect.value === '') {
+      newAuthorInput.style.display = "block";
+    } else {
+      newAuthorInput.style.display = "none";
+    }
+  })
+  
+  // new source
+  var sourceSelect = document.getElementById('quote_source_id')
+  var newSourceInput = document.getElementById('quote_new_source')
+
+  newSourceInput.style.display = "none";
+  sourceSelect.addEventListener('change', function() {
+    if (sourceSelect.value === '') {
+      newSourceInput.style.display = "block";
+    } else {
+      newSourceInput.style.display = "none";
+    }
+  })
+
+  // Topic filter
+  const filterTopics = function () {
+    const inputValue = document.getElementById('topicFilterInput').value
+    const topics = document.getElementsByClassName('topic-button')
+
+    for (let i = 0; i < topics.length; i++) {
+      let topicLabel = topics[i].textContent.toLowerCase()
+      if (topicLabel.includes(inputValue)) {
+        topics[i].style.display = "inline-block";
+      } else {
+        topics[i].style.display = "none";
+      }
+    }
+  }

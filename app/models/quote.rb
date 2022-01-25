@@ -10,6 +10,8 @@ class Quote < ApplicationRecord
   has_many :topics, through: :quote_topics
   has_many :favorites
 
+  attr_writer :new_author, :new_source, :new_topics
+
   validates :text, presence: true, uniqueness: true
 
   def best_title
