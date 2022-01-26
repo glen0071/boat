@@ -1,6 +1,24 @@
 p#notice.flash = notice
 h3 #{@topic.name}
-#root
+
+div
+    - @quotes.each do |quote|
+      .card.m-auto.my-2
+        .card-body
+          p = link_to quote, class: 'plain-anchor-tag' do 
+            = quote.text
+          .float-end
+            - if quote.author.present? 
+              span = link_to quote.author.name, quote.author, class: 'plain-anchor-tag mx-1 author-name font-size-9em' 
+              - if quote.source_title? && quote.source_link.present?
+                = link_to  quote.source_title, quote.source_link, class: 'plain-anchor-tag mx-1 source-title fst-italic font-size-9em'
+              - elsif quote.source_title?
+                = quote.source_title
+
+div
+  - @authors.each do |author|
+    div 
+      = link_to author.name, author
 
 = link_to 'Topics', topics_path, class: 'basic-link'
 = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
