@@ -51,8 +51,18 @@ class QuotesController < ApplicationController
   def update
     return redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?(@quote)
 
+    new_topics = quote_params.delete(:new_topics)&.split(',').uniq
+    new_author = quote_params.delete(:new_author)
+    new_source = quote_params.delete(:new_source)
+
+    @quote.assign_attributes(quote_params)
+
+    @quote.author = Author.find_or_create_by(name: new_author) if new_author.present?
+    @quote.source = Source.find_or_create_by(title: new_source) if new_source.present?
+
     respond_to do |format|
-      if @quote.update(quote_params)
+      if @quote.save
+        new_topics.each { |topic| @quote.topics << Topic.find_or_create_by(name: topic) }
         format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
         format.json { render :show, status: :ok, location: @quote }
       else

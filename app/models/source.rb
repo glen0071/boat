@@ -9,6 +9,12 @@ class Source < ApplicationRecord
   validates :title, presence: true, uniqueness: true
 
   def combined_titles
-    "#{title}, (#{alt_title})"
+    if title.present? && alt_title.present?
+      "#{title}, (#{alt_title})"
+    elsif title.present?
+      title
+    elsif
+      alt_title
+    end
   end
 end

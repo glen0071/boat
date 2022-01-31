@@ -47,8 +47,7 @@ group :development do
 
   # Work faster
   gem 'listen'
-  gem 'spring'
-  gem 'spring-watcher-listen'
+  gem 'spring', '~> 3.0.0'
 end
 
 gem 'simplecov'
