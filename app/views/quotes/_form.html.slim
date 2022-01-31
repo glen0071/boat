@@ -14,7 +14,7 @@
   .form-group
     - author_choices = Author.all.order(:name)
     = tag "div", id: 'author_choices', data: { authors: author_choices }
-    = form.text_field :author_name, class: 'form-control', placeholder: 'Author'
+    = form.text_field :author_name, class: 'form-control', placeholder: 'Author', value: @quote.author&.name
     #typeahead-wrapper.position-absolute
     = form.hidden_field :author_id, class: 'form-control'
 

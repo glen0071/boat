@@ -5,19 +5,21 @@ const quoteNameInput = document.getElementById('quote_author_name')
 const quoteIdInput = document.getElementById('quote_author_id')
 
 // Functions
-function removeAllChildNodes() {
+const removeAllChildNodes = () => {
   while (typeaheadWrapper.firstChild) {
     typeaheadWrapper.removeChild(typeaheadWrapper.firstChild);
   }
 }
 
-function selectName(authorObject) {
+const selectName = (authorObject) => {
   quoteIdInput.value = authorObject.id
   quoteNameInput.value = authorObject.name
   removeAllChildNodes()
 }
 
+// Event listeners
 quoteNameInput.addEventListener('input',
+  // Typeahead
   () => {
     
     removeAllChildNodes()
@@ -33,11 +35,24 @@ quoteNameInput.addEventListener('input',
       div.appendChild(textnode);
       div.addEventListener('click', () => selectName(authorObject));
       typeaheadWrapper.append(div)
+      if (authorObject.name != inputValue) {
+        quoteIdInput.value = authorObject.id
+      }
     })
 
     if (inputValue === '') {
       removeAllChildNodes()
+      quoteIdInput.value = null
     }
   }
 )
+
+// Clear on failure to select
+quoteNameInput.addEventListener('blur', () => {
+  if (quoteIdInput.value == '' || quoteIdInput.value == null) {
+    console.log('here')
+    quoteNameInput.value = ''
+    removeAllChildNodes()
+  }
+});
 

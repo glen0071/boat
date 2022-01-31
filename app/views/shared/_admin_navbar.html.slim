@@ -2,23 +2,11 @@ nav.navbar.navbar-expand-sm.navbar-light.bg-light.admin-navbar
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item
-        a.nav-link[href="/authors/new"]
-          | Add Author
-      li.nav-item
         a.nav-link[href="/quotes/new"]
           | Add Quote
       li.nav-item
+        a.nav-link[href="/authors/new"]
+          | Add Author
+      li.nav-item
         a.nav-link[href="/topics/new"]
           | Add topic
-      li.nav-item
-        a.nav-link[href="/sources/new"]
-          | Add source
-      - if current_user&.admin?
-        li.nav-item
-          a.nav-link[href="#{admin_dashboard_path}"]
-            | Admin
-        li.nav-item
-          a.nav-link[href="/sources"]
-            | Sources
-
-/ move the order of these to line up with global navbar
