@@ -90,7 +90,7 @@ class QuotesController < ApplicationController
   def quote_params
     params
     .require(:quote)
-    .permit(:text, :source_title, :source_link, :author_id,
+    .permit(:text, :source_link, :author_id,
       :source_id, :good, :context, :date, :page, :new_author, :new_source,
       :locked, :new_topics, topic_ids: [])
   end

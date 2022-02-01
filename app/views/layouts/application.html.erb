@@ -22,11 +22,11 @@
   <body class="mb-5">
     <%= render partial: 'shared/navbar' %>
     <%= render partial: 'shared/admin_navbar' %>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <div class="container"> <%= yield %> </div>
+    
     <footer class="text-muted">
-      <div class="navbar navbar-light bg-light">
+      <hr class="mt-5">
+      <div class="navbar navbar-light">
         <ul class="navbar-nav ml-auto">
           <li clas="nav-item">
             <a class="nav-link" href="/about">About</a>

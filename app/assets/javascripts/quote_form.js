@@ -12,19 +12,6 @@ for (let i = 0; i < topicButtons.length; i++) {
   }
 }
 
-// new source
-var sourceSelect = document.getElementById('quote_source_id')
-var newSourceInput = document.getElementById('quote_new_source')
-
-newSourceInput.style.display = "none";
-sourceSelect.addEventListener('change', function() {
-  if (sourceSelect.value === '') {
-    newSourceInput.style.display = "block";
-  } else {
-    newSourceInput.style.display = "none";
-  }
-})
-
 // Topic filter
 const filterTopics = function () {
   const inputValue = document.getElementById('topicFilterInput').value
@@ -39,5 +26,3 @@ const filterTopics = function () {
     }
   }
 }
-
-
