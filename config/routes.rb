@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  
   get 'latest/index', as: :latest
   get 'favorites/create'
   get 'favorites/destroy'
@@ -28,4 +29,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
   end
+
+
+  # A Different app!
+  resources :moo_tasks
+  get '/moo_tasks/:id/done', to: 'moo_tasks#update', as: :moo_the_moo
+
 end

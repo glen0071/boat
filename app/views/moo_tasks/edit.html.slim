@@ -1,0 +1,25 @@
+h4 Moo Different Do
+
+= form_for @moo_task do |f|
+  - if @moo_task.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@moo_task.errors.count, 'error')} prohibited this moo_task from being saved:"
+      ul
+        - @moo_task.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.text_field :name, placeholder: '... do you mooing?', class: 'form-control'
+  .form-group
+    = f.text_field :notes, placeholder: '... notes', class: 'form-control'
+  .form-group.btn-group.btn-group-toggle data-toggle="buttons"
+    = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'new' ? 'active focus' : nil}" 
+      = f.radio_button :status, 'new'
+      | New
+    = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'done' ? 'active focus' : nil}" 
+      = f.radio_button :status, 'done'
+      | Done
+    
+  .actions 
+    = f.submit 'Moof', class: 'btn btn-outline-primary'
+    = link_to 'Delete', @moo_task, method: :delete, class: "btn btn-outline-danger"
