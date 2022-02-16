@@ -3,6 +3,8 @@
 class Quote < ApplicationRecord
   include FavoriteModule
 
+  attr_accessor :points
+
   belongs_to :user, optional: true
   belongs_to :author, optional: true
   belongs_to :source, optional: true

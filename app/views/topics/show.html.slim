@@ -3,7 +3,10 @@ h3 #{@topic.name}
 
 div
     - @quotes.each do |quote|
-      .card.m-auto.my-2
+
+      .circle
+        | #{quote.points}
+      .card.m-auto.my-2  
         .card-body
           p = link_to quote, class: 'plain-anchor-tag' do 
             = quote.text

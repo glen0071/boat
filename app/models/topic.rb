@@ -15,8 +15,12 @@ class Topic < ApplicationRecord
       .includes(:quote_topics)
       .where('quote_topics.topic_id = ?', id)
       .references(:quote_topics)
-      .sort do |a, b|
-        b.quote_topics.first.points <=> a.quote_topics.first.points
-      end
+      .map { |quote|
+        quote.points = quote.quote_topics.find_by(topic_id: id).points
+        quote
+      }
+      .sort { |a, b|
+        b.quote_topics.first.points <=> a.quote_topics.first.points        
+      }
   end
 end
