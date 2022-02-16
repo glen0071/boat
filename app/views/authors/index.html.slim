@@ -1,8 +1,14 @@
-h1 Listing authors
+h1 Authors
+
+- if params[:filter].present?
+  = link_to  "All", authors_path, class: 'btn btn-primary'
 
 .author-index
 - @authors.each do |author|
      p = link_to author.name, author
+     p 
+       - author.topics.all.each do |topic|
+         = link_to  topic.name, authors_path(filter: topic.name), class: 'mx-3px btn btn-light btn-sm'
 
 br
 

@@ -10,10 +10,10 @@ div
           .float-end
             - if quote.author.present? 
               span = link_to quote.author.name, quote.author, class: 'plain-anchor-tag mx-1 author-name font-size-9em' 
-              - if quote.source_title? && quote.source_link.present?
-                = link_to  quote.source_title, quote.source_link, class: 'plain-anchor-tag mx-1 source-title fst-italic font-size-9em'
-              - elsif quote.source_title?
-                = quote.source_title
+              - if quote.source&.title? && quote.source_link.present?
+                = link_to  quote.source&.title, quote.source_link, class: 'plain-anchor-tag mx-1 source-title fst-italic font-size-9em'
+              - elsif quote.source&.title?
+                = quote.source&.title
 
 div
   - @authors.each do |author|

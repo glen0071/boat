@@ -5,7 +5,12 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: %i[show edit update destroy]
 
   def index
-    @authors = Author.all.order(:name)
+    @topics = Topic.all
+    if params[:filter].present?
+      @authors = Topic.find_by(name: params[:filter]).authors.order(:name)
+    else
+      @authors = Author.all.order(:name)
+    end
   end
 
   def show; end
