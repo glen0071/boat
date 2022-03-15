@@ -17,7 +17,7 @@ class Quote < ApplicationRecord
   validates :text, presence: true, uniqueness: true
 
   def best_title
-    return source_title if source.nil?
+    return 'Source: Unknown' if source.nil?
 
     title = source.title
     title += " (#{source.alt_title})" unless source.alt_title.blank?

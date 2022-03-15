@@ -86,9 +86,14 @@
 }
 
 .points {
-  border: lightgray 1px solid;
-  border-radius: 50%;
-  padding: .5em
+  background-color: #F2F2F2;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.point-buttons {
+  padding: 1px;
 }
 
 .disabled {
