@@ -3,29 +3,31 @@ h3 #{@topic.name}
 hr
 h5 Quotes
 div
-    - @quotes.each do |quote|
+    - @quotes.order(points: :desc).each do |quote_topic|
 
       .card.m-auto.my-2.d-flex.flex-row
         .points.d-flex.flex-column
-          button.btn.btn-light.point-buttons
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
-            </svg>
-          span #{quote.points}
-          button.btn.btn-light.point-buttons
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-            </svg>
+          = form_with url: quote_topic_path(quote_topic, mutate: 'add'), local: true, method: 'patch' do |form_add_points|
+            button.btn.btn-light.point-buttons
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+              </svg>
+          span #{quote_topic.points}
+          = form_with url: quote_topic_path(quote_topic, mutate: 'subtract'), local: true, method: 'patch' do |form_subtract_points|
+            button.btn.btn-light.point-buttons
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+              </svg>
         .card-body
-          p = link_to quote, class: 'plain-anchor-tag' do 
-            = quote.text
+          p = link_to quote_topic.quote, class: 'plain-anchor-tag' do 
+            = quote_topic.quote.text
           .float-end
-            - if quote.author.present? 
-              span = link_to quote.author.name, quote.author, class: 'plain-anchor-tag mx-1 author-name font-size-9em' 
-              - if quote.source&.title? && quote.source_link.present?
-                = link_to  quote.source&.title, quote.source_link, class: 'plain-anchor-tag mx-1 source-title fst-italic font-size-9em'
-              - elsif quote.source&.title?
-                = quote.source&.title
+            - if quote_topic.quote.author.present? 
+              span = link_to quote_topic.quote.author.name, quote_topic.quote.author, class: 'plain-anchor-tag mx-1 author-name font-size-9em' 
+              - if quote_topic.quote.source&.title? && quote_topic.quote.source_link.present?
+                = link_to  quote_topic.quote.source&.title, quote_topic.quote.source_link, class: 'plain-anchor-tag mx-1 source-title fst-italic font-size-9em'
+              - elsif quote_topic.quote.source&.title?
+                = quote_topic.quote.source&.title
 hr
 h5 Authors
 div
