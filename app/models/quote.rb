@@ -3,6 +3,8 @@
 class Quote < ApplicationRecord
   include FavoriteModule
 
+  attr_accessor :points
+
   belongs_to :user, optional: true
   belongs_to :author, optional: true
   belongs_to :source, optional: true
@@ -15,7 +17,7 @@ class Quote < ApplicationRecord
   validates :text, presence: true, uniqueness: true
 
   def best_title
-    return source_title if source.nil?
+    return 'Source: Unknown' if source.nil?
 
     title = source.title
     title += " (#{source.alt_title})" unless source.alt_title.blank?

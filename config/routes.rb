@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
   get 'latest/index', as: :latest
   get 'favorites/create'
   get 'favorites/destroy'
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
     get '/fill_blanks', to: 'games#study_quote'
   end
   resources :users, only: :show
+
+  resources :quote_topics, only: :update
 
   get '/about', to: 'home#about'
   get '/home', to: 'home#index'
