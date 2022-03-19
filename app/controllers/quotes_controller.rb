@@ -5,7 +5,11 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
 
   def index
-    @quotes = Quote.all.shuffle
+    if params[:filter] === 'latest'
+      @quotes = Quote.all.limit(25)
+    else
+      @quotes = Quote.order(created_at: :desc).limit(25).shuffle
+    end
   end
 
   def show; end

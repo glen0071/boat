@@ -1,12 +1,13 @@
-nav.navbar.navbar-expand-sm.navbar-light.bg-light.admin-navbar
-  #navbarSupportedContent.collapse.navbar-collapse
-    ul.navbar-nav.mr-auto
-      li.nav-item
-        a.nav-link[href="/quotes/new"]
-          | Add Quote
-      li.nav-item
-        a.nav-link[href="/authors/new"]
-          | Add Author
-      li.nav-item
-        a.nav-link[href="/topics/new"]
-          | Add topic
+- if current_user
+  nav.navbar.navbar-expand-sm.navbar-light.bg-light.admin-navbar
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a.nav-link[href="/quotes/new"]
+            | Add Quote
+        li.nav-item
+          a.nav-link[href="/authors/new"]
+            | Add Author
+        li.nav-item
+          a.nav-link[href="/topics/new"]
+            | Add topic

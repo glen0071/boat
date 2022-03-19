@@ -19,10 +19,10 @@ const filterTopics = function () {
 
   for (let i = 0; i < topics.length; i++) {
     let topicLabel = topics[i].textContent.toLowerCase()
-    if (topicLabel.includes(inputValue)) {
-      topics[i].style.display = "inline-block";
+    if (topicLabel.includes(inputValue.toLowerCase())) {
+      topics[i].parentElement.style.display = "inline-block";
     } else {
-      topics[i].style.display = "none";
+      topics[i].parentElement.style.display = "none";
     }
   }
 }
