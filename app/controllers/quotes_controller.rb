@@ -63,7 +63,7 @@ class QuotesController < ApplicationController
 
     @quote.author = Author.find_or_create_by(name: new_author) if new_author.present?
     @quote.source = Source.find_or_create_by(title: new_source) if new_source.present?
-
+    
     respond_to do |format|
       if @quote.save
         new_topics.each { |topic| @quote.topics << Topic.find_or_create_by(name: topic) }

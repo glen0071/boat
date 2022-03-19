@@ -15,7 +15,10 @@ h5
     = @author.about
 p
   - @author.quotes.each do |quote|
-    p = link_to quote.text, quote, class: 'quote-text'
+    div = link_to quote.text, quote, class: 'quote-text'
+    - if quote.source&.title.present?
+      div.pull-right
+        | #{quote.source&.title}
 
 - @author.sources.each do |source|
   p = source.title

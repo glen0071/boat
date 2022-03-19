@@ -7,7 +7,7 @@ p
         .card-body
           p = link_to quote, class: 'plain-anchor-tag' do 
             = quote.text
-          .float-end
+          .pull-right
             - if quote.author.present? 
               span = link_to quote.author.name, quote.author, class: 'plain-anchor-tag mx-1 author-name font-size-9em' 
               - if quote.source&.title? && quote.source_link.present?

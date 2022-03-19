@@ -30,11 +30,15 @@ div
                 = quote_topic.quote.source&.title
 hr
 h5 Authors
-div
+.d-flex.flex-row
   - @authors.each do |author|
-    div 
-      = link_to author.name, author
-  / show number of quotes each author has on a topic
+    .card style="width: 18rem; margin: 1rem"
+      = link_to author do
+        .card-body.text-center.plain-anchor-tag
+          .card-text.h6.underline
+            = author.name
+          .card-text
+            | #{author.quote_topics.where(topic: @topic).count} quotes on #{@topic.name}
 
 = link_to 'Topics', topics_path, class: 'basic-link'
 = link_to 'Edit', edit_topic_path(@topic), class: 'basic-link'
