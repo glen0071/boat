@@ -15,7 +15,7 @@
   .form-group
     - author_choices = Author.all.order(:name)
     = tag "div", id: 'author_choices', data: { authors: author_choices }
-    = form.text_field :author_name, class: 'form-control', placeholder: 'Author', value: @quote.author&.name
+    = form.text_field :author_name, class: 'form-control', placeholder: 'Author', value: @quote.author&.name, autocomplete: "off"
     #author-typeahead-wrapper.position-absolute
   
   .form-group
@@ -27,7 +27,7 @@
   .form-group
     - source_choices = Source.all.order(:title)
     = tag "div", id: 'source_choices', data: { sources: source_choices }
-    = form.text_field :source_title, class: 'form-control', placeholder: 'Source', value: @quote.source&.title
+    = form.text_field :source_title, class: 'form-control', placeholder: 'Source', value: @quote.source&.title, autocomplete: "off"
     #source-typeahead-wrapper.position-absolute
     = form.hidden_field :source_id
 

@@ -5,7 +5,11 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
 
   def index
-    @quotes = Quote.all.shuffle
+    if params[:filter] === 'latest'
+      @quotes = Quote.all.limit(25)
+    else
+      @quotes = Quote.order(created_at: :desc).limit(25).shuffle
+    end
   end
 
   def show; end
@@ -59,7 +63,7 @@ class QuotesController < ApplicationController
 
     @quote.author = Author.find_or_create_by(name: new_author) if new_author.present?
     @quote.source = Source.find_or_create_by(title: new_source) if new_source.present?
-
+    
     respond_to do |format|
       if @quote.save
         new_topics.each { |topic| @quote.topics << Topic.find_or_create_by(name: topic) }

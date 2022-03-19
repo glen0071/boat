@@ -6,24 +6,9 @@
   br
   br
   p.about-page
-    | I often stumble upon pearls of wisdom that I want to keep in arm's reach. This app helps me find them whenever I need.
+    | I often stumble upon pearls of wisdom that I want to keep within arm's reach. This app helps me find them whenever I need.
   br
   p.about-page
     | Figured I might as well share it.
 
-  -if @quote
-    p.about-page A quote like this:
-    p.about-page.about-page-quote
-
-      = link_to @quote&.text, @quote, class: 'quote-text'
-  - unless @quote&.topics.blank?
-    p.about-page
-      - named_author = @quote&.author&.name ? "author, #{@quote&.author&.name}" : "author"
-      | is grouped with other quotes with the same topic, like #{link_to @quote&.topics.first.name, @quote&.topics.first},
-      |  and with other quotes by the #{link_to named_author, @quote&.author if @quote&.author}
-
-  br
-
-  p.about-page You are invited to add quotes, authors, and topics of your own. And you can sign up if you want to save a short list of your favorites.
-  br
-  p.about-page And let <a href="https://twitter.com/eddiegdotme" target="_blank">me</a> know of any other features you'd like to see here.
+  p.about-page Let <a href="https://twitter.com/eddiegdotme" target="_blank">me</a> know what you think.
