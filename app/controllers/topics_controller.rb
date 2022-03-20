@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @quotes = @topic.ranked_quotes
+    @quotes = @topic.quote_topics.includes(:quote)
     @authors = @topic.authors.joins(:quotes, :quote_topics).group("authors.id").order("count(authors.id) desc")
   end
 

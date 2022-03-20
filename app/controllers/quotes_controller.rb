@@ -6,9 +6,9 @@ class QuotesController < ApplicationController
 
   def index
     if params[:filter] === 'latest'
-      @quotes = Quote.all.limit(25)
+      @quotes = Quote.order(created_at: :desc).limit(25)
     else
-      @quotes = Quote.order(created_at: :desc).limit(25).shuffle
+      @quotes = Quote.order("RANDOM()").limit(25) 
     end
   end
 
