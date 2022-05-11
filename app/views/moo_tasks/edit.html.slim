@@ -9,7 +9,9 @@ h4 Moo Different Do
           li = message
 
   .form-group
-    = f.text_field :name, placeholder: '... do you mooing?', class: 'form-control'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.select :category, ['dairy', 'grains', 'produce', 'protein', 'office'], { include_blank: 'category' }, class: 'form-control'
   .form-group
     = f.text_field :notes, placeholder: '... notes', class: 'form-control'
   .form-group.btn-group.btn-group-toggle data-toggle="buttons"
@@ -21,5 +23,5 @@ h4 Moo Different Do
       | Done
     
   .actions 
-    = f.submit 'Moof', class: 'btn btn-outline-primary'
+    = f.submit 'Save', class: 'btn btn-outline-primary'
     = link_to 'Delete', @moo_task, method: :delete, class: "btn btn-outline-danger"
