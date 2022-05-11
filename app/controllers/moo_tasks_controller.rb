@@ -54,6 +54,6 @@ class MooTasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def moo_task_params
-      params.require(:moo_task).permit(:name, :status, :notes)
+      params.require(:moo_task).permit(:name, :status, :notes, :category)
     end
 end
