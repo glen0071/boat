@@ -1,5 +1,6 @@
 class MooTasksController < ApplicationController
   before_action :set_moo_task, only: %i[ show edit update destroy ]
+  before_action :construct_categories, only: %i[ index edit ]
 
   def index
     if params[:status] == 'done'
@@ -19,11 +20,12 @@ class MooTasksController < ApplicationController
     @moo_task = MooTask.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @moo_task = MooTask.new(moo_task_params)
+    @moo_task.category = 'other' if moo_task_params[:category] == ''
+    binding.pry
 
     if @moo_task.save
       redirect_to action: "index", notice: "Moo task was successfully created."
@@ -47,6 +49,12 @@ class MooTasksController < ApplicationController
   end
 
   private
+    def construct_categories
+      @category_options = [
+        'condiments', 'dairy', 'grains', 'health', 'produce', 'protein', 'office', 'spices'
+      ].sort + ['other']
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_moo_task
       @moo_task = MooTask.find(params[:id])

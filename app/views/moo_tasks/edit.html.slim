@@ -11,17 +11,17 @@ h4 Moo Different Do
   .form-group
     = f.text_field :name, class: 'form-control'
   .form-group
-    = f.select :category, ['dairy', 'grains', 'produce', 'protein', 'office'], { include_blank: 'category' }, class: 'form-control'
+    = f.select :category, @category_options, { include_blank: 'category' }, class: 'form-control'
   .form-group
     = f.text_field :notes, placeholder: '... notes', class: 'form-control'
   .form-group.btn-group.btn-group-toggle data-toggle="buttons"
     = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'new' ? 'active focus' : nil}" 
       = f.radio_button :status, 'new'
-      | New
+      | Doing
     = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'done' ? 'active focus' : nil}" 
       = f.radio_button :status, 'done'
       | Done
     
-  .actions 
+  .actions.pull-right
     = f.submit 'Save', class: 'btn btn-outline-primary'
     = link_to 'Delete', @moo_task, method: :delete, class: "btn btn-outline-danger"
