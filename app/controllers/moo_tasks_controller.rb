@@ -25,7 +25,6 @@ class MooTasksController < ApplicationController
   def create
     @moo_task = MooTask.new(moo_task_params)
     @moo_task.category = 'other' if moo_task_params[:category] == ''
-    binding.pry
 
     if @moo_task.save
       redirect_to action: "index", notice: "Moo task was successfully created."
