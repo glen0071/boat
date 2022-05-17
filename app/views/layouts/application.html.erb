@@ -38,7 +38,11 @@
         <div class="navbar navbar-light">
           <ul class="navbar-nav ml-auto">
             <li clas="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <% if current_user.admin? %>
+                <a class="nav-link" href="/moo_tasks">Moo Tasks</a>
+              <% else  %>
+                <a class="nav-link" href="/about">About</a>
+              <% end %>
             </li>
           </ul>
         </div>

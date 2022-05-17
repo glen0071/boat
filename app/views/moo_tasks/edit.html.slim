@@ -17,10 +17,13 @@ h4 Moo Different Do
   .form-group.btn-group.btn-group-toggle data-toggle="buttons"
     = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'new' ? 'active focus' : nil}" 
       = f.radio_button :status, 'new'
-      | Doing
+      | New
     = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'done' ? 'active focus' : nil}" 
       = f.radio_button :status, 'done'
       | Done
+    = f.label :status, class: "btn btn-outline-primary #{@moo_task.status == 'hidden' ? 'active focus' : nil}" 
+      = f.radio_button :status, 'Hidden'
+      | Hidden
     
   .actions.pull-right
     = f.submit 'Save', class: 'btn btn-outline-primary'

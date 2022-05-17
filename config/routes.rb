@@ -33,7 +33,8 @@ Rails.application.routes.draw do
 
 
   # A Different app!
+  get '/moo_tasks/plain', to: 'moo_tasks#plain'
   resources :moo_tasks
   get '/moo_tasks/:id/done', to: 'moo_tasks#update', as: :moo_the_moo
-
+  get '/moo_tasks/:id/hide', to: 'moo_tasks#update', as: :hide_the_moo
 end

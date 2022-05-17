@@ -1,17 +1,25 @@
 class MooTasksController < ApplicationController
   before_action :set_moo_task, only: %i[ show edit update destroy ]
-  before_action :construct_categories, only: %i[ index edit ]
+  before_action :construct_categories, only: %i[ index edit plain ]
 
   def index
     if params[:status] == 'done'
       @moo_tasks = MooTask.where(status: 'done')
     elsif params[:status] == 'all'
       @moo_tasks = MooTask.all
+    elsif params[:status] == 'hidden'
+      @moo_tasks = MooTask.where("status = 'hidden' AND hide_time > ?", DateTime.current - 30)
     else
       @moo_tasks = MooTask.where(status: 'new')
+        .or(MooTask.where("status = 'hidden' AND hide_time < ?", DateTime.current - 30)) # show things hidden more than 30 minutes ago
     end
     @moo_task = MooTask.new
   end
+
+  def plain
+    @moo_tasks = MooTask.all.sort_by(&:name)
+    @moo_task = MooTask.new
+  end  
 
   def show
   end
@@ -61,6 +69,6 @@ class MooTasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def moo_task_params
-      params.require(:moo_task).permit(:name, :status, :notes, :category)
+      params.require(:moo_task).permit(:name, :status, :notes, :category, :hide_time)
     end
 end
