@@ -4,6 +4,8 @@ class MooTasksController < ApplicationController
 
   def index
     if params[:status] == 'done'
+      three_week_old_dones = MooTask.where("status = 'done' AND hide_time < ?", DateTime.current - 3.weeks)
+      three_week_old_dones.destroy_all
       @moo_tasks = MooTask.where(status: 'done')
     elsif params[:status] == 'all'
       @moo_tasks = MooTask.all
@@ -42,6 +44,10 @@ class MooTasksController < ApplicationController
   end
 
   def update
+    if moo_task_params[:status] == 'hidden' || moo_task_params[:status] == 'done' && @moo_task.hide_time == nil
+      @moo_task.hide_time = DateTime.current
+    end
+
     if @moo_task.update(moo_task_params)
       redirect_to action: 'index', notice: "Moo task was successfully updated."
     else

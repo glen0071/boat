@@ -5,15 +5,15 @@ nav.navbar.navbar-expand-sm.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item
+      li.nav-item class=('active underline' if params[:status] === 'done')
         a.nav-link[href="/moo_tasks?status=done"]
           | Done
-      li.nav-item
+      li.nav-item class=('active underline' if params[:status] === 'all')
         a.nav-link[href="/moo_tasks?status=all"]
           | All
-      li.nav-item
+      li.nav-item class=('active underline' if params[:status] === 'hidden')
         a.nav-link[href="/moo_tasks?status=hidden"]
           | Hidden
-      li.nav-item
+      li.nav-item class=('active underline' if params[:action] === 'plain')
         a.nav-link[href="/moo_tasks/plain"]
           | Plain
