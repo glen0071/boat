@@ -1,10 +1,13 @@
 nav.navbar.navbar-expand-sm.navbar-light.bg-light
-  a.navbar-brand[href="/moo_tasks"]
-    | Moo Dos
+  a.navbar-brand[href="/"]
+    | Wiser
   button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
+      li.nav-item
+        a.nav-link[href="/moo_tasks"]
+          | Home
       li.nav-item class=('active underline' if params[:status] === 'done')
         a.nav-link[href="/moo_tasks?status=done"]
           | Done
