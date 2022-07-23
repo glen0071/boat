@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :topics
   resources :authors
   resources :quotes
+
+  get '/quotes/:id/learn', to: 'quotes#learn', as: :learn
+
   resources :users, only: :show
 
   resources :quote_topics, only: :update

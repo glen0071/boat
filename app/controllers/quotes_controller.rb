@@ -2,7 +2,7 @@
 
 class QuotesController < ApplicationController
   # before_action :authenticate_user!, except: %i[index show]
-  before_action :set_quote, only: %i[show edit update destroy]
+  before_action :set_quote, only: %i[show edit update destroy learn]
 
   def index
     if params[:filter] === 'latest'
@@ -74,6 +74,10 @@ class QuotesController < ApplicationController
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def learn
+    
   end
 
   def destroy

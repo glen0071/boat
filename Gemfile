@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Essentials
 ruby '3.0.2'
-gem 'rails'
+gem 'rails', '~> 7.0.1'
 
 # Backend
 gem 'devise'

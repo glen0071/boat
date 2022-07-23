@@ -335,7 +335,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   puma
-  rails
+  rails (~> 7.0.1)
   rspec-rails
   rubocop
   sass-rails
