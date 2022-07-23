@@ -16,6 +16,8 @@ gem 'seedbank'
 # Frontend
 gem 'active_model_serializers'
 gem 'font-awesome-rails'
+gem 'react-rails'
+gem 'webpacker'
 gem 'sass-rails'
 gem 'slim'
 gem 'slim-rails'

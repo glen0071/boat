@@ -76,9 +76,7 @@ class QuotesController < ApplicationController
     end
   end
 
-  def learn
-    
-  end
+  def learn; end
 
   def destroy
     return redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?(@quote)

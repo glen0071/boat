@@ -3,8 +3,7 @@
 p#notice.flash = notice
 
 div.quote-show-text-div
-  button#fave-btn.hide-button-defaults
-  div = @quote.text
+  = react_component("Quote", { text: @quote.text })
 
 span
   span.author.d-flex.justify-content-end.author-metadata
