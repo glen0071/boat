@@ -10,15 +10,10 @@ function Quote(props) {
 function Word(props) {
   const [show, setShow] = useState(true);
 
-  const clickWord = () => {
-    console.log(show)
-    
-  };
-
   return (
     <button 
       style={{ margin: "2px", color: show ? 'black' : 'white' }}
-      class="btn btn-outline-dark"
+      className="btn btn-outline-dark"
       onClick={() => setShow(show => !show)}
     >
         {props.text}
