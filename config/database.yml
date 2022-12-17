@@ -13,6 +13,4 @@ test:
 
 production:
   <<: *default
-  database: boat_production
-  username: deploy
-  password: <%= ENV['BOAT_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
