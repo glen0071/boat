@@ -1,17 +1,17 @@
 p#notice = notice
 
-p
-  strong Title:
-  = @blog_post.title
 
-p
-  strong Body:
-  = @blog_post.body
+h2 = @blog_post.title
 
-p
-  strong Url:
-  = @blog_post.url
+br
 
-=> link_to 'Edit', edit_blog_post_path(@blog_post)
-'|
-=< link_to 'Back', blog_posts_path
+- if @blog_post.body.present?
+  p = @blog_post.body
+
+- if @blog_post.url.present? 
+  h6 Read the original post #{link_to 'here', @blog_post.url} in the #{@blog_post.source}
+  - if @blog_post.source.present?
+
+
+br
+=< link_to 'Blog List', blog_posts_path

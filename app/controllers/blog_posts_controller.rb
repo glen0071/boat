@@ -1,8 +1,9 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: %i[show edit update destroy]
+  before_action :check_admin, only: %i[edit update destroy new create]
 
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.all.order(:display_date)
   end
 
   def show; end
@@ -31,7 +32,6 @@ class BlogPostsController < ApplicationController
     end
   end
 
-  # DELETE /blog_posts/1
   def destroy
     @blog_post.destroy
     redirect_to blog_posts_url, notice: 'Blog post was successfully destroyed.'
@@ -39,9 +39,12 @@ class BlogPostsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_blog_post
     @blog_post = BlogPost.find(params[:id])
+  end
+
+  def check_admin
+    redirect_to :new_user_session unless current_user&.admin?
   end
 
   # Only allow a list of trusted parameters through.

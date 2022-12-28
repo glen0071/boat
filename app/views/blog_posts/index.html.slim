@@ -1,12 +1,8 @@
 div
   - @blog_posts.each do |blog_post|
-    div
-      div = blog_post.title
-      div = blog_post.body
-      div = blog_post.url
-      div = link_to 'Show', blog_post
-      div = link_to 'Edit', edit_blog_post_path(blog_post)
-      div = link_to 'Destroy', blog_post, data: { confirm: 'Are you sure?' }, method: :delete
+    div.m-4
+      h3 = link_to blog_post.title, blog_post, class: 'text-dark'
+      p = blog_post.header
 
 br
 

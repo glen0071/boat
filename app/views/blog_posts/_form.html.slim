@@ -6,13 +6,10 @@
         - @blog_post.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :url
-    = f.text_field :url
+  .form-group
+    = f.text_field :title, class: 'form-control', placeholder: 'title'
+  .form-group
+    = f.text_area :body, class: 'form-control', placeholder: 'body'
+  .form-group
+    = f.text_field :url, class: 'form-control', placeholder: 'url'
   .actions = f.submit
