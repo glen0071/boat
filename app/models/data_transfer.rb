@@ -15,8 +15,6 @@ class DataTransfer
     export_data if attributes[:direction] == 'export'
   end
 
-  private
-
   def self.import_data
     DataTransferService.new(:import, file).import
   end

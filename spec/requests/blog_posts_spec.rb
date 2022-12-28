@@ -12,9 +12,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/moo_tasks', type: :request do
+RSpec.describe '/blog_posts', type: :request do
   # This should return the minimal set of attributes required to create a valid
-  # MooTask. As you add validations to MooTask, be sure to
+  # BlogPost. As you add validations to BlogPost, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
@@ -26,58 +26,58 @@ RSpec.describe '/moo_tasks', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      MooTask.create! valid_attributes
-      get moo_tasks_url
+      BlogPost.create! valid_attributes
+      get blog_posts_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      moo_task = MooTask.create! valid_attributes
-      get moo_task_url(moo_task)
+      blog_post = BlogPost.create! valid_attributes
+      get blog_post_url(blog_post)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_moo_task_url
+      get new_blog_post_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /edit' do
     it 'renders a successful response' do
-      moo_task = MooTask.create! valid_attributes
-      get edit_moo_task_url(moo_task)
+      blog_post = BlogPost.create! valid_attributes
+      get edit_blog_post_url(blog_post)
       expect(response).to be_successful
     end
   end
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new MooTask' do
+      it 'creates a new BlogPost' do
         expect do
-          post moo_tasks_url, params: { moo_task: valid_attributes }
-        end.to change(MooTask, :count).by(1)
+          post blog_posts_url, params: { blog_post: valid_attributes }
+        end.to change(BlogPost, :count).by(1)
       end
 
-      it 'redirects to the created moo_task' do
-        post moo_tasks_url, params: { moo_task: valid_attributes }
-        expect(response).to redirect_to(moo_task_url(MooTask.last))
+      it 'redirects to the created blog_post' do
+        post blog_posts_url, params: { blog_post: valid_attributes }
+        expect(response).to redirect_to(blog_post_url(BlogPost.last))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new MooTask' do
+      it 'does not create a new BlogPost' do
         expect do
-          post moo_tasks_url, params: { moo_task: invalid_attributes }
-        end.to change(MooTask, :count).by(0)
+          post blog_posts_url, params: { blog_post: invalid_attributes }
+        end.to change(BlogPost, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post moo_tasks_url, params: { moo_task: invalid_attributes }
+        post blog_posts_url, params: { blog_post: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -89,42 +89,42 @@ RSpec.describe '/moo_tasks', type: :request do
         skip('Add a hash of attributes valid for your model')
       end
 
-      it 'updates the requested moo_task' do
-        moo_task = MooTask.create! valid_attributes
-        patch moo_task_url(moo_task), params: { moo_task: new_attributes }
-        moo_task.reload
+      it 'updates the requested blog_post' do
+        blog_post = BlogPost.create! valid_attributes
+        patch blog_post_url(blog_post), params: { blog_post: new_attributes }
+        blog_post.reload
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the moo_task' do
-        moo_task = MooTask.create! valid_attributes
-        patch moo_task_url(moo_task), params: { moo_task: new_attributes }
-        moo_task.reload
-        expect(response).to redirect_to(moo_task_url(moo_task))
+      it 'redirects to the blog_post' do
+        blog_post = BlogPost.create! valid_attributes
+        patch blog_post_url(blog_post), params: { blog_post: new_attributes }
+        blog_post.reload
+        expect(response).to redirect_to(blog_post_url(blog_post))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        moo_task = MooTask.create! valid_attributes
-        patch moo_task_url(moo_task), params: { moo_task: invalid_attributes }
+        blog_post = BlogPost.create! valid_attributes
+        patch blog_post_url(blog_post), params: { blog_post: invalid_attributes }
         expect(response).to be_successful
       end
     end
   end
 
   describe 'DELETE /destroy' do
-    it 'destroys the requested moo_task' do
-      moo_task = MooTask.create! valid_attributes
+    it 'destroys the requested blog_post' do
+      blog_post = BlogPost.create! valid_attributes
       expect do
-        delete moo_task_url(moo_task)
-      end.to change(MooTask, :count).by(-1)
+        delete blog_post_url(blog_post)
+      end.to change(BlogPost, :count).by(-1)
     end
 
-    it 'redirects to the moo_tasks list' do
-      moo_task = MooTask.create! valid_attributes
-      delete moo_task_url(moo_task)
-      expect(response).to redirect_to(moo_tasks_url)
+    it 'redirects to the blog_posts list' do
+      blog_post = BlogPost.create! valid_attributes
+      delete blog_post_url(blog_post)
+      expect(response).to redirect_to(blog_posts_url)
     end
   end
 end

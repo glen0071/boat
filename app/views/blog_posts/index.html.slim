@@ -1,0 +1,14 @@
+div
+  - @blog_posts.each do |blog_post|
+    div
+      div = blog_post.title
+      div = blog_post.body
+      div = blog_post.url
+      div = link_to 'Show', blog_post
+      div = link_to 'Edit', edit_blog_post_path(blog_post)
+      div = link_to 'Destroy', blog_post, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+- if current_user&.admin?
+  = link_to 'New Blog post', new_blog_post_path

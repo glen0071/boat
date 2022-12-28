@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
 
   def show
     @quotes = @topic.quote_topics.includes(:quote)
-    @authors = @topic.authors.joins(:quotes, :quote_topics).group("authors.id").order("count(authors.id) desc")
+    @authors = @topic.authors.joins(:quotes, :quote_topics).group('authors.id').order('count(authors.id) desc')
   end
 
   def new
@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+    return redirect_to topic_path, notice: LOCK_NOTICE if current_user_locked_out?(@topic)
   end
 
   def create
@@ -36,7 +36,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+    return redirect_to topic_path, notice: LOCK_NOTICE if current_user_locked_out?(@topic)
 
     respond_to do |format|
       if @topic.update(topic_params)
@@ -50,7 +50,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    return redirect_to topic_path, notice: LOCK_NOTICE  if current_user_locked_out?(@topic)
+    return redirect_to topic_path, notice: LOCK_NOTICE if current_user_locked_out?(@topic)
 
     @topic.destroy
     respond_to do |format|

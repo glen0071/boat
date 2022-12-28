@@ -17,11 +17,11 @@ gem 'seedbank'
 gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'react-rails'
-gem 'webpacker'
 gem 'sass-rails'
 gem 'slim'
 gem 'slim-rails'
 gem 'uglifier'
+gem 'webpacker'
 
 # Faster
 gem 'bootsnap'
@@ -30,8 +30,8 @@ group :development, :test do
   # Testing & Code Quality
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'shoulda'
   gem 'rubocop'
+  gem 'shoulda'
 
   # Debugging
   gem 'pry-byebug'

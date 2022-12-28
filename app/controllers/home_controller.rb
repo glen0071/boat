@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  def index
-    @rand_quote = Quote.where(good: true).sample
-    @hide_search = true
-    @topics = Topic.all
-  end
+  def index; end
 
-  def about
-    @quote = Quote.where(good: true).limit(1).order('RANDOM()').first
-  end
+  def writings; end
 
   def check_admin_user
     if current_user&.admin?

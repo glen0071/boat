@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :quote do
     sequence(:text) { |n| " Truthfulness quote #{n}" }
-    source 
+    source
     author
     source_link { 'source_link.com' }
     date { '2000 AD' }

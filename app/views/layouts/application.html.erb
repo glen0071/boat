@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wiser</title>
+    <title>Eddie Glenn dot com</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,8 +23,9 @@
   </head>
 
   <body class="mb-5">
-    <% if params['controller'] == 'moo_tasks' %>
-
+    <% if params['controller'] == 'home' || params['controller'] == 'blog_posts' %>
+      <%= render partial: 'shared/home_nav' %>
+    <% elsif params['controller'] == 'moo_tasks' %>
       <%= render partial: 'shared/moo_navbar' %>
     <% else %>
       <%= render partial: 'shared/navbar' %>
@@ -32,7 +33,7 @@
     <% end %>
 
     <div class="container"> <%= yield %> </div>
-    <% unless params['controller'] == 'moo_tasks' %>
+    <% unless params['controller'] == 'moo_tasks' || params['controller'] == 'home' %>
       <footer class="text-muted">
         <hr class="mt-5">
         <div class="container">
@@ -41,7 +42,9 @@
               <% if current_user&.admin? %>
                 <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
               <% end %>
-              <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="/about-boat">About Boat</a></li>
+              <li class="nav-item"><a class="nav-link" href="/quotes_home">Boat Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/">Eddie G dot me</a></li>
               <% if current_user&.admin? %>
                 <li class="nav-item"><%= link_to "Moo Tasks", moo_tasks_path, class: 'nav-link' %></li>
               <% end %>

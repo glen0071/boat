@@ -13,8 +13,6 @@ class Source < ApplicationRecord
       "#{title}, (#{alt_title})"
     elsif title.present?
       title
-    elsif
-      alt_title
     end
   end
 end

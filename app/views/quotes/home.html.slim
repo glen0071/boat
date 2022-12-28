@@ -1,0 +1,18 @@
+/ = _tag 'search_bar'
+.text-center
+  h5.home-header
+    | helping me navigate the accumulated wisdom of the ages
+  #search-bar-mount
+
+    = form_for @query, url: search_path, html: { class: 'form-inline main-search-form' } do |f|
+      .search-div
+        = f.text_field :q, placeholder: 'Search for quotes, topics, authors', class: 'form-control mr-sm-2 main-search-bar', id: 'main-search-input', autocomplete: 'off'
+        = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+
+  h6.home-header
+    | for inspiration...
+  - if @rand_quote
+    p
+      = link_to @rand_quote.text, @rand_quote, class: 'quote-text'
+      br
+      = link_to @rand_quote.author.name, author_path(@rand_quote.author), class: 'basic-link'

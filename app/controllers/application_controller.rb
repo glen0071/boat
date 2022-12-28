@@ -14,12 +14,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def current_user_locked_out?(resource)
     resource.locked && different_user_created?(resource) ? true : false
   end
 
   def different_user_created?(resource)
     return false if resource.user.nil?
-    resource.user != current_user ? true : false
+
+    resource.user != current_user
   end
 end

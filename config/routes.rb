@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  
   get 'latest/index', as: :latest
   get 'favorites/create'
   get 'favorites/destroy'
@@ -9,19 +10,19 @@ Rails.application.routes.draw do
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
 
+  resources :authors
+  resources :blog_posts
   resources :data_transfers, only: %i[create new]
+  resources :quotes
+  resources :quote_topics, only: :update
   resources :sources
   resources :topics
-  resources :authors
-  resources :quotes
-
-  get '/quotes/:id/learn', to: 'quotes#learn', as: :learn
-
   resources :users, only: :show
 
-  resources :quote_topics, only: :update
+  get '/quotes/:id/learn', to: 'quotes#learn', as: :learn
+  get '/quotes_home', to: 'quotes#home'
 
-  get '/about', to: 'home#about'
+  get '/about-boat', to: 'quotes#about'
   get '/home', to: 'home#index'
   get '/home/check_admin_user', to: 'home#check_admin_user'
   root 'home#index'
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
   end
-
 
   # A Different app!
   get '/moo_tasks/plain', to: 'moo_tasks#plain'

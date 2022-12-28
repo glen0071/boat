@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe QuotesController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
   let(:quote) { FactoryBot.create(:quote, locked: true, user: FactoryBot.create(:user)) }
-  let(:user_created_quote) { FactoryBot.create(:quote, user: user, locked: true) }
+  let(:user_created_quote) { FactoryBot.create(:quote, user:, locked: true) }
   let(:quote_attributes) { FactoryBot.attributes_for(:quote) }
   let(:new_attributes) do
     FactoryBot.attributes_for(:quote,

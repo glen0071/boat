@@ -4,12 +4,18 @@ class QuotesController < ApplicationController
   # before_action :authenticate_user!, except: %i[index show]
   before_action :set_quote, only: %i[show edit update destroy learn]
 
+  def home
+    @rand_quote = Quote.where(good: true).sample
+    @hide_search = true
+    @topics = Topic.all
+  end
+
   def index
-    if params[:filter] === 'latest'
-      @quotes = Quote.order(created_at: :desc).limit(25)
-    else
-      @quotes = Quote.order("RANDOM()").limit(25) 
-    end
+    @quotes = if params[:filter] === 'latest'
+                Quote.order(created_at: :desc).limit(25)
+              else
+                Quote.order('RANDOM()').limit(25)
+              end
   end
 
   def show; end
@@ -20,23 +26,19 @@ class QuotesController < ApplicationController
   end
 
   def edit
-    redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?(@quote)
+    redirect_to quote_path, notice: LOCK_NOTICE if current_user_locked_out?(@quote)
   end
 
   def create
     @quote = Quote.new(quote_params)
 
     new_author = quote_params.delete(:new_author)
-    if new_author.present?
-      @quote.author = Author.find_or_create_by(name: new_author)
-    end
-    
-    new_source = quote_params.delete(:new_source)
-    if new_source.present?
-      @quote.source = Source.find_or_create_by(title: new_source)
-    end
+    @quote.author = Author.find_or_create_by(name: new_author) if new_author.present?
 
-    new_topics = quote_params.delete(:new_topics)&.split(',').uniq
+    new_source = quote_params.delete(:new_source)
+    @quote.source = Source.find_or_create_by(title: new_source) if new_source.present?
+
+    new_topics = quote_params.delete(:new_topics)&.split(',')&.uniq
     new_topics.each do |topic|
       @quote.topics << Topic.find_or_create_by(name: topic)
     end
@@ -53,9 +55,9 @@ class QuotesController < ApplicationController
   end
 
   def update
-    return redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?(@quote)
+    return redirect_to quote_path, notice: LOCK_NOTICE if current_user_locked_out?(@quote)
 
-    new_topics = quote_params.delete(:new_topics)&.split(',').uniq
+    new_topics = quote_params.delete(:new_topics)&.split(',')&.uniq
     new_author = quote_params.delete(:new_author)
     new_source = quote_params.delete(:new_source)
 
@@ -63,7 +65,7 @@ class QuotesController < ApplicationController
 
     @quote.author = Author.find_or_create_by(name: new_author) if new_author.present?
     @quote.source = Source.find_or_create_by(title: new_source) if new_source.present?
-    
+
     respond_to do |format|
       if @quote.save
         new_topics.each { |topic| @quote.topics << Topic.find_or_create_by(name: topic) }
@@ -78,8 +80,13 @@ class QuotesController < ApplicationController
 
   def learn; end
 
+  def about
+    @quote = Quote.where(good: true).limit(1).order('RANDOM()').first
+  end
+
   def destroy
-    return redirect_to quote_path, notice: LOCK_NOTICE  if current_user_locked_out?(@quote)
+    return redirect_to quote_path, notice: LOCK_NOTICE if current_user_locked_out?(@quote)
+
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
@@ -95,9 +102,9 @@ class QuotesController < ApplicationController
 
   def quote_params
     params
-    .require(:quote)
-    .permit(:text, :source_link, :author_id,
-      :source_id, :good, :context, :date, :page, :new_author, :new_source,
-      :locked, :new_topics, topic_ids: [])
+      .require(:quote)
+      .permit(:text, :source_link, :author_id,
+              :source_id, :good, :context, :date, :page, :new_author, :new_source,
+              :locked, :new_topics, topic_ids: [])
   end
 end

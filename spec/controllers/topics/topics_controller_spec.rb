@@ -60,7 +60,7 @@ RSpec.describe TopicsController, type: :controller do
         it 'updates the requested topic' do
           put :update, params: { id: topic.to_param, topic: topic_attributes }
           topic.reload
-          expect(topic.name). to eq topic_attributes[:name]
+          expect(topic.name).to eq topic_attributes[:name]
         end
       end
 

@@ -10,7 +10,7 @@ RSpec.describe Quote, type: :model do
   it { is_expected.to have_many(:favorites) }
 
   let(:source) { FactoryBot.create(:source) }
-  let(:quote) { FactoryBot.create(:quote, source: source) }
+  let(:quote) { FactoryBot.create(:quote, source:) }
 
   describe '#best_title' do
     it 'return the combined string title' do

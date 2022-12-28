@@ -6,11 +6,11 @@ class AuthorsController < ApplicationController
 
   def index
     @topics = Topic.all
-    if params[:filter].present?
-      @authors = Topic.find_by(name: params[:filter]).authors.order(:name)
-    else
-      @authors = Author.all.order(:name)
-    end
+    @authors = if params[:filter].present?
+                 Topic.find_by(name: params[:filter]).authors.order(:name)
+               else
+                 Author.all.order(:name)
+               end
   end
 
   def show; end
