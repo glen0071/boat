@@ -9,7 +9,7 @@
   .form-group
     = f.text_field :title, class: 'form-control', placeholder: 'title'
   .form-group
-    = f.text_area :body, class: 'form-control', placeholder: 'body'
+    = f.rich_text_area :body
   .form-group
     = f.text_field :url, class: 'form-control', placeholder: 'url'
   .actions = f.submit

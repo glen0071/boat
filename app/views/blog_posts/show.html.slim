@@ -6,12 +6,11 @@ h2 = @blog_post.title
 br
 
 - if @blog_post.body.present?
-  p = @blog_post.body
+    p = h @blog_post.body
 
 - if @blog_post.url.present? 
   h6 Read the original post #{link_to 'here', @blog_post.url} in the #{@blog_post.source}
   - if @blog_post.source.present?
-
 
 br
 =< link_to 'Blog List', blog_posts_path
