@@ -2,6 +2,11 @@ p#notice = notice
 
 
 h2 = @blog_post.title
+h6 #{@blog_post.display_date&.strftime('%B %e, %Y')}
+
+- if @blog_post.header.present?
+  p
+    em.m-4 = @blog_post.header
 
 br
 
@@ -9,7 +14,7 @@ br
     p = h @blog_post.body
 
 - if @blog_post.url.present? 
-  h6 Read the original post #{link_to 'here', @blog_post.url} in the #{@blog_post.source}
+  h6.mt-5 Read the original post #{link_to 'here', @blog_post.url} in the #{@blog_post.source}
   - if @blog_post.source.present?
 
 br
