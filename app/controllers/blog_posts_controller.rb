@@ -3,7 +3,7 @@ class BlogPostsController < ApplicationController
   before_action :check_admin, only: %i[edit update destroy new create]
 
   def index
-    @blog_posts = BlogPost.all.order(:display_date)
+    @blog_posts = BlogPost.order(display_date: :desc)
   end
 
   def show; end
