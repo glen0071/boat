@@ -292,3 +292,17 @@ p.about-page {
 .background-color-lightgray {
   background-color: whitesmoke;
 }
+
+// Blog Posts Index
+.blog-post-index-item {
+  max-width: 500px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.15);
+
+  &:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+  }
+
+  .blog-post-index-item-link:hover {
+    text-decoration: none;
+  }
+}

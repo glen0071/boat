@@ -1,11 +1,12 @@
 div
   - @blog_posts.each do |blog_post|
-    div.m-4
-      h2 = link_to blog_post.title, blog_post, class: 'text-dark'
-      - if blog_post.source?
-        h6 From the #{blog_post.source} on #{blog_post.display_date&.strftime('%B %e, %Y')}
+    div.m-4.blog-post-index-item.pl-2.pb-1
+      = link_to blog_post, class: 'text-dark blog-post-index-item-link' do
+        h2 = blog_post.title
+        - if blog_post.source?
+          h6 From the #{blog_post.source} on #{blog_post.display_date&.strftime('%B %e, %Y')}
       
-      p = blog_post.header
+        p = blog_post.header
 
 br
 
