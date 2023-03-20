@@ -4,6 +4,17 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
 
+  def update
+    fave = Favorite.find_by(user_id: params[:user_id], quote_id: params[:quote_id])
+    if fave.present?
+      fave.destroy
+    else
+      Favorite.create(user_id: params[:user_id], quote_id: params[:quote_id])
+    end
+
+    redirect_to quote_path(params[:quote_id])
+  end
+
   def create
     @favorite = Favorite.new(favorite_params)
 

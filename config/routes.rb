@@ -3,8 +3,6 @@
 Rails.application.routes.draw do
   
   get 'latest/index', as: :latest
-  get 'favorites/create'
-  get 'favorites/destroy'
   devise_for :users
 
   get '/search', to: 'search#new'
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :blog_posts
   resources :data_transfers, only: %i[create new]
+  resources :favorites, only: %i[update]
   resources :quotes
   resources :quote_topics, only: :update
   resources :sources
