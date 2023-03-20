@@ -30,11 +30,26 @@
     }
 }
 
+.quote-favorite-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .quote-show-text-div {
   display: flex;
   .hide-button-defaults {
     border: none;
     background-color: transparent;
+  }
+
+  .button-width {
+    width: 50px;
+  }
+
+  .gold-star {
+    color: gold;
   }
 }
 

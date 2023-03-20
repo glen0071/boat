@@ -4,6 +4,7 @@ class Quote < ApplicationRecord
   include FavoriteModule
 
   attr_accessor :points
+  attr_accessor :favorite
 
   belongs_to :user, optional: true
   belongs_to :author, optional: true
@@ -15,6 +16,10 @@ class Quote < ApplicationRecord
   attr_writer :new_author, :new_source, :new_topics
 
   validates :text, presence: true, uniqueness: true
+
+  def decorate_quote(user)
+    self.favorite = self.favorites.where(user: user).present?
+  end
 
   def best_title
     return 'Source: Unknown' if source.nil?

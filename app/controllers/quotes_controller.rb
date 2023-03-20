@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
-  # before_action :authenticate_user!, except: %i[index show]
   before_action :set_quote, only: %i[show edit update destroy learn]
 
   def home
@@ -18,7 +17,9 @@ class QuotesController < ApplicationController
               end
   end
 
-  def show; end
+  def show
+    @quote.decorate_quote(current_user) if current_user.present?
+  end
 
   def new
     @quote = Quote.new
