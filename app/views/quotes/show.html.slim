@@ -3,12 +3,13 @@
 p#notice.flash = notice
 
 div.quote-show-text-div
-  = form_with url: favorite_path(user_id: current_user.id, quote_id: @quote.id), local: true, class: 'quote-favorite-button', method: 'patch' do
-    button#fave-btn.hide-button-defaults.button-width
-      - if @quote.favorite
-        i.fa-solid.fa-star.gold-star
-      - else 
-        i.fa-regular.fa-star
+  - if current_user
+    = form_with url: favorite_path(user_id: current_user.id, quote_id: @quote.id), local: true, class: 'quote-favorite-button', method: 'patch' do
+      button#fave-btn.hide-button-defaults.button-width
+        - if @quote.favorite
+          i.fa-solid.fa-star.gold-star
+        - else 
+          i.fa-regular.fa-star
   div = @quote.text
 
 span
