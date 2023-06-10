@@ -335,6 +335,10 @@
       .field.margin-5.margin-top-15 
         .label = f.label :release_return_new_sentence
         .input = f.number_field :release_return_new_sentence
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :total_admissions
+        .input = f.number_field :total_admissions
 
   .commitments.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block.width-100 Commitments
@@ -369,6 +373,10 @@
       .field.margin-5.margin-top-15 
         .label = f.label :other_release
         .input = f.number_field :other_release
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :total_releases
+        .input = f.number_field :total_releases
 
   = f.submit
   = link_to 'Cancel', mn_data_path, class: "margin-left-10 btn btn-sm btn-secondary"
