@@ -1,0 +1,359 @@
+h1 MnData#index
+p#notice = notice
+
+.container
+  = form_for @mn_doc_data, url: mn_data_path, method: :post  do |f| 
+
+    .basics.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Basics
+      .d-flex
+        .field.margin-5.margin-top-15
+          .label = f.label :total
+          .input = f.number_field :total
+
+        .field.margin-5.margin-top-15
+          .label = f.label :publish_date
+          .input = f.date_field :publish_date
+
+    .gender.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Gender
+      .d-flex
+        .field.margin-5.margin-top-15
+          .label = f.label :females
+          .input = f.number_field :females
+
+        .field.margin-5.margin-top-15
+          .label = f.label :male
+          .input = f.number_field :male
+
+    .offenses.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Offenses
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :criminal_sexual_conduct
+          .input = f.number_field :criminal_sexual_conduct
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :homicide
+          .input = f.number_field :homicide
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :drugs_offense
+          .input = f.number_field :drugs_offense
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :weapons_offense
+          .input = f.number_field :weapons_offense
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :assault
+          .input = f.number_field :assault
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :assault_domestic
+          .input = f.number_field :assault_domestic
+
+
+    .offense-types.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Offense Types
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :person
+          .input = f.number_field :person
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :drugs_type_offense
+          .input = f.number_field :drugs_type_offense
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :weapons_type_offense
+          .input = f.number_field :weapons_type_offense
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :property
+          .input = f.number_field :property
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_type_offense
+          .input = f.number_field :other_type_offense
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :dwi
+          .input = f.number_field :dwi
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :psi_holds
+          .input = f.number_field :psi_holds
+
+    .meta.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Meta
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :number_of_lifers
+          .input = f.number_field :number_of_lifers
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :average_age
+          .input = f.number_field :average_age
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :current_inmates_over_fifty
+          .input = f.number_field :current_inmates_over_fifty
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :current_inmates_under_eighteen
+          .input = f.number_field :current_inmates_under_eighteen
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :average_population
+          .input = f.number_field :average_population
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :certified_as_adults
+          .input = f.number_field :certified_as_adults
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :inmates_employed
+          .input = f.number_field :inmates_employed
+
+    .race.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Race
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :white
+          .input = f.number_field :white
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :black
+          .input = f.number_field :black
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :american_indian
+          .input = f.number_field :american_indian
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :asian
+          .input = f.number_field :asian
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :unknown_other
+          .input = f.number_field :unknown_other
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :hispanic
+          .input = f.number_field :hispanic
+
+    .education.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Education Level
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :grades_0_8
+          .input = f.number_field :grades_0_8
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :grades_9_11
+          .input = f.number_field :grades_9_11
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :high_school
+          .input = f.number_field :high_school
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :ged
+          .input = f.number_field :ged
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :college
+          .input = f.number_field :college
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_unknown_edu
+          .input = f.number_field :other_unknown_edu
+
+    .marital.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Marital Status
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :single
+          .input = f.number_field :single
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :married
+          .input = f.number_field :married
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :divorced_separated
+          .input = f.number_field :divorced_separated
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_unknown_marital
+          .input = f.number_field :other_unknown_marital
+
+    .religion.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Religion
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :unknown_no_preference
+          .input = f.number_field :unknown_no_preference
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_christian
+          .input = f.number_field :other_christian
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_religions
+          .input = f.number_field :other_religions
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :catholic
+          .input = f.number_field :catholic
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :muslim
+          .input = f.number_field :muslim
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :native_american_religions
+          .input = f.number_field :native_american_religions
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :lutheran
+          .input = f.number_field :lutheran
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :baptist
+          .input = f.number_field :baptist
+
+    .county-commitment.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block County of Commitment
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :hennepin
+          .input = f.number_field :hennepin
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :ramsey
+          .input = f.number_field :ramsey
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :st_louis
+          .input = f.number_field :st_louis
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :stearns
+          .input = f.number_field :stearns
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :dakota
+          .input = f.number_field :dakota
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :faribault
+          .input = f.number_field :faribault
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :stillwater
+          .input = f.number_field :stillwater
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :moose_lake
+          .input = f.number_field :moose_lake
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :lino_lakes
+          .input = f.number_field :lino_lakes
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :rush_city
+          .input = f.number_field :rush_city
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :st_cloud
+          .input = f.number_field :st_cloud
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :shakopee
+          .input = f.number_field :shakopee
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :oak_park_heights
+          .input = f.number_field :oak_park_heights
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :willow_river
+          .input = f.number_field :willow_river
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :togo
+          .input = f.number_field :togo
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :red_wing
+          .input = f.number_field :red_wing
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :work_release
+          .input = f.number_field :work_release
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :county_jail_federal_prison
+          .input = f.number_field :county_jail_federal_prison
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :institution_community_work_crews
+          .input = f.number_field :institution_community_work_crews
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :non_doc_correctional_facility
+          .input = f.number_field :non_doc_correctional_facility
+
+    .admissions.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block.width-100 Admissions
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :new_commitments
+          .input = f.number_field :new_commitments
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :release_return_no_new_sentence
+          .input = f.number_field :release_return_no_new_sentence
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :release_return_new_sentence
+          .input = f.number_field :release_return_new_sentence
+
+    .commitments.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block.width-100 Commitments
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :january_june, 'January-June'
+          .input = f.number_field :january_june
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :july_december, 'July-December'
+          .input = f.number_field :july_december
+
+    .releases.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+      h3.block Releases
+      .d-flex.flex-wrap
+        .field.margin-5.margin-top-15 
+          .label = f.label :supervised_release_parole
+          .input = f.number_field :supervised_release_parole
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :community_programs
+          .input = f.number_field :community_programs
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :discharge
+          .input = f.number_field :discharge
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :work_release_covod
+          .input = f.number_field :work_release_covod
+
+        .field.margin-5.margin-top-15 
+          .label = f.label :other_release
+          .input = f.number_field :other_release
+
+    = f.submit 'Save'

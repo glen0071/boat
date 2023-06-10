@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  get 'mn_data', to: "mn_data#index"
+  get 'mn_data/new', to: "mn_data#new"
+  post 'mn_data', to: "mn_data#create"
   
   get 'latest/index', as: :latest
   devise_for :users

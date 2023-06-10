@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_28_223828) do
+ActiveRecord::Schema.define(version: 2023_06_10_023438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,108 @@ ActiveRecord::Schema.define(version: 2022_12_28_223828) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "incident_details", force: :cascade do |t|
+    t.string "officer_last_name"
+    t.bigint "drupal_incident_number"
+    t.string "allegation"
+    t.string "finding"
+    t.string "action"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "incidents", force: :cascade do |t|
+    t.bigint "drupal_officer_number"
+    t.string "case_number"
+    t.string "department"
+    t.string "office"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mn_doc_data", force: :cascade do |t|
+    t.date "publish_date"
+    t.integer "total"
+    t.integer "females"
+    t.integer "male"
+    t.integer "criminal_sexual_conduct"
+    t.integer "homicide"
+    t.integer "drugs_offense"
+    t.integer "weapons_offense"
+    t.integer "assault"
+    t.integer "assault_domestic"
+    t.integer "person"
+    t.integer "drugs_type_offense"
+    t.integer "weapons_type_offense"
+    t.integer "property"
+    t.integer "other_type_offense"
+    t.integer "dwi"
+    t.integer "psi_holds"
+    t.integer "number_of_lifers"
+    t.integer "average_age"
+    t.integer "current_inmates_over_fifty"
+    t.integer "current_inmates_under_eighteen"
+    t.integer "average_population"
+    t.integer "certified_as_adults"
+    t.integer "inmates_employed"
+    t.integer "white"
+    t.integer "black"
+    t.integer "american_indian"
+    t.integer "asian"
+    t.integer "unknown_other"
+    t.integer "hispanic"
+    t.integer "grades_0_8"
+    t.integer "grades_9_11"
+    t.integer "high_school"
+    t.integer "ged"
+    t.integer "college"
+    t.integer "other_unknown_edu"
+    t.integer "single"
+    t.integer "married"
+    t.integer "divorced_separated"
+    t.integer "other_unknown_marital"
+    t.integer "unknown_no_preference"
+    t.integer "other_christian"
+    t.integer "other_religions"
+    t.integer "catholic"
+    t.integer "muslim"
+    t.integer "native_american_religions"
+    t.integer "lutheran"
+    t.integer "baptist"
+    t.integer "hennepin"
+    t.integer "ramsey"
+    t.integer "st_louis"
+    t.integer "stearns"
+    t.integer "dakota"
+    t.integer "faribault"
+    t.integer "stillwater"
+    t.integer "moose_lake"
+    t.integer "lino_lakes"
+    t.integer "rush_city"
+    t.integer "st_cloud"
+    t.integer "shakopee"
+    t.integer "oak_park_heights"
+    t.integer "willow_river"
+    t.integer "togo"
+    t.integer "red_wing"
+    t.integer "work_release"
+    t.integer "county_jail_federal_prison"
+    t.integer "institution_community_work_crews"
+    t.integer "non_doc_correctional_facility"
+    t.integer "new_commitments"
+    t.integer "release_return_no_new_sentence"
+    t.integer "release_return_new_sentence"
+    t.integer "january_june"
+    t.integer "july_december"
+    t.integer "supervised_release_parole"
+    t.integer "community_programs"
+    t.integer "discharge"
+    t.integer "work_release_covod"
+    t.integer "other_release"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "moo_tasks", force: :cascade do |t|
     t.string "name"
     t.string "status"
@@ -97,6 +199,18 @@ ActiveRecord::Schema.define(version: 2022_12_28_223828) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
     t.datetime "hide_time", precision: 6
+  end
+
+  create_table "officers", force: :cascade do |t|
+    t.bigint "drupal_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "badge"
+    t.string "department"
+    t.string "pic_file_path"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "quote_topics", force: :cascade do |t|

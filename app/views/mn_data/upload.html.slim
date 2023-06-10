@@ -1,0 +1,5 @@
+h1 MnData#index
+
+= form_for @mn_doc_data, url: 'mn_data', multipart: true do |f| 
+  = f.file_field :file
+  = f.submit 'Upload'
