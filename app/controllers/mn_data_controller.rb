@@ -3,11 +3,15 @@ class MnDataController < ApplicationController
     @mn_doc_data = MnDocData.new
   end
 
+  def edit
+    @mn_doc_data = MnDocData.find(params[:id])
+  end
+
   def create
     new_data = MnDocData.new(mn_data_params)
 
     if new_data.save
-      redirect_to mn_data_new_url, notice: 'Data saved'
+      redirect_to new_mn_datum_url, notice: 'Data saved'
     else
       render :edit
     end
@@ -91,6 +95,8 @@ class MnDataController < ApplicationController
         :st_louis,
         :stearns,
         :dakota,
+        :anoka,
+        :washington,
         :faribault,
         :stillwater,
         :moose_lake,

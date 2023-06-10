@@ -2,9 +2,7 @@
 
 Rails.application.routes.draw do
 
-  get 'mn_data', to: "mn_data#index"
-  get 'mn_data/new', to: "mn_data#new"
-  post 'mn_data', to: "mn_data#create"
+  
   
   get 'latest/index', as: :latest
   devise_for :users
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
   post '/search', to: 'search#create'
 
   resources :authors
+  resources :mn_data
   resources :blog_posts
   resources :data_transfers, only: %i[create new]
   resources :favorites, only: %i[update]

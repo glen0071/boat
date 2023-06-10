@@ -1,4 +1,4 @@
-h1 MnData#index
+h1 MnData
 
 - @mn_doc_data.order(publish_date: :desc).each do |datum|
-  p = datum.publish_date
+  p = link_to datum.publish_date, edit_mn_datum_path(datum)
