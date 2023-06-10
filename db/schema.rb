@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_10_023438) do
+ActiveRecord::Schema.define(version: 2023_06_10_060637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,10 +127,10 @@ ActiveRecord::Schema.define(version: 2023_06_10_023438) do
     t.integer "dwi"
     t.integer "psi_holds"
     t.integer "number_of_lifers"
-    t.integer "average_age"
+    t.float "average_age"
     t.integer "current_inmates_over_fifty"
     t.integer "current_inmates_under_eighteen"
-    t.integer "average_population"
+    t.float "average_population"
     t.integer "certified_as_adults"
     t.integer "inmates_employed"
     t.integer "white"
@@ -189,6 +189,9 @@ ActiveRecord::Schema.define(version: 2023_06_10_023438) do
     t.integer "other_release"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "burglary"
+    t.integer "larceny"
+    t.integer "robbery"
   end
 
   create_table "moo_tasks", force: :cascade do |t|
