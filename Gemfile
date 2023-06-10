@@ -9,6 +9,7 @@ gem 'rails', '~> 7.0.1'
 
 # Backend
 gem 'devise'
+gem 'pdf-reader'
 gem 'pg'
 gem 'puma'
 gem 'seedbank'
