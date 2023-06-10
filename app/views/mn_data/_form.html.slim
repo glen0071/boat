@@ -370,4 +370,5 @@
         .label = f.label :other_release
         .input = f.number_field :other_release
 
-  = f.submit 'Save'
+  = f.submit
+  = link_to 'Cancel', mn_data_path, class: "margin-left-10 btn btn-sm btn-secondary"
