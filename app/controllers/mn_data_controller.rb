@@ -7,6 +7,13 @@ class MnDataController < ApplicationController
     @mn_doc_data = MnDocData.find(params[:id])
   end
 
+  def update
+    mn_doc_data = MnDocData.find(params[:id])
+    mn_doc_data.update(mn_data_params)
+
+    redirect_to mn_data_url
+  end
+
   def create
     new_data = MnDocData.new(mn_data_params)
 
@@ -85,6 +92,7 @@ class MnDataController < ApplicationController
         :other_christian,
         :other_religions,
         :catholic,
+        :jewish,
         :muslim,
         :native_american_religions,
         :lutheran,
@@ -116,11 +124,13 @@ class MnDataController < ApplicationController
         :new_commitments,
         :release_return_no_new_sentence,
         :release_return_new_sentence,
+        :total_admissions,
 
         :january_june,
         :july_december,
 
         :supervised_release_parole,
+        :total_releases,
         :community_programs,
         :discharge,
         :work_release_covod,

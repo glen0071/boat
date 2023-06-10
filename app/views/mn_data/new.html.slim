@@ -2,4 +2,5 @@ h1 Add some data
 p#notice = notice
 
 .container
-  = render 'form', quote: @mn_doc_data
+  = form_for @mn_doc_data, url: mn_data_path, method: :post  do |f| 
+    = render 'form', quote: @mn_doc_data, f: f
