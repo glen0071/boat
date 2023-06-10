@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_10_134325) do
+ActiveRecord::Schema.define(version: 2023_06_10_135904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2023_06_10_134325) do
   create_table "mn_doc_data", force: :cascade do |t|
     t.date "publish_date"
     t.integer "total"
-    t.integer "females"
+    t.integer "female"
     t.integer "male"
     t.integer "criminal_sexual_conduct"
     t.integer "homicide"

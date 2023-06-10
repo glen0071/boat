@@ -42,7 +42,7 @@ class MnDataController < ApplicationController
       .require(:mn_doc_data)
       .permit(
         :publish_date, :total,
-        :females, :male,
+        :female, :male,
         :criminal_sexual_conduct,
         :homicide,
         :drugs_offense,
