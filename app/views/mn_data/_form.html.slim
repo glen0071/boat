@@ -68,11 +68,11 @@
         .input = f.number_field :person
 
       .field.margin-5.margin-top-15 
-        .label = f.label :drugs_type_offense
+        .label = f.label :drugs_type_offense, 'Drugs'
         .input = f.number_field :drugs_type_offense
 
       .field.margin-5.margin-top-15 
-        .label = f.label :weapons_type_offense
+        .label = f.label :weapons_type_offense, 'Weapons'
         .input = f.number_field :weapons_type_offense
 
       .field.margin-5.margin-top-15 
@@ -80,46 +80,46 @@
         .input = f.number_field :property
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_type_offense
+        .label = f.label :other_type_offense, 'Other'
         .input = f.number_field :other_type_offense
 
       .field.margin-5.margin-top-15 
-        .label = f.label :dwi
+        .label = f.label :dwi, 'DWI'
         .input = f.number_field :dwi
 
       .field.margin-5.margin-top-15 
-        .label = f.label :psi_holds
+        .label = f.label :psi_holds, 'PSI Holds'
         .input = f.number_field :psi_holds
 
   .meta.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block Meta
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :number_of_lifers
+        .label = f.label :number_of_lifers, 'Number of Lifers'
         .input = f.number_field :number_of_lifers
 
       .field.margin-5.margin-top-15 
-        .label = f.label :average_age
+        .label = f.label :average_age, 'Average Age'
         .input = f.number_field :average_age
 
       .field.margin-5.margin-top-15 
-        .label = f.label :current_inmates_over_fifty
+        .label = f.label :current_inmates_over_fifty, 'Inmates Over 50'
         .input = f.number_field :current_inmates_over_fifty
 
       .field.margin-5.margin-top-15 
-        .label = f.label :current_inmates_under_eighteen
+        .label = f.label :current_inmates_under_eighteen, 'Inmates Under 18'
         .input = f.number_field :current_inmates_under_eighteen
 
       .field.margin-5.margin-top-15 
-        .label = f.label :average_population
+        .label = f.label :average_population, 'Average Population'
         .input = f.number_field :average_population
 
       .field.margin-5.margin-top-15 
-        .label = f.label :certified_as_adults
+        .label = f.label :certified_as_adults, 'Certified as Adults'
         .input = f.number_field :certified_as_adults
 
       .field.margin-5.margin-top-15 
-        .label = f.label :inmates_employed
+        .label = f.label :inmates_employed, 'Inmates employed'
         .input = f.number_field :inmates_employed
 
   .race.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
@@ -134,7 +134,7 @@
         .input = f.number_field :black
 
       .field.margin-5.margin-top-15 
-        .label = f.label :american_indian
+        .label = f.label :american_indian, 'Native American'
         .input = f.number_field :american_indian
 
       .field.margin-5.margin-top-15 
@@ -142,7 +142,7 @@
         .input = f.number_field :asian
 
       .field.margin-5.margin-top-15 
-        .label = f.label :unknown_other
+        .label = f.label :unknown_other, 'Unknown/Other'
         .input = f.number_field :unknown_other
 
       .field.margin-5.margin-top-15 
@@ -153,11 +153,11 @@
     h3.block Education Level
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :grades_0_8
+        .label = f.label :grades_0_8, "Grades 0-8"
         .input = f.number_field :grades_0_8
 
       .field.margin-5.margin-top-15 
-        .label = f.label :grades_9_11
+        .label = f.label :grades_9_11, "Grades 9-11"
         .input = f.number_field :grades_9_11
 
       .field.margin-5.margin-top-15 
@@ -165,7 +165,7 @@
         .input = f.number_field :high_school
 
       .field.margin-5.margin-top-15 
-        .label = f.label :ged
+        .label = f.label :ged, "GED"
         .input = f.number_field :ged
 
       .field.margin-5.margin-top-15 
@@ -173,7 +173,7 @@
         .input = f.number_field :college
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_unknown_edu
+        .label = f.label :other_unknown_edu, "Other/Unknown"
         .input = f.number_field :other_unknown_edu
 
   .marital.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
@@ -188,26 +188,26 @@
         .input = f.number_field :married
 
       .field.margin-5.margin-top-15 
-        .label = f.label :divorced_separated
+        .label = f.label :divorced_separated, 'Divorced/Separated'
         .input = f.number_field :divorced_separated
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_unknown_marital
+        .label = f.label :other_unknown_marital, 'Other/Unknown'
         .input = f.number_field :other_unknown_marital
 
   .religion.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block Religion
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :unknown_no_preference
+        .label = f.label :unknown_no_preference, 'Unknown/No Preference'
         .input = f.number_field :unknown_no_preference
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_christian
+        .label = f.label :other_christian, 'Christian (Other)'
         .input = f.number_field :other_christian
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_religions
+        .label = f.label :other_religions, 'Other'
         .input = f.number_field :other_religions
 
       .field.margin-5.margin-top-15 
@@ -219,7 +219,7 @@
         .input = f.number_field :muslim
 
       .field.margin-5.margin-top-15 
-        .label = f.label :native_american_religions
+        .label = f.label :native_american_religions, 'Native American Religions'
         .input = f.number_field :native_american_religions
 
       .field.margin-5.margin-top-15 
@@ -229,6 +229,14 @@
       .field.margin-5.margin-top-15 
         .label = f.label :baptist
         .input = f.number_field :baptist
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :jewish
+        .input = f.number_field :jewish
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :protestant
+        .input = f.number_field :protestant
 
   .county-commitment.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block County of Commitment
@@ -242,7 +250,7 @@
         .input = f.number_field :ramsey
 
       .field.margin-5.margin-top-15 
-        .label = f.label :st_louis
+        .label = f.label :st_louis, "St. Louis"
         .input = f.number_field :st_louis
 
       .field.margin-5.margin-top-15 
@@ -262,19 +270,19 @@
         .input = f.number_field :stillwater
 
       .field.margin-5.margin-top-15 
-        .label = f.label :moose_lake
+        .label = f.label :moose_lake, 'Moose Lake'
         .input = f.number_field :moose_lake
 
       .field.margin-5.margin-top-15 
-        .label = f.label :lino_lakes
+        .label = f.label :lino_lakes, 'Lino Lakes'
         .input = f.number_field :lino_lakes
 
       .field.margin-5.margin-top-15 
-        .label = f.label :rush_city
+        .label = f.label :rush_city, 'Rush City'
         .input = f.number_field :rush_city
 
       .field.margin-5.margin-top-15 
-        .label = f.label :st_cloud
+        .label = f.label :st_cloud, "St. Cloud"
         .input = f.number_field :st_cloud
 
       .field.margin-5.margin-top-15 
@@ -290,11 +298,11 @@
         .input = f.number_field :washington
 
       .field.margin-5.margin-top-15 
-        .label = f.label :oak_park_heights
+        .label = f.label :oak_park_heights, 'Oak Park Heights'
         .input = f.number_field :oak_park_heights
 
       .field.margin-5.margin-top-15 
-        .label = f.label :willow_river
+        .label = f.label :willow_river, 'Willow River'
         .input = f.number_field :willow_river
 
       .field.margin-5.margin-top-15 
@@ -302,42 +310,42 @@
         .input = f.number_field :togo
 
       .field.margin-5.margin-top-15 
-        .label = f.label :red_wing
+        .label = f.label :red_wing, 'Red Wing'
         .input = f.number_field :red_wing
 
       .field.margin-5.margin-top-15 
-        .label = f.label :work_release
+        .label = f.label :work_release, 'Work Release'
         .input = f.number_field :work_release
 
       .field.margin-5.margin-top-15 
-        .label = f.label :county_jail_federal_prison
+        .label = f.label :county_jail_federal_prison, 'County Jail/Federal Prison'
         .input = f.number_field :county_jail_federal_prison
 
       .field.margin-5.margin-top-15 
-        .label = f.label :institution_community_work_crews
+        .label = f.label :institution_community_work_crews, 'Institution Community Work Crews'
         .input = f.number_field :institution_community_work_crews
 
       .field.margin-5.margin-top-15 
-        .label = f.label :non_doc_correctional_facility
+        .label = f.label :non_doc_correctional_facility, 'Non-DOC Facility'
         .input = f.number_field :non_doc_correctional_facility
 
   .admissions.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block.width-100 Admissions
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :new_commitments
+        .label = f.label :new_commitments, 'New Commitments'
         .input = f.number_field :new_commitments
 
       .field.margin-5.margin-top-15 
-        .label = f.label :release_return_no_new_sentence
+        .label = f.label :release_return_no_new_sentence, 'No New Sentence'
         .input = f.number_field :release_return_no_new_sentence
 
       .field.margin-5.margin-top-15 
-        .label = f.label :release_return_new_sentence
+        .label = f.label :release_return_new_sentence, 'New Sentence'
         .input = f.number_field :release_return_new_sentence
       
       .field.margin-5.margin-top-15 
-        .label = f.label :total_admissions
+        .label = f.label :total_admissions, 'Total Admissions'
         .input = f.number_field :total_admissions
 
   .commitments.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
@@ -355,11 +363,11 @@
     h3.block Releases
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :supervised_release_parole
+        .label = f.label :supervised_release_parole, 'Supervised Release/Parole'
         .input = f.number_field :supervised_release_parole
 
       .field.margin-5.margin-top-15 
-        .label = f.label :community_programs
+        .label = f.label :community_programs, 'Community Programs'
         .input = f.number_field :community_programs
 
       .field.margin-5.margin-top-15 
@@ -367,15 +375,15 @@
         .input = f.number_field :discharge
 
       .field.margin-5.margin-top-15 
-        .label = f.label :work_release_covod
+        .label = f.label :work_release_covod, 'Work Release/COVID'
         .input = f.number_field :work_release_covod
 
       .field.margin-5.margin-top-15 
-        .label = f.label :other_release
+        .label = f.label :other_release, 'Other Release'
         .input = f.number_field :other_release
       
       .field.margin-5.margin-top-15 
-        .label = f.label :total_releases
+        .label = f.label :total_releases, 'Total Releases'
         .input = f.number_field :total_releases
 
   = f.submit
