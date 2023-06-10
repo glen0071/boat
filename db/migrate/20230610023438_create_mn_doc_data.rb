@@ -1,4 +1,4 @@
-class Model < ActiveRecord::Migration[7.0]
+class CreateMnDocData < ActiveRecord::Migration[7.0]
   def change
     create_table :mn_doc_data do |t|
 
