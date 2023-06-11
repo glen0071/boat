@@ -143,6 +143,12 @@ class MnDataController < ApplicationController
         :lino_lakes_facility,
         :shakopee_facility,
         :willow_river_facility,
+        :oak_park_heights_facility,
+        :faribault_facility,
+        :rush_city_heights_facility,
+        :togo_facility,
+        :moose_lake_facility,
+        :red_wing_facility,
 
         :total_staff,
         :asian_staff,

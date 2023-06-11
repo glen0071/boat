@@ -128,7 +128,7 @@
       
       .field.margin-5.margin-top-15 
         .label = f.label :average_length_of_stay, 'Average Length of Stay'
-        .input = f.number_field :average_length_of_stay
+        .input = f.number_field :average_length_of_stay, step: :any
 
   .race.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block Race
@@ -345,11 +345,11 @@
         .input = f.number_field :new_commitments
 
       .field.margin-5.margin-top-15 
-        .label = f.label :release_return_no_new_sentence, 'No New Sentence'
+        .label = f.label :release_return_no_new_sentence, 'Return, No New Sentence'
         .input = f.number_field :release_return_no_new_sentence
 
       .field.margin-5.margin-top-15 
-        .label = f.label :release_return_new_sentence, 'New Sentence'
+        .label = f.label :release_return_new_sentence, 'Return, New Sentence'
         .input = f.number_field :release_return_new_sentence
       
       .field.margin-5.margin-top-15 
@@ -416,6 +416,30 @@
       .field.margin-5.margin-top-15 
         .label = f.label :willow_river_facility, 'Willow River Facility'
         .input = f.number_field :willow_river_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :oak_park_heights_facility, 'Willow River Facility'
+        .input = f.number_field :oak_park_heights_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :red_wing_facility, 'Willow River Facility'
+        .input = f.number_field :red_wing_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :faribault_facility, 'Willow River Facility'
+        .input = f.number_field :faribault_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :rush_city_facility, 'Willow River Facility'
+        .input = f.number_field :rush_city_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :togo_facility, 'Willow River Facility'
+        .input = f.number_field :togo_facility
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :moose_lake_facility, 'Willow River Facility'
+        .input = f.number_field :moose_lake_facility
   
   .staff.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block Staff

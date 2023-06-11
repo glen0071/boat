@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_11_042531) do
+ActiveRecord::Schema.define(version: 2023_06_11_045101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,12 @@ ActiveRecord::Schema.define(version: 2023_06_11_042531) do
     t.integer "total_staff"
     t.integer "average_length_of_stay"
     t.integer "total_new_commitment"
+    t.integer "oak_park_heights_facility"
+    t.integer "red_wing_facility"
+    t.integer "faribault_facility"
+    t.integer "rush_city_facility"
+    t.integer "togo_facility"
+    t.integer "moose_lake_facility"
   end
 
   create_table "moo_tasks", force: :cascade do |t|
