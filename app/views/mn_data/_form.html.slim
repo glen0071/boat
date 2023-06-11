@@ -95,7 +95,11 @@
     h3.block Meta
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :number_of_lifers, 'Number of Lifers'
+        .label = f.label :number_of_mn_lifers, 'MN Lifers'
+        .input = f.number_field :number_of_mn_lifers
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :number_of_lifers, 'Total Lifers'
         .input = f.number_field :number_of_lifers
 
       .field.margin-5.margin-top-15 
