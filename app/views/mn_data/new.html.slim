@@ -4,4 +4,6 @@ p#notice = notice
 .container
   = form_for @mn_doc_data, url: mn_data_path, method: :post  do |f| 
     = render 'form', quote: @mn_doc_data, f: f
-
+    = f.submit
+    = link_to 'Cancel', mn_data_path, class: "margin-left-10 btn btn-sm btn-secondary"
+    

@@ -134,7 +134,13 @@ class MnDataController < ApplicationController
         :community_programs,
         :discharge,
         :work_release_covod,
-        :other_release
+        :other_release,
+
+        :stillwater_facility,
+        :st_cloud_facility,
+        :lino_lakes_facility,
+        :shakopee_facility,
+        :willow_river_facility
       )
   end
 end

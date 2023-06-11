@@ -385,6 +385,26 @@
       .field.margin-5.margin-top-15 
         .label = f.label :total_releases, 'Total Releases'
         .input = f.number_field :total_releases
+  
+  .facilities.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+    h3.block Facilities
+    .d-flex.flex-wrap
+      .field.margin-5.margin-top-15 
+        .label = f.label :stillwater_facility
+        .input = f.number_field :stillwater_facility
 
-  = f.submit
-  = link_to 'Cancel', mn_data_path, class: "margin-left-10 btn btn-sm btn-secondary"
+      .field.margin-5.margin-top-15 
+        .label = f.label :st_cloud_facility
+        .input = f.number_field :st_cloud_facility
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :lino_lakes_facility
+        .input = f.number_field :lino_lakes_facility
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :shakopee_facility
+        .input = f.number_field :shakopee_facility
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :willow_river_facility
+        .input = f.number_field :willow_river_facility
