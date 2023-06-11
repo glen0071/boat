@@ -141,7 +141,14 @@ class MnDataController < ApplicationController
         :st_cloud_facility,
         :lino_lakes_facility,
         :shakopee_facility,
-        :willow_river_facility
+        :willow_river_facility,
+
+        :total_staff,
+        :asian_staff,
+        :black_staff,
+        :hispanic_staff,
+        :white_staff,
+        :native_staff
       )
   end
 end

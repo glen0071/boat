@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_11_033002) do
+ActiveRecord::Schema.define(version: 2023_06_11_034429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,12 @@ ActiveRecord::Schema.define(version: 2023_06_11_033002) do
     t.integer "shakopee_facility"
     t.integer "willow_river_facility"
     t.integer "mn_lifers"
+    t.integer "white_staff"
+    t.integer "black_staff"
+    t.integer "native_staff"
+    t.integer "asian_staff"
+    t.integer "hispanic_staff"
+    t.integer "total_staff"
   end
 
   create_table "moo_tasks", force: :cascade do |t|

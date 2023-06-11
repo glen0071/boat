@@ -394,21 +394,48 @@
     h3.block Facilities
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
-        .label = f.label :stillwater_facility
+        .label = f.label :stillwater_facility, 'Stillwater Facility'
         .input = f.number_field :stillwater_facility
 
       .field.margin-5.margin-top-15 
-        .label = f.label :st_cloud_facility
+        .label = f.label :st_cloud_facility, 'St. Cloud Facility'
         .input = f.number_field :st_cloud_facility
 
       .field.margin-5.margin-top-15 
-        .label = f.label :lino_lakes_facility
+        .label = f.label :lino_lakes_facility, 'Lino Lakes Facility'
         .input = f.number_field :lino_lakes_facility
 
       .field.margin-5.margin-top-15 
-        .label = f.label :shakopee_facility
+        .label = f.label :shakopee_facility, 'Shakopee Facility'
         .input = f.number_field :shakopee_facility
 
       .field.margin-5.margin-top-15 
-        .label = f.label :willow_river_facility
+        .label = f.label :willow_river_facility, 'Willow River Facility'
         .input = f.number_field :willow_river_facility
+  
+  .staff.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+    h3.block Staff
+    .d-flex.flex-wrap
+      .field.margin-5.margin-top-15 
+        .label = f.label :total_staff, 'Total Staff'
+        .input = f.number_field :total_staff
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :asian_staff, 'Asian Staff'
+        .input = f.number_field :asian_staff
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :black_staff, 'Black Staff'
+        .input = f.number_field :black_staff
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :hispanic_staff, 'Hispanic Staff'
+        .input = f.number_field :hispanic_staff
+
+      .field.margin-5.margin-top-15 
+        .label = f.label :white_staff, 'White Staff'
+        .input = f.number_field :white_staff
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :native_staff, 'Native American Staff'
+        .input = f.number_field :native_staff
