@@ -100,7 +100,7 @@
 
       .field.margin-5.margin-top-15 
         .label = f.label :average_age, 'Average Age'
-        .input = f.number_field :average_age
+        .input = f.number_field :average_age, step: :any
 
       .field.margin-5.margin-top-15 
         .label = f.label :current_inmates_over_fifty, 'Inmates Over 50'
@@ -112,7 +112,7 @@
 
       .field.margin-5.margin-top-15 
         .label = f.label :average_population, 'Average Population'
-        .input = f.number_field :average_population
+        .input = f.number_field :average_population, step: :any
 
       .field.margin-5.margin-top-15 
         .label = f.label :certified_as_adults, 'Certified as Adults'
