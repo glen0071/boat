@@ -61,8 +61,8 @@ class MnDataController < ApplicationController
         :dwi,
         :psi_holds,
 
-        :number_of_lifers,
-        :number_of_mn_lifers,
+        :total_lifers,
+        :mn_lifers,
         :average_age,
         :current_inmates_over_fifty,
         :current_inmates_under_eighteen,
