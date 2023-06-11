@@ -69,6 +69,7 @@ class MnDataController < ApplicationController
         :average_population,
         :certified_as_adults,
         :inmates_employed,
+        :average_length_of_stay,
 
         :white,
         :black,

@@ -91,8 +91,8 @@
         .label = f.label :psi_holds, 'PSI Holds'
         .input = f.number_field :psi_holds
 
-  .meta.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
-    h3.block Meta
+  .general.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
+    h3.block General
     .d-flex.flex-wrap
       .field.margin-5.margin-top-15 
         .label = f.label :mn_lifers, 'MN Lifers'
@@ -125,6 +125,10 @@
       .field.margin-5.margin-top-15 
         .label = f.label :inmates_employed, 'Inmates employed'
         .input = f.number_field :inmates_employed
+      
+      .field.margin-5.margin-top-15 
+        .label = f.label :average_length_of_stay, 'Average Length of Stay'
+        .input = f.number_field :average_length_of_stay
 
   .race.d-flex.margin-10.background-color-lightgray.padding-1.width-100.flex-wrap
     h3.block Race
