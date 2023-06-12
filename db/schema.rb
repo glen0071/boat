@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_11_045101) do
+ActiveRecord::Schema.define(version: 2023_06_12_092753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 2023_06_11_045101) do
     t.integer "inmates_employed"
     t.integer "white"
     t.integer "black"
-    t.integer "american_indian"
+    t.integer "native_american"
     t.integer "asian"
-    t.integer "unknown_other"
+    t.integer "unknown_other_race"
     t.integer "hispanic"
     t.integer "grades_0_8"
     t.integer "grades_9_11"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2023_06_11_045101) do
     t.integer "married"
     t.integer "divorced_separated"
     t.integer "other_unknown_marital"
-    t.integer "unknown_no_preference"
+    t.integer "unknown_no_preference_religion"
     t.integer "other_christian"
     t.integer "other_religions"
     t.integer "catholic"

@@ -1,6 +1,5 @@
 h1 MnData
 
-
 table.table
   thead
     tr
@@ -13,6 +12,30 @@ table.table
       th[scope="col"]
         | Female
       th[scope="col"]
+        | White
+      th[scope="col"]
+        | Black
+      th[scope="col"]
+        | Native American
+      th[scope="col"]
+        | Hispanic
+      th[scope="col"]
+        | Asian
+      th[scope="col"]
+        | Unknown/Other
+      th[scope="col"]
+        | Total Admissions
+      th[scope="col"]
+        | Total Releases
+      th[scope="col"]
+        | Over 50
+      th[scope="col"]
+        | Under 18
+      th[scope="col"]
+        | Length of Stay
+      th[scope="col"]
+        | Average Age
+      th[scope="col"]
   tbody
     - @mn_doc_data.order(publish_date: :desc).each do |datum|
   
@@ -21,4 +44,16 @@ table.table
         td = datum.total
         td = datum.male
         td = datum.female
+        td = datum.white
+        td = datum.black
+        td = datum.native_american
+        td = datum.hispanic
+        td = datum.asian
+        td = datum.unknown_other_race
+        td = datum.total_admissions
+        td = datum.total_releases
+        td = datum.current_inmates_over_fifty
+        td = datum.current_inmates_under_eighteen
+        td = datum.average_length_of_stay
+        td = datum.average_age
         td = link_to 'Edit', edit_mn_datum_path(datum)

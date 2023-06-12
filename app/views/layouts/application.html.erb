@@ -33,25 +33,23 @@
       <%= render partial: 'shared/admin_navbar' %>
     <% end %>
 
-    <div class="container"> <%= yield %> </div>
+    <div class="container-fluid"> <%= yield %> </div>
     <% unless params['controller'] == 'moo_tasks' || params['controller'] == 'home' %>
       <footer class="text-muted">
         <hr class="mt-5">
-        <div class="container">
-          <footer class="py-3 my-4">
-            <ul class="nav justify-content-center pb-3 mb-3">
-              <% if current_user&.admin? %>
-                <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
-              <% end %>
-              <li class="nav-item"><a class="nav-link" href="/about-boat">About Boat</a></li>
-              <li class="nav-item"><a class="nav-link" href="/quotes_home">Boat Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="/">Eddie G dot me</a></li>
-              <% if current_user&.admin? %>
-                <li class="nav-item"><%= link_to "Moo Tasks", moo_tasks_path, class: 'nav-link' %></li>
-              <% end %>
-            </ul>
-          </footer>
-        </div>
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center pb-3 mb-3">
+            <% if current_user&.admin? %>
+              <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+            <% end %>
+            <li class="nav-item"><a class="nav-link" href="/about-boat">About Boat</a></li>
+            <li class="nav-item"><a class="nav-link" href="/quotes_home">Boat Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Eddie G dot me</a></li>
+            <% if current_user&.admin? %>
+              <li class="nav-item"><%= link_to "Moo Tasks", moo_tasks_path, class: 'nav-link' %></li>
+            <% end %>
+          </ul>
+        </footer>
       </footer>
     <% end %>
   </body>
