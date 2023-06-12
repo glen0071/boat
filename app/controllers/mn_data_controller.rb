@@ -70,6 +70,7 @@ class MnDataController < ApplicationController
         :certified_as_adults,
         :inmates_employed,
         :average_length_of_stay,
+        :average_length_of_sentence,
 
         :white,
         :black,
