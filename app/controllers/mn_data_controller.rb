@@ -137,7 +137,7 @@ class MnDataController < ApplicationController
         :total_releases,
         :community_programs,
         :discharge,
-        :work_release_covod,
+        :work_release_covid,
         :other_release,
 
         :stillwater_facility,
