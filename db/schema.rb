@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_12_103055) do
+ActiveRecord::Schema.define(version: 2023_06_12_115514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 2023_06_12_103055) do
     t.integer "supervised_release_parole"
     t.integer "community_programs"
     t.integer "discharge"
-    t.integer "work_release_covod"
+    t.integer "work_release_covid"
     t.integer "other_release"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -219,6 +219,9 @@ ActiveRecord::Schema.define(version: 2023_06_12_103055) do
     t.integer "togo_facility"
     t.integer "moose_lake_facility"
     t.integer "average_length_of_sentence"
+    t.integer "work_release_facility"
+    t.integer "contract_facilities"
+    t.integer "work_crew_jail"
   end
 
   create_table "moo_tasks", force: :cascade do |t|

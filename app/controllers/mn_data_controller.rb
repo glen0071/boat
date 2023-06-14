@@ -18,7 +18,7 @@ class MnDataController < ApplicationController
     new_data = MnDocData.new(mn_data_params)
 
     if new_data.save
-      redirect_to new_mn_datum_url, notice: 'Data saved'
+      redirect_to mn_data_path, notice: 'Data saved'
     else
       render :edit
     end
