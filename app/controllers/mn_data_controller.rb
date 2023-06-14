@@ -133,6 +133,7 @@ class MnDataController < ApplicationController
         :july_december,
 
         :supervised_release_parole,
+        :intensive_community_supervision,
         :total_releases,
         :community_programs,
         :discharge,
