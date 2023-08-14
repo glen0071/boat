@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-  
+  get 'trends', to: 'trends#index'
   
   get 'latest/index', as: :latest
   devise_for :users
