@@ -15,10 +15,10 @@ h5
     = @author.about
 p
   - @author.quotes.each do |quote|
-    div = link_to quote.text, quote, class: 'quote-text'
-    - if quote.source&.title.present?
-      div.pull-right
-        | #{quote.source&.title}
+    .card.m-auto.my-2.d-flex.flex-row 
+      = link_to quote.text, quote, class: 'quote-text'
+      - if quote.source&.title.present?
+          | #{quote.source&.title}
 
 - @author.sources.each do |source|
   p = source.title
