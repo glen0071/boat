@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get '/quotes/:id/learn', to: 'quotes#learn', as: :learn
   get '/quotes_home', to: 'quotes#home'
+  get '/boat', to: 'quotes#home'
 
   get '/about-boat', to: 'quotes#about'
   get '/home', to: 'home#index'

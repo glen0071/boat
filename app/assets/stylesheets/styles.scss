@@ -361,3 +361,15 @@ p.about-page {
 .margin-left-10 {
   margin-left: 10px;
 }
+
+@media screen and (min-width:768px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .quote-show {
+    width: 50%;
+  }
+}

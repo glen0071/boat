@@ -10,11 +10,11 @@ class QuotesController < ApplicationController
   end
 
   def index
-    @quotes = if params[:filter] === 'latest'
-                Quote.order(created_at: :desc).limit(25)
-              else
-                Quote.order('RANDOM()').limit(25)
-              end
+    @quotes = if params[:filter] === 'random'
+      Quote.order('RANDOM()').limit(10)
+    else
+      Quote.order(created_at: :desc).limit(10)
+    end
   end
 
   def show
