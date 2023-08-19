@@ -11,7 +11,7 @@ gem 'rails', '~> 7.0.1'
 gem 'devise'
 gem 'pdf-reader'
 gem 'pg'
-gem 'puma'
+gem 'puma', '~> 5.6.7'
 gem 'seedbank'
 
 # Frontend

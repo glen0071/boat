@@ -195,7 +195,7 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
-    puma (5.6.4)
+    puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.8)
@@ -364,7 +364,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   pry-remote
-  puma
+  puma (~> 5.6.7)
   rails (~> 7.0.1)
   react-rails
   rspec-rails
