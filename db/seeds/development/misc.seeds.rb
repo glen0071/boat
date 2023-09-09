@@ -17,3 +17,27 @@ BlogPost.create(
   display_date: Date.today - 100,
   source: 'Minnesota Reformer'
 )
+
+mn_doc_data = [
+  {
+    publish_date: Date.parse('July 2000'),
+    total: 6276,
+    male: 5894,
+    female: 382,
+    white: 2933,
+    black: 2264
+  },
+  {
+    publish_date: Date.parse('July 2010'),
+    total: 7276,
+    male: 6894,
+    female: 382,
+    white: 2933,
+    black: 2264
+  }
+]
+
+mn_doc_data.each do |data|
+  MnDocData.find_or_create_by( data )
+end
+
