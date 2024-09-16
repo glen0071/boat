@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_09_203408) do
+ActiveRecord::Schema.define(version: 2024_09_16_040014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 2023_09_09_203408) do
     t.string "status"
   end
 
+  create_table "case_charges", force: :cascade do |t|
+    t.bigint "holding_case_id", null: false
+    t.integer "charge_number"
+    t.string "description"
+    t.string "severity_of_charge"
+    t.string "statute"
+    t.string "charge_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["holding_case_id"], name: "index_case_charges_on_holding_case_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "author_id"
@@ -88,6 +100,20 @@ ActiveRecord::Schema.define(version: 2023_09_09_203408) do
     t.index ["quote_id"], name: "index_favorites_on_quote_id"
     t.index ["topic_id"], name: "index_favorites_on_topic_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "holding_cases", force: :cascade do |t|
+    t.bigint "jail_booking_id", null: false
+    t.string "case_type"
+    t.string "mncis_number"
+    t.string "charged_by"
+    t.string "clear_reason"
+    t.boolean "holding_without_bail"
+    t.string "bail_options"
+    t.datetime "next_court_appearance", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["jail_booking_id"], name: "index_holding_cases_on_jail_booking_id"
   end
 
   create_table "incident_details", force: :cascade do |t|
@@ -105,6 +131,22 @@ ActiveRecord::Schema.define(version: 2023_09_09_203408) do
     t.string "case_number"
     t.string "department"
     t.string "office"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jail_bookings", force: :cascade do |t|
+    t.string "booking_number"
+    t.string "full_name"
+    t.integer "age_at_booking"
+    t.string "inmate_number"
+    t.string "custody_status"
+    t.string "housing_location"
+    t.datetime "received_date_time", precision: 6
+    t.string "arrested_by"
+    t.datetime "released_date_time", precision: 6
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -338,10 +380,12 @@ ActiveRecord::Schema.define(version: 2023_09_09_203408) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authors", "users"
+  add_foreign_key "case_charges", "holding_cases"
   add_foreign_key "favorites", "authors"
   add_foreign_key "favorites", "quotes"
   add_foreign_key "favorites", "topics"
   add_foreign_key "favorites", "users"
+  add_foreign_key "holding_cases", "jail_bookings"
   add_foreign_key "quote_topics", "quotes"
   add_foreign_key "quote_topics", "topics"
   add_foreign_key "quotes", "authors"

@@ -1,0 +1,42 @@
+= form_for @jail_booking do |f|
+  - if @jail_booking.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@jail_booking.errors.count, 'error')} prohibited this jail_booking from being saved:"
+      ul
+        - @jail_booking.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :full_name
+    = f.text_field :full_name
+  .field
+    = f.label :age
+    = f.number_field :age
+  .field
+    = f.label :inmate_number
+    = f.text_field :inmate_number
+  .field
+    = f.label :custody_status
+    = f.text_field :custody_status
+  .field
+    = f.label :housing_location
+    = f.text_field :housing_location
+  .field
+    = f.label :received_date_time
+    = f.datetime_field :received_date_time
+  .field
+    = f.label :arrested_by
+    = f.text_field :arrested_by
+  .field
+    = f.label :released_date_tiem
+    = f.datetime_field :released_date_tiem
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.text_field :state
+  .actions = f.submit
