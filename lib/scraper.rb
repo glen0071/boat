@@ -17,50 +17,31 @@ class Scraper
       button.click
 
       # assuming client modal open
-      close_buton = browser.at_xpath('/html/body/jr-root/jr-jail-roster-details/cds-modal/cds-modal-actions/cds-button')
+      close_button = browser.at_xpath('/html/body/jr-root/jr-jail-roster-details/cds-modal/cds-modal-actions/cds-button')
 
-      # gather all the info
+      # gather client info
       client_info_nodes_array = browser.css('hcso-read-only-element')
 
       # Create JailBooking by booking_number
-      client_info_array = client_info_nodes_array.map { |detail| detail.text }
-      booking_number_string = client_info_array.find { |detail| detail.match?('Booking Number: ') }
-      booking_number = booking_number_string.match(/(Booking Number: )(\d+)/)[2]
-      booking = JailBooking.find_or_create_by(booking_number:)
+      @client_info_array = client_info_nodes_array.map(&:text)
+      booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
+      jail_booking = JailBooking.find_or_create_by(booking_number:)
 
-      age_string = client_info_array.find { |detail| detail.match?('Age: ') }
-      age_at_booking = age_string.match(/(Age: )(\d+)/)[2].to_i
+      # Parse jail booking info
+      age_at_booking = parse_booking_detail('Age: ', /(Age: )(\d+)/).to_i
+      inmate_number = parse_booking_detail('Inmate Number: ', /(Inmate Number: )(\d+)/).to_i
+      custody_status = parse_booking_detail('Custody Status: ', /(Custody Status: )(.*)\b/)
+      arrested_by = parse_booking_detail('Arrested By: ', /(Arrested By: )(.*)\b/)
+      full_name = parse_booking_detail('Full Name: ', /(Full Name: )(.*)\b/)
+      housing_location = parse_booking_detail('Housing Location: ', /(Housing Location: )(.*)\b/)
+      city = parse_booking_detail('City: ', /(City: )(.*)\b/)
+      state = parse_booking_detail('State: ', /(State: )(.*)\b/)
+      received_date_time_string = parse_booking_detail('Received Date/Time: ', %r{(Received Date/Time: )(.*)\b})
+      received_date_time = DateTime.parse(received_date_time_string)
+      released_date_time_string = parse_booking_detail('Released Date/Time: ', %r{(Released Date/Time: )(.*)\b})
+      released_date_time = released_date_time_string.nil? ? released_date_time_string : DateTime.parse(released_date_time_string)
 
-      inmate_number_string = client_info_array.find { |detail| detail.match?('Inmate Number: ') }
-      inmate_number = inmate_number_string.match(/(Age: )(\d+)/)[2].to_i
-
-      custody_status_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      custody_status = custody_status_string.match(/(Custody Status: )(.*)\b/)[2]
-
-      arrested_by_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      arrested_by = arrested_by_string.match(/(Arrested By: )(.*)\b/)[2]
-
-      full_name_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      full_name = full_name_string.match(/(Full Name: )(.*)\b/)[2]
-
-      housing_location_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      housing_location = housing_location_string.match(/(Housing Location: )(.*)\b/)[2]
-
-      city_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      city = city_string.match(/(City: )(.*)\b/)[2]
-
-      state_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
-      state = state_string.match(/(State: )(.*)\b/)[2]
-
-      received_date_time_string = client_info_array.find { |detail| detail.match?('Received Date/Time: ') }
-      received_date_time_unparsed = received_date_time_string.match(%r{(Received Date/Time: )(.*)\b})[2]
-      received_date_time = DateTime.parse(received_date_time_unparsed)
-
-      released_date_time_string = client_info_array.find { |detail| detail.match?('Received Date/Time: ') }
-      released_date_time_unparsed = released_date_time_string.match(%r{(Received Date/Time: )(.*)\b})[2]
-      released_date_time = DateTime.parse(released_date_time_unparsed)
-
-      booking.update(
+      jail_booking.update(
         full_name:,
         age_at_booking:,
         inmate_number:,
@@ -72,55 +53,44 @@ class Scraper
         released_date_time:,
         housing_location:
       )
+
+      @client_info_array.each do |client_info|
+        client_info
       end
 
-      # get details on warranted cases
+      # gather details on warranted cases
       holding_cases = browser.css('jr-case-detail')
       holding_cases.each do |holding_case|
-        details_string = holding_case.text 
-        details_string
-
+        details_string = holding_case.text
 
         # find MNCIS number
         mncis_number = details_string.match(/(MNCIS Case#:)\s*(27\S+)/)[2]
+        case_type = details_string.match(/(Case Type:)\s*(27\S+)/)[2]
+
+        details_string
 
         # To prevent conflicts, use mncis # as UID?
         # Later may want to implement to show changes over time on this page
         # But first just fill out past data
-        
-        holding_case = HoldingCase.find_or_create_by(mncis_number:)
-      end
+        # What abour PC holds with no MNCIS number?
 
-      close_buton.click
+        holding_case = HoldingCase.find_or_create_by(mncis_number:, jail_booking:)
+
+        state_string = client_info_array.find { |detail| detail.match?('Custody Status: ') }
+        state = state_string.match(/(State: )(.*)\b/)[2]
+
+        close_button.click
+      end
     end
 
-    content = browser.body
-    puts content
     browser.quit
-    # Extract desired data from the HTML document
-    # ...
+  end
+
+  def parse_booking_detail(string_parse_pattern, regex_parse_pattern)
+    detail_string = @client_info_array.find { |detail| detail.match?(string_parse_pattern) }
+    @client_info_array.delete(detail_string)
+    return nil if detail_string.match(regex_parse_pattern).nil?
+
+    detail_string.match(regex_parse_pattern)[2]
   end
 end
-
-# ["Full Name: AASHEIM, DEREK HARLAN ",
-#  "Booking Number: 2024039290 ",
-#  "Age: 22 ",
-#  "Inmate Number: 202410301 ",
-#  "Custody Status: Released from Custody ",
-#  "Housing Location:  ",
-#  "Received Date/Time: Jul 24, 2024, 1:24:56 AM ",
-#  "Arrested By: MN STATE PATROL WEST ",
-#  "Released Date/Time: Jul 24, 2024, 6:03:12 AM ",
-#  "City: ARIZONA CITY ",
-#  "State: AZ ",
-#  "Case Type: TAB CHARGE ",
-#  "MNCIS Case#: 27CR2416679 ",
-#  "Charged By: MN STATE PATROL WEST ",
-#  "Clear Reason: BAIL POSTED ",
-#  "Hold Without Bail:",
-#  "Bail Options:$1,000.00 BAIL/BOND W/O CR$150.00 CASH BAIL W/O CR",
-#  "Next Court Appearance:",
-#  "Description: TRAFFIC - DWI - OPERATE MOTOR VEHICLE UNDER INFLUENCE OF ALCOHOL ",
-#  "Severity of Charge: Misdemeanor ",
-#  "Statute: 169A.20.1(1) ",
-#  "Charge Status:  "]
