@@ -24,7 +24,7 @@ class Scraper
 
       # Create JailBooking by booking_number
       @client_info_array = client_info_nodes_array.map(&:text)
-      booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
+      booking_number = Scraper.parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
       jail_booking = JailBooking.find_or_create_by(booking_number:)
 
       # Parse jail booking info
@@ -86,7 +86,7 @@ class Scraper
     browser.quit
   end
 
-  def parse_booking_detail(string_parse_pattern, regex_parse_pattern)
+  def self.parse_booking_detail(string_parse_pattern, regex_parse_pattern)
     detail_string = @client_info_array.find { |detail| detail.match?(string_parse_pattern) }
     @client_info_array.delete(detail_string)
     return nil if detail_string.match(regex_parse_pattern).nil?
