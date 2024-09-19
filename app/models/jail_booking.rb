@@ -1,0 +1,2 @@
+class JailBooking < ApplicationRecord
+end

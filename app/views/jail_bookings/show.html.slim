@@ -1,0 +1,49 @@
+p#notice = notice
+
+p
+  strong Number:
+  = @jail_booking.number
+
+p
+  strong Full name:
+  = @jail_booking.full_name
+
+p
+  strong Age:
+  = @jail_booking.age
+
+p
+  strong Inmate number:
+  = @jail_booking.inmate_number
+
+p
+  strong Custody status:
+  = @jail_booking.custody_status
+
+p
+  strong Housing location:
+  = @jail_booking.housing_location
+
+p
+  strong Received date time:
+  = @jail_booking.received_date_time
+
+p
+  strong Arrested by:
+  = @jail_booking.arrested_by
+
+p
+  strong Released date tiem:
+  = @jail_booking.released_date_tiem
+
+p
+  strong City:
+  = @jail_booking.city
+
+p
+  strong State:
+  = @jail_booking.state
+
+=> link_to 'Edit', edit_jail_booking_path(@jail_booking)
+'|
+=< link_to 'Back', jail_bookings_path

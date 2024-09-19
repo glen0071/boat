@@ -1,0 +1,2 @@
+module JailBookingsHelper
+end
