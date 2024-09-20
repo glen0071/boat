@@ -21,15 +21,15 @@ table.table
   tbody
     - @jail_bookings.each do |jail_booking|
       tr.row
-        td = jail_booking.number
+        td = jail_booking.booking_number
         td = jail_booking.full_name
-        td = jail_booking.age
+        td = jail_booking.age_at_booking
         td = jail_booking.inmate_number
         td = jail_booking.custody_status
         td = jail_booking.housing_location
         td = jail_booking.received_date_time
         td = jail_booking.arrested_by
-        td = jail_booking.released_date_tiem
+        td = jail_booking.released_date_time
         td = jail_booking.city
         td = jail_booking.state
         td = link_to 'Show', jail_booking
