@@ -2,7 +2,17 @@
 
 class HennepinJailScraperService
   def scrape
-    browser = Ferrum::Browser.new
+    browser = Ferrum::Browser.new(
+      headless: true,
+      browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
+      args: %w[
+        no-sandbox
+        disable-gpu
+        disable-dev-shm-usage
+        disable-software-rasterizer
+      ]
+    )
+
     browser.go_to('https://jailroster.hennepin.us/')
     browser.network.wait_for_idle
     sleep(1)
