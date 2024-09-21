@@ -46,7 +46,7 @@ class HennepinJailScraperService
       end
 
       arrow_next_clients.click
-      sleep(0.1)
+      sleep(0.6)
     end
 
     browser.quit
