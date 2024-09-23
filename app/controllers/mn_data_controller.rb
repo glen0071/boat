@@ -23,18 +23,17 @@ class MnDataController < ApplicationController
       render :edit
     end
   end
-  
+
   def new
     @mn_doc_data = MnDocData.new
   end
-  
+
   def index
     @mn_doc_data = MnDocData.all
   end
-  
+
   def upload
     # PDF::Reader.new(params[:mn_doc_data][:file].tempfile)
-    # binding.pry
   end
 
   def mn_data_params
@@ -78,7 +77,7 @@ class MnDataController < ApplicationController
         :asian,
         :unknown_other,
         :hispanic,
-        
+
         :grades_0_8,
         :grades_9_11,
         :high_school,
@@ -90,7 +89,7 @@ class MnDataController < ApplicationController
         :married,
         :divorced_separated,
         :other_unknown_marital,
-        
+
         :unknown_no_preference,
         :other_christian,
         :other_religions,
@@ -100,7 +99,7 @@ class MnDataController < ApplicationController
         :native_american_religions,
         :lutheran,
         :baptist,
-        
+
         :hennepin,
         :ramsey,
         :st_louis,
@@ -123,7 +122,7 @@ class MnDataController < ApplicationController
         :county_jail_federal_prison,
         :institution_community_work_crews,
         :non_doc_correctional_facility,
-        
+
         :new_commitments,
         :release_return_no_new_sentence,
         :release_return_new_sentence,
