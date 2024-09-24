@@ -31,6 +31,9 @@ class HennepinJailScraperService
 
       # iterate over cds-button elements to find clients
       booking_number_buttons_array.each do |button|
+        possible_b_number = button.text.strip
+        next if JailBooking.find_by(booking_number: possible_b_number).present?
+
         button.evaluate('this.scrollIntoView()')
         button.click
         sleep(0.1)
@@ -39,7 +42,6 @@ class HennepinJailScraperService
         close_button = browser.at_xpath('/html/body/jr-root/jr-jail-roster-details/cds-modal/cds-modal-actions/cds-button')
         client_info_nodes_array = browser.css('hcso-read-only-element')
         @client_info_array = client_info_nodes_array.map(&:text)
-        # puts @client_info_array[3]
         booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
         return if booking_number == 0
 
@@ -81,7 +83,7 @@ class HennepinJailScraperService
             holding_cases_open_struct_array << OpenStruct.new(jail_booking_id: jail_booking.id)
             holding_cases_open_struct_array.last.case_type = client_info_node.match(/Case Type:\s*(.*)\b/)[1]
 
-            # throwing this in under Case Type
+            # throwing this in under Case Type bc it doesn't rely on regex
             vector_shape = browser.at_xpath('/html/body/jr-root/jr-jail-roster-details/cds-modal/cds-modal-content/jr-case-detail/hcso-detail-card/div/div/hcso-body/hcso-read-only-form/cds-form-group/div/div[2]/hcso-read-only-element[1]/cds-control/p/cds-icon').attribute('shape')
             holding_cases_open_struct_array.last.hold_without_bail = vector_shape == 'check'
           when /MNCIS Case#:\s*(\w+)\b/
@@ -120,6 +122,7 @@ class HennepinJailScraperService
         close_button.click
       end
 
+      arrow_next_clients.evaluate('this.scrollIntoView()')
       arrow_next_clients.click
       sleep(0.6)
     end
