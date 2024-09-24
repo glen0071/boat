@@ -19,12 +19,12 @@ class HennepinJailScraperService
 
     # orient for page navigation
     current_page_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/input')
-    current_page = current_page_node.value
+    current_page = current_page_node.value.to_i
     total_pages_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/cds-control-message')
-    total_pages = total_pages_node.text.scan(/\d+/).first
+    total_pages = total_pages_node.text.scan(/\d+/).first.to_i
 
     arrow_next_clients = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-pagination-button[3]')
-    while current_page.to_i < total_pages.to_i
+    while current_page < total_pages
       # gather cds-button elements
       cds_buttons_array = browser.css('cds-button')
       booking_number_buttons_array = cds_buttons_array.select { |cds| cds if cds.text.to_i > 1 }
@@ -118,12 +118,13 @@ class HennepinJailScraperService
         end
 
         case_charges_array.each(&:save)
-
         close_button.click
       end
 
+      puts 'completed page ' + current_page.to_s
       arrow_next_clients.evaluate('this.scrollIntoView()')
       arrow_next_clients.click
+      current_page += 1
       sleep(0.6)
     end
 
