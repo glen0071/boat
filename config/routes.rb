@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'carceral_data/hennepin'
   resources :jail_bookings
 
   

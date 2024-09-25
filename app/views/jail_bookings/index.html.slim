@@ -1,40 +1,24 @@
-h1 Listing jail_bookings
+h1 Hennepin Jail Bookings
 
 table.table
   thead
-    tr.row
-      th.col Number
-      th.col Full name
-      th.col Age
-      th.col Inmate number
-      th.col Custody status
-      th.col Housing location
-      th.col Received date time
-      th.col Arrested by
-      th.col Released date tiem
-      th.col City
-      th.col State
-      th.col
-      th.col
-      th.col
+    tr
+      th.col-1 Booking Number
+      th.col-1 Age at Booking
+      th.col-1 Custody status
+      th.col-1 Received
+      th.col-1 Arrested by
+      th.col-1 Released
 
   tbody
     - @jail_bookings.each do |jail_booking|
-      tr.row
-        td = jail_booking.booking_number
-        td = jail_booking.full_name
+      tr
+        td = link_to jail_booking.booking_number, jail_booking
         td = jail_booking.age_at_booking
-        td = jail_booking.inmate_number
         td = jail_booking.custody_status
-        td = jail_booking.housing_location
-        td = jail_booking.received_date_time
+        td = jail_booking.received_date_time.strftime('%x')
         td = jail_booking.arrested_by
         td = jail_booking.released_date_time
-        td = jail_booking.city
-        td = jail_booking.state
-        td = link_to 'Show', jail_booking
-        td = link_to 'Edit', edit_jail_booking_path(jail_booking)
-        td = link_to 'Destroy', jail_booking, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
