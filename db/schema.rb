@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_21_151813) do
+ActiveRecord::Schema.define(version: 2024_09_25_015033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,16 +268,6 @@ ActiveRecord::Schema.define(version: 2024_09_21_151813) do
     t.integer "intensive_community_supervision"
   end
 
-  create_table "moo_tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "status"
-    t.string "notes"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "category"
-    t.datetime "hide_time", precision: 6
-  end
-
   create_table "officers", force: :cascade do |t|
     t.bigint "drupal_id"
     t.string "first_name"
@@ -320,15 +310,6 @@ ActiveRecord::Schema.define(version: 2024_09_21_151813) do
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
-  create_table "small_wins", force: :cascade do |t|
-    t.datetime "win_at", precision: 6
-    t.integer "count"
-    t.bigint "win_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["win_id"], name: "index_small_wins_on_win_id"
-  end
-
   create_table "sources", force: :cascade do |t|
     t.string "title"
     t.bigint "author_id"
@@ -367,16 +348,6 @@ ActiveRecord::Schema.define(version: 2024_09_21_151813) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wins", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "name"
-    t.datetime "started_at", precision: 6
-    t.integer "count"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_wins_on_user_id"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authors", "users"
@@ -391,9 +362,7 @@ ActiveRecord::Schema.define(version: 2024_09_21_151813) do
   add_foreign_key "quotes", "authors"
   add_foreign_key "quotes", "sources"
   add_foreign_key "quotes", "users"
-  add_foreign_key "small_wins", "wins"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "users"
   add_foreign_key "topics", "users"
-  add_foreign_key "wins", "users"
 end
