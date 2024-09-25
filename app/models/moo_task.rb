@@ -1,2 +1,0 @@
-class MooTask < ApplicationRecord
-end
