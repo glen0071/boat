@@ -17,6 +17,7 @@ gem 'seedbank'
 
 # Frontend
 gem 'active_model_serializers'
+gem 'chartkick'
 gem 'react-rails'
 gem 'sass-rails'
 gem 'slim'

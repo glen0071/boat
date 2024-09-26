@@ -3,7 +3,7 @@ class JailBookingsController < ApplicationController
 
   # GET /jail_bookings
   def index
-    @jail_bookings = JailBooking.all
+    @jail_bookings = JailBooking.includes(:case_charges).all
   end
 
   # GET /jail_bookings/1

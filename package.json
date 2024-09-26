@@ -4,6 +4,8 @@
     "@rails/actiontext": "^7.0.4",
     "@rails/webpacker": "5.4.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "chart.js": "^4.4.4",
+    "chartkick": "^5.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
