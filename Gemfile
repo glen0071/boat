@@ -12,7 +12,7 @@ gem 'devise'
 gem 'ferrum'
 gem 'pdf-reader'
 gem 'pg'
-gem 'puma', '~> 5.6.7'
+gem 'puma', '~> 5.6.9'
 gem 'seedbank'
 
 # Frontend
