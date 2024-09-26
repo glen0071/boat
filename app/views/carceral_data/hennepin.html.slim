@@ -1,5 +1,11 @@
-h1 CarceralData#hennepin
+h1 Hennepin County Jail Data
 
-h3 #{@in_custody_now} in jail today
+h3.text-center #{@in_custody_now} in jail today
 
-h3 #{@jail_bookings_count} total jail records
+h3.text-center #{@jail_bookings_count} total jail records
+
+h4 Arrested by
+- @arrested_by_rankings.each do |arrest_stat_pairing|
+  div #{arrest_stat_pairing[0]} - #{arrest_stat_pairing[1]}
+
+= column_chart @arrested_by_rankings

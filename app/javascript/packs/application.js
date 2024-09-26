@@ -23,3 +23,4 @@ ReactRailsUJS.useContext(componentRequireContext);
 
 import "trix"
 import "@rails/actiontext"
+import "chartkick/chart.js"
