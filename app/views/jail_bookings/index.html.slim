@@ -4,9 +4,11 @@ table.table
   thead
     tr
       th.col-1 Booking Number
-      th.col-1 Charges
-      th.col-1 Age at Booking
-      th.col-1 Custody status
+      th.col-3 Charges
+      / th.col-2 Price of Freedom
+      / need to account for HWB, custody status, which case 
+      / and maybe combine them
+      th.col-1 Bail/Bond
       th.col-1 Days in Jail
       th.col-1 Arrested by
 
@@ -18,9 +20,12 @@ table.table
           ol
             - jail_booking.case_charges.map(&:description).each do |description|
               li = description
-        td = jail_booking.age_at_booking
-        td = jail_booking.custody_status
-        td = how_long_in(jail_booking)
+        td 
+          ol
+            - jail_booking.holding_cases.each do |hc|
+              - next if hc.bail_options.nil? || hc.bail_options.include?("$0.00")
+              li = hc.bail_options
+        td = jail_booking.days_in
         td = jail_booking.arrested_by
 
 br
