@@ -1,45 +1,106 @@
 p#notice = notice
 
-p
-  strong Number:
-  = @jail_booking.booking_number
+ddiv.container
+  div.row
+    div.col-md-12.text-center
+      div.card.mx-auto
+        p.mb-1
+          strong.m-1 Number:
+          = @jail_booking.booking_number
 
-p
-  strong Age:
-  = @jail_booking.age_at_booking
+        - if current_user.present?
+          p.mb-1
+            strong.m-1 Name:
+            = @jail_booking.full_name
 
-p
-  strong Inmate number:
-  = @jail_booking.inmate_number
+        p.mb-1
+          strong.m-1 Age:
+          = @jail_booking.age_at_booking
 
-p
-  strong Custody status:
-  = @jail_booking.custody_status
+        p.mb-1
+          strong.m-1 Inmate number:
+          = @jail_booking.inmate_number
 
-p
-  strong Housing location:
-  = @jail_booking.housing_location
+        p.mb-1
+          strong.m-1 Custody status:
+          = @jail_booking.custody_status
 
-p
-  strong Received date time:
-  = @jail_booking.received_date_time
+        p.mb-1
+          strong.m-1 Housing location:
+          = @jail_booking.housing_location
 
-p
-  strong Arrested by:
-  = @jail_booking.arrested_by
+        p.mb-1
+          strong.m-1 Received date time:
+          = @jail_booking.received_date_time
 
-p
-  strong Released date time:
-  = @jail_booking.released_date_time
+        p.mb-1
+          strong.m-1 Arrested by:
+          = @jail_booking.arrested_by
 
-p
-  strong City:
-  = @jail_booking.city
+        p.mb-1
+          strong.m-1 Released date time:
+          = @jail_booking.released_date_time
 
-p
-  strong State:
-  = @jail_booking.state
+        p.mb-1
+          strong.m-1 City:
+          = @jail_booking.city
 
-=> link_to 'Edit', edit_jail_booking_path(@jail_booking)
-'|
-=< link_to 'Back', jail_bookings_path
+        p.mb-1
+          strong.m-1 State:
+          = @jail_booking.state
+
+  div.row.mt-1
+    - @jail_booking.holding_cases.each do |holding_case|
+      div.col-md-12.text-center
+        div.card.mx-auto
+          div.card-body
+
+            p.mb-1
+              strong Case Type:
+              = holding_case.case_type
+            p.mb-1
+              strong MNCIS Number:
+              = holding_case.mncis_number
+            p.mb-1
+              strong Charged By:
+              = holding_case.charged_by
+            p.mb-1
+              strong Clear Reason:
+              = holding_case.clear_reason
+            p.mb-1
+              strong Holding Without Bail:
+              = holding_case.hold_without_bail
+            p.mb-1
+              strong Bail Options:
+              = holding_case.bail_options
+            p.mb-1
+              strong Next Court Appearance:
+              = holding_case.next_court_appearance
+
+          - @jail_booking.case_charges.each do |case_charge|
+            div.ml-2.mr-2
+              div.card.mx-auto.w-100
+                div.card-body.
+                    p.mb-1
+                      strong Charge Number:
+                      = case_charge.charge_number
+                    p.mb-1
+                      strong Description:
+                      = case_charge.description
+                    p.mb-1
+                      strong Severity of Charge:
+                      = case_charge.severity_of_charge
+                    p.mb-1
+                      strong Statute:
+                      = case_charge.statute
+                    p.mb-1
+                      strong Charge Status:
+                      = case_charge.charge_status
+
+div.mt-5
+  div.card-footer.text-center
+    - if current_user.present?
+      = link_to 'Edit', edit_jail_booking_path(@jail_booking), class: 'btn btn-info m-1'
+    = link_to 'Bookings', jail_bookings_path, class: 'btn btn-info m-1'
+    - if current_user.present?
+      = link_to 'Delete', jail_booking_path(@jail_booking), method: :delete, class: 'btn btn-info m-1'

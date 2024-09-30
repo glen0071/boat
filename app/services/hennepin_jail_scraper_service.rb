@@ -32,7 +32,7 @@ class HennepinJailScraperService
       # iterate over cds-button elements to find clients
       booking_number_buttons_array.each do |button|
         possible_b_number = button.text.strip
-        next if JailBooking.find_by(booking_number: possible_b_number).present?
+        next if record_complete?(possible_b_number)
 
         button.evaluate('this.scrollIntoView()')
         button.click
@@ -138,5 +138,9 @@ class HennepinJailScraperService
     return nil if detail_string.nil? || detail_string.match(regex_parse_pattern).nil?
 
     detail_string.match(regex_parse_pattern)[2]
+  end
+
+  def record_complete?(booking_number)
+    JailBooking.find_by(booking_number:)&.released_date_time.present?
   end
 end
