@@ -47,7 +47,7 @@ class JailBookingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_jail_booking
-    @jail_booking = JailBooking.find(params[:id])
+    @jail_booking = JailBooking.includes(:case_charges, :holding_cases).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
