@@ -141,6 +141,9 @@ class HennepinJailScraperService
   end
 
   def record_complete?(booking_number)
-    JailBooking.find_by(booking_number:)&.released_date_time.present?
+    jail_booking = JailBooking.find_by(booking_number:)
+    return false if jail_booking.nil?
+
+    jail_booking.released_date_time.present? && jail_booking.holding_cases.any? && jail_booking.case_charges.any?
   end
 end
