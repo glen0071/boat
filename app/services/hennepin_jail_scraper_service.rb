@@ -17,6 +17,17 @@ class HennepinJailScraperService
     browser.network.wait_for_idle
     sleep(0.4)
 
+    # set to current in jail peeps
+    custody_drop_down = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/jr-jail-roster-search-form/form/hcso-search-form-wrapper/cds-card/div/cds-form-group/div/cds-select/select')
+    sleep(0.4)
+    option_value = browser.evaluate(
+      "Array.from(arguments[0].options).find(option => option.text === 'In Custody').value;", custody_drop_down
+    )
+    sleep(0.4)
+
+    browser.execute("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
+                    custody_drop_down, option_value)
+
     # orient for page navigation
     current_page_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/input')
     current_page = current_page_node.value.to_i
