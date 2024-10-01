@@ -37,12 +37,20 @@ class HennepinJailScraperService
     arrow_next_clients = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-pagination-button[3]')
     while current_page < total_pages
       # gather cds-button elements
+
       cds_buttons_array = browser.css('cds-button')
       booking_number_buttons_array = cds_buttons_array.select { |cds| cds if cds.text.to_i > 1 }
 
       # iterate over cds-button elements to find clients
-      booking_number_buttons_array.each do |button|
-        possible_b_number = button.text.strip
+      booking_number_buttons_array.each_with_index do |button, index|
+        puts "index = #{index}"
+
+        begin
+          possible_b_number = button.text.strip
+        rescue Ferrum::NodeNotFoundError => e
+          puts e
+          next
+        end
         next if record_complete?(possible_b_number)
 
         button.evaluate('this.scrollIntoView()')
