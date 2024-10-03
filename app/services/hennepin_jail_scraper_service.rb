@@ -2,44 +2,53 @@
 
 class HennepinJailScraperService
   def scrape
-    browser = Ferrum::Browser.new(
-      headless: true,
-      browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
-      args: %w[
-        no-sandbox
-        disable-gpu
-        disable-dev-shm-usage
-        disable-software-rasterizer
-      ]
-    )
-
-    browser.go_to('https://jailroster.hennepin.us/')
-    browser.network.wait_for_idle
-    sleep(0.4)
-
     # set to current in jail peeps
-    custody_drop_down = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/jr-jail-roster-search-form/form/hcso-search-form-wrapper/cds-card/div/cds-form-group/div/cds-select/select')
-    sleep(0.4)
-    option_value = browser.evaluate(
-      "Array.from(arguments[0].options).find(option => option.text === 'In Custody').value;", custody_drop_down
-    )
-    sleep(0.4)
+    # custody_drop_down = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/jr-jail-roster-search-form/form/hcso-search-form-wrapper/cds-card/div/cds-form-group/div/cds-select/select')
+    # sleep(0.4)
+    # option_value = browser.evaluate(
+    #   "Array.from(arguments[0].options).find(option => option.text === 'In Custody').value;", custody_drop_down
+    # )
+    # sleep(0.4)
 
-    browser.execute("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
-                    custody_drop_down, option_value)
+    # browser.execute("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
+    #                 custody_drop_down, option_value)
 
     # orient for page navigation
-    current_page_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/input')
-    current_page = current_page_node.value.to_i
-    total_pages_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/cds-control-message')
-    total_pages = total_pages_node.text.scan(/\d+/).first.to_i
+    # current_page_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/input')
+    # current_page = current_page_node.value.to_i
 
-    arrow_next_clients = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-pagination-button[3]')
+    # arrow_next_clients = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-pagination-button[3]')
+
+    current_page = 1
+    total_pages = 100
+
     while current_page < total_pages
-      # gather cds-button elements
+      browser = Ferrum::Browser.new(
+        headless: false,
+        browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
+        args: %w[
+          no-sandbox
+          disable-gpu
+          disable-dev-shm-usage
+          disable-software-rasterizer
+        ]
+      )
 
-      cds_buttons_array = browser.css('cds-button')
-      booking_number_buttons_array = cds_buttons_array.select { |cds| cds if cds.text.to_i > 1 }
+      browser.go_to('https://jailroster.hennepin.us/')
+      browser.network.wait_for_idle
+      sleep(0.4)
+
+      current_page_input = browser.css('input[aria-label="current page"]').first
+      current_page_input.focus
+      current_page_input.evaluate('this.select()')
+      current_page_input.type(current_page.to_s)
+      current_page_input = nil
+      sleep(0.4)
+
+      # gather cds-button elements
+      # MEMORY: could only save integers from here so objects aren't stored in memory
+      # - but would need to evaluate each number to find the node
+      booking_number_buttons_array = browser.css('cds-button').select { |cds| cds if cds.text.to_i > 1 }
 
       # iterate over cds-button elements to find clients
       booking_number_buttons_array.each_with_index do |button, index|
@@ -51,7 +60,7 @@ class HennepinJailScraperService
           puts e
           next
         end
-        next if record_complete?(possible_b_number)
+        next if record_complete?(button.text.strip)
 
         button.evaluate('this.scrollIntoView()')
         button.click
@@ -62,7 +71,7 @@ class HennepinJailScraperService
         client_info_nodes_array = browser.css('hcso-read-only-element')
         @client_info_array = client_info_nodes_array.map(&:text)
         booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
-        return if booking_number == 0
+        # return nil if booking_number == 0
 
         jail_booking = JailBooking.find_or_create_by(booking_number:)
 
@@ -136,18 +145,20 @@ class HennepinJailScraperService
           end
         end
 
+        total_pages = browser.css('cds-control-message[slot="message"]').first.text.scan(/\d+/).first.to_i
         case_charges_array.each(&:save)
+        case_charges_array = nil
         close_button.click
       end
 
-      puts 'completed page ' + current_page.to_s
-      arrow_next_clients.evaluate('this.scrollIntoView()')
-      arrow_next_clients.click
-      current_page += 1
-      sleep(0.6)
-    end
+      booking_number_buttons_array = nil
 
-    browser.quit
+      # arrow_next_clients.evaluate('this.scrollIntoView()')
+      # arrow_next_clients.click
+      puts "current_page: #{current_page}"
+      current_page += 1
+      browser.quit
+    end
   end
 
   private
