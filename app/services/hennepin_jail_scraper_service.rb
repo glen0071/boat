@@ -24,7 +24,7 @@ class HennepinJailScraperService
 
     while current_page < total_pages
       browser = Ferrum::Browser.new(
-        headless: false,
+        headless: true,
         browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
         args: %w[
           no-sandbox
