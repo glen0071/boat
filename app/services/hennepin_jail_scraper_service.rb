@@ -71,7 +71,7 @@ class HennepinJailScraperService
         client_info_nodes_array = browser.css('hcso-read-only-element')
         @client_info_array = client_info_nodes_array.map(&:text)
         booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
-        # return nil if booking_number == 0
+        return nil if booking_number == 0
 
         jail_booking = JailBooking.find_or_create_by(booking_number:)
 
