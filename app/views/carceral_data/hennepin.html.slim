@@ -3,6 +3,7 @@ h1 Hennepin County Jail Data
 h3.text-center #{@in_custody_now} in jail today
 
 h3.text-center #{@jail_bookings_count} total jail records
+p.text-center Next Page: #{@last_scraped_page_hennepin}
 
 h4 Arrested by
 - @arrested_by_rankings.each do |arrest_stat_pairing|
