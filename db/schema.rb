@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_25_015033) do
+ActiveRecord::Schema.define(version: 2024_10_03_042340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,12 @@ ActiveRecord::Schema.define(version: 2024_09_25_015033) do
     t.datetime "released_date_time", precision: 6
     t.string "city"
     t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "last_scraped_pages", force: :cascade do |t|
+    t.integer "page_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
