@@ -1,5 +1,6 @@
 class CarceralDataController < ApplicationController
   def hennepin
+    @last_scraped_page_hennepin = LastScrapedPage.last&.page_number
     @jail_bookings_count = JailBooking.count
     @in_custody_now = JailBooking.where(custody_status: 'Currently in Jail/Custody').count
 
