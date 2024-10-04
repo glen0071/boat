@@ -2,24 +2,8 @@
 
 class HennepinJailScraperService
   def scrape
-    # set to current in jail peeps
-    # custody_drop_down = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/jr-jail-roster-search-form/form/hcso-search-form-wrapper/cds-card/div/cds-form-group/div/cds-select/select')
-    # sleep(0.4)
-    # option_value = browser.evaluate(
-    #   "Array.from(arguments[0].options).find(option => option.text === 'In Custody').value;", custody_drop_down
-    # )
-    # sleep(0.4)
-
-    # browser.execute("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
-    #                 custody_drop_down, option_value)
-
-    # orient for page navigation
-    # current_page_node = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-input/input')
-    # current_page = current_page_node.value.to_i
-
-    # arrow_next_clients = browser.at_xpath('/html/body/jr-root/hcso-content/main/jr-jail-roster/jr-jail-roster-search/hcso-data-result-container/hcso-pagination/cds-pagination/cds-pagination-button[3]')
-
-    current_page = 1
+    LastScrapedPage.create(page_number: 1) if LastScrapedPage.none?
+    current_page = LastScrapedPage.last&.page_number || 1
     total_pages = 100
 
     while current_page < total_pages
@@ -43,11 +27,12 @@ class HennepinJailScraperService
       current_page_input.evaluate('this.select()')
       current_page_input.type(current_page.to_s)
       current_page_input = nil
-      sleep(0.4)
 
       # gather cds-button elements
       # MEMORY: could only save integers from here so objects aren't stored in memory
       # - but would need to evaluate each number to find the node
+      browser.network.wait_for_idle
+      sleep(0.4)
       booking_number_buttons_array = browser.css('cds-button').select { |cds| cds if cds.text.to_i > 1 }
 
       # iterate over cds-button elements to find clients
@@ -155,8 +140,13 @@ class HennepinJailScraperService
 
       # arrow_next_clients.evaluate('this.scrollIntoView()')
       # arrow_next_clients.click
-      puts "current_page: #{current_page}"
-      current_page += 1
+      if total_pages < current_page + 1
+        LastScrapedPage.create(page_number: 1) # start over at page 1
+      else
+        LastScrapedPage.last.update(page_number: current_page + 1)
+        current_page = LastScrapedPage.last.page_number
+        puts LastScrapedPage.last.page_number
+      end
       browser.quit
     end
   end

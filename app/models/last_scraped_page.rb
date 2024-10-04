@@ -1,0 +1,2 @@
+class LastScrapedPage < ApplicationRecord
+end
