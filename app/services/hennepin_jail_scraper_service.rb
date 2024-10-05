@@ -6,6 +6,7 @@ class HennepinJailScraperService
     current_page = LastScrapedPage.last&.page_number || 1
     total_pages = 100
 
+    puts '***** turn on browser headless mode *****'
     while current_page < total_pages
       browser = Ferrum::Browser.new(
         headless: true,
@@ -27,25 +28,31 @@ class HennepinJailScraperService
       current_page_input.evaluate('this.select()')
       current_page_input.type(current_page.to_s)
       current_page_input = nil
-
-      # gather cds-button elements
-      # MEMORY: could only save integers from here so objects aren't stored in memory
-      # - but would need to evaluate each number to find the node
       browser.network.wait_for_idle
       sleep(0.4)
-      booking_number_buttons_array = browser.css('cds-button').select { |cds| cds if cds.text.to_i > 1 }
 
       # iterate over cds-button elements to find clients
-      booking_number_buttons_array.each_with_index do |button, index|
+      browser.css('cds-button').each_with_index do |button, index|
         puts "index = #{index}"
+        puts "button = #{button.text}"
+        if button.text.to_i < 1
+          puts '***** button.text.to_i < 1, skip this one *****'
+          puts "button.text = #{button.text}"
+          next
+        end
 
         begin
           possible_b_number = button.text.strip
         rescue Ferrum::NodeNotFoundError => e
+          puts '***** button not found, skip this one *****'
           puts e
           next
         end
-        next if record_complete?(button.text.strip)
+
+        if record_complete?(button.text.strip)
+          puts '***** record is complete, skip this one *****'
+          next
+        end
 
         button.evaluate('this.scrollIntoView()')
         button.click
@@ -56,7 +63,12 @@ class HennepinJailScraperService
         client_info_nodes_array = browser.css('hcso-read-only-element')
         @client_info_array = client_info_nodes_array.map(&:text)
         booking_number = parse_booking_detail('Booking Number: ', /(Booking Number: )(\d+)/).to_i
-        return nil if booking_number == 0
+        if booking_number == 0
+          puts '***** booking number = 0, skip this one *****'
+          puts "possible_b_number = #{possible_b_number}"
+          puts "booking_number = #{booking_number}"
+          next
+        end
 
         jail_booking = JailBooking.find_or_create_by(booking_number:)
 
