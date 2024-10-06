@@ -8,16 +8,20 @@ class HennepinJailScraperService
 
     puts '***** turn on browser headless mode *****'
     while current_page < total_pages
-      browser = Ferrum::Browser.new(
-        headless: true,
-        browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
-        args: %w[
-          no-sandbox
-          disable-gpu
-          disable-dev-shm-usage
-          disable-software-rasterizer
-        ]
-      )
+      begin
+        browser = Ferrum::Browser.new(
+          headless: true,
+          browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
+          args: %w[
+            no-sandbox
+            disable-gpu
+            disable-dev-shm-usage
+            disable-software-rasterizer
+          ]
+        )
+      rescue StandardError => e
+        puts "Browser failed to start: #{e.message}"
+      end
 
       puts '***** browser open *****'
       browser.go_to('https://jailroster.hennepin.us/')
