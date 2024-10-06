@@ -4,24 +4,20 @@ class HennepinJailScraperService
   def scrape
     LastScrapedPage.create(page_number: 1) if LastScrapedPage.none?
     current_page = LastScrapedPage.last&.page_number || 1
-    total_pages = 100
+    total_pages = 10_000
 
     puts '***** turn on browser headless mode *****'
     while current_page < total_pages
-      begin
-        browser = Ferrum::Browser.new(
-          headless: true,
-          browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
-          args: %w[
-            no-sandbox
-            disable-gpu
-            disable-dev-shm-usage
-            disable-software-rasterizer
-          ]
-        )
-      rescue StandardError => e
-        puts "Browser failed to start: #{e.message}"
-      end
+      browser = Ferrum::Browser.new(
+        headless: true,
+        browser_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil),
+        args: %w[
+          no-sandbox
+          disable-gpu
+          disable-dev-shm-usage
+          disable-software-rasterizer
+        ]
+      )
 
       puts '***** browser open *****'
       browser.go_to('https://jailroster.hennepin.us/')
