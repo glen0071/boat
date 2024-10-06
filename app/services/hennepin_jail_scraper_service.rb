@@ -19,7 +19,9 @@ class HennepinJailScraperService
         ]
       )
 
+      puts '***** browser open *****'
       browser.go_to('https://jailroster.hennepin.us/')
+      puts '***** jail roster open ******'
       browser.network.wait_for_idle
       sleep(0.4)
 
@@ -27,6 +29,7 @@ class HennepinJailScraperService
       current_page_input.focus
       current_page_input.evaluate('this.select()')
       current_page_input.type(current_page.to_s)
+      puts "no on page #{current_page}"
       current_page_input = nil
       browser.network.wait_for_idle
       sleep(0.4)
@@ -34,7 +37,6 @@ class HennepinJailScraperService
       # iterate over cds-button elements to find clients
       browser.css('cds-button').each_with_index do |button, index|
         puts "index = #{index}"
-        puts "button = #{button.text}"
         if button.text.to_i < 1
           puts '***** button.text.to_i < 1, skip this one *****'
           puts "button.text = #{button.text}"
@@ -45,6 +47,7 @@ class HennepinJailScraperService
           possible_b_number = button.text.strip
         rescue Ferrum::NodeNotFoundError => e
           puts '***** button not found, skip this one *****'
+          puts "button = #{button.text}"
           puts e
           next
         end
