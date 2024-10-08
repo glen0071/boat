@@ -1,0 +1,25 @@
+nav.navbar.navbar-expand-sm.navbar-light.bg-light
+  a.navbar-brand[href="/"]
+    | Home
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        a.nav-link[href="/jail_bookings"]
+          | Hennepin Bookings
+      li.nav-item
+        a.nav-link[href="/carceral_data/hennepin"]
+          | Carceral Data
+    - if current_user
+      = form_for @query, url: search_path, html: { class: 'form-inline my-2 my-lg-0' } do |f|
+        = f.text_field :q, placeholder: 'Search', class: 'form-control mr-sm-2'
+        = f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+    - if false
+      a.nav-link[href="/users/#{current_user&.id}"]
+        | MyPage
+    - if false
+      .nav-link
+        = link_to 'Login', new_user_session_path
+        |  /
+        = link_to 'Signup', new_user_registration_path
