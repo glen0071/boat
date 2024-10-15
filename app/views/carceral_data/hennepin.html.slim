@@ -5,17 +5,17 @@ h3.text-center #{@in_custody_now} in jail today
 h3.text-center #{@jail_bookings_count} total jail records
 p.text-center Next Page: #{@last_scraped_page_hennepin}
 
-
 .row
+
+= bar_chart @arrested_by_rankings
+= column_chart @charge_severity
+= bar_chart @charges
+= pie_chart @charge_severity
+
   .col-md-6
     h4 Arrested by
     - @arrested_by_rankings.each do |arrest_stat_pairing|
       div #{arrest_stat_pairing[0]} - #{arrest_stat_pairing[1]}
-
-  .col-md-6
-    h4 Bail Amounts
-    - @bail_amounts.each do |bail_amounts|
-      div #{bail_amounts[0]} - #{bail_amounts[1]}
 
 .row
   .col-md-6
@@ -28,11 +28,5 @@ p.text-center Next Page: #{@last_scraped_page_hennepin}
     - @charge_severity.each do |severity|
       div #{severity[0]} - #{severity[1]}
 
-  = column_chart @arrested_by_rankings
-  = column_chart @charge_severity
-  = bar_chart @charges
-
-  = bar_chart @bail_amounts
-  = pie_chart @bail_amounts
-  = pie_chart @charge_severity
+= render partial: 'shared/hennepin_links'
 

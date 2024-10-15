@@ -1,0 +1,24 @@
+h1 Bail Amounts
+
+h3.text-center #{@in_custody_now} in jail today
+
+h3.text-center #{@jail_bookings_count} total jail records
+p.text-center Next Page: #{@last_scraped_page_hennepin}
+
+
+.row
+  .col-md-6 
+
+  = bar_chart @bail_amounts
+  = pie_chart @bail_amounts
+  = pie_chart @nbr_amount
+
+  .col-md-6
+    h4 Bail Amounts
+    - @bail_amounts.each do |bail_amounts|
+      div #{bail_amounts[0]} - #{bail_amounts[1]}
+
+    p Records with no bail options information: #{@empty_bail_options}
+    
+
+= render partial: 'shared/hennepin_links'
