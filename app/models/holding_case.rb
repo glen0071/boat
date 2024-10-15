@@ -44,7 +44,7 @@ class HoldingCase < ApplicationRecord
       self.cash_with_conditions = bail_options.match(CASH_WITH_CONDITIONS_REGEX)[1].gsub('$', '').gsub(',', '').to_i
     end
 
-    self.bail_required = require_conditional_bail
+    self.bail_required = require_conditional_bail?
 
     nil
   end
@@ -66,7 +66,7 @@ class HoldingCase < ApplicationRecord
   end
 
   # rubocop:disable Style/NumericPredicate
-  def require_conditional_bail
+  def require_conditional_bail?
     conditional_bail_amount > 0
   end
   # rubocop:enable Style/NumericPredicate

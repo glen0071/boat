@@ -10,7 +10,7 @@ class JailBooking < ApplicationRecord
     (end_time - start_time).to_i
   end
 
-  def bail_required_on_booking
+  def bail_required_on_booking?
     return nil if holding_cases.nil?
 
     holding_cases_require_bail = holding_cases.map do |holding_case|
@@ -23,7 +23,7 @@ class JailBooking < ApplicationRecord
   end
 
   def combined_conditional_bail_amount
-    return 0 unless bail_required_on_booking
+    return 0 unless bail_required_on_booking?
 
     holding_cases.map(&:conditional_bail_amount).sum
   end
