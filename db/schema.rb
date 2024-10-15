@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_03_042340) do
+ActiveRecord::Schema.define(version: 2024_10_12_102938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,11 @@ ActiveRecord::Schema.define(version: 2024_10_03_042340) do
     t.datetime "next_court_appearance", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "bail_required"
+    t.integer "bond_without_conditions"
+    t.integer "cash_without_conditions"
+    t.integer "bond_with_conditions"
+    t.integer "cash_with_conditions"
     t.index ["jail_booking_id"], name: "index_holding_cases_on_jail_booking_id"
   end
 

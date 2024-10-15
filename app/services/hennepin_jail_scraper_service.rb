@@ -29,7 +29,7 @@ class HennepinJailScraperService
       current_page_input.focus
       current_page_input.evaluate('this.select()')
       current_page_input.type(current_page.to_s)
-      puts "no on page #{current_page}"
+      puts "now on page #{current_page}"
       current_page_input = nil
       browser.network.wait_for_idle
       sleep(0.4)

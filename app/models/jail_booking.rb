@@ -10,14 +10,21 @@ class JailBooking < ApplicationRecord
     (end_time - start_time).to_i
   end
 
-  # def money_holding
-  #   holding_cases.each do |holding_case|
-  #     # what to return for HWB?
-  #     next if holding_case.bail_options.nil?
+  def bail_required_on_booking?
+    return nil if holding_cases.nil?
 
-  #     prices = holding_case.bail_options.scan(/\$\d{1,3}(?:,\d{3})*(?:\.\d{2})?/)
-  #     prices.include?('$0.00')
-  #     prices.include?
-  #   end
-  # end
+    holding_cases_require_bail = holding_cases.map do |holding_case|
+      holding_case.set_bail_options if holding_case.bail_required.nil?
+
+      holding_case.bail_required
+    end
+
+    holding_cases_require_bail.include?(true)
+  end
+
+  def combined_conditional_bail_amount
+    return 0 unless bail_required_on_booking?
+
+    holding_cases.map(&:conditional_bail_amount).sum
+  end
 end
