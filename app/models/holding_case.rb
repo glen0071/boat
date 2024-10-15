@@ -65,7 +65,9 @@ class HoldingCase < ApplicationRecord
     bond_with_conditions.to_i + cash_with_conditions.to_i
   end
 
+  # rubocop:disable Style/NumericPredicate
   def require_conditional_bail
     conditional_bail_amount > 0
   end
+  # rubocop:enable Style/NumericPredicate
 end
