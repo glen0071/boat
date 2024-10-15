@@ -13,18 +13,18 @@ class JailBooking < ApplicationRecord
   def bail_required_on_booking
     return nil if holding_cases.nil?
 
-    bail_decisions = holding_cases.map do |holding_case|
-      holding_case.set_bail_options if holding_case.no_bail_required.nil?
+    holding_cases_require_bail = holding_cases.map do |holding_case|
+      holding_case.set_bail_options if holding_case.bail_required.nil?
 
-      holding_case.no_bail_required
+      holding_case.bail_required
     end
 
-    bail_decisions.include?(true)
+    holding_cases_require_bail.include?(true)
   end
 
-  def bail_amount
+  def combined_conditional_bail_amount
     return 0 unless bail_required_on_booking
 
-    holding_cases.map(&:bail_amount_with_conditions).sum
+    holding_cases.map(&:conditional_bail_amount).sum
   end
 end

@@ -44,7 +44,9 @@ class HoldingCase < ApplicationRecord
       self.cash_with_conditions = bail_options.match(CASH_WITH_CONDITIONS_REGEX)[1].gsub('$', '').gsub(',', '').to_i
     end
 
-    self.no_bail_required = explicit_nbr? && implicit_nbr?
+    self.bail_required = require_conditional_bail
+
+    nil
   end
 
   def explicit_nbr?
@@ -59,11 +61,11 @@ class HoldingCase < ApplicationRecord
       bail_options.include?('$0.00 BAIL/BOND W/O CR')
   end
 
-  def bail_amount_with_conditions
+  def conditional_bail_amount
     bond_with_conditions.to_i + cash_with_conditions.to_i
   end
 
-  def implicit_nbr?
-    bail_amount_with_conditions.zero?
+  def require_conditional_bail
+    conditional_bail_amount > 0
   end
 end

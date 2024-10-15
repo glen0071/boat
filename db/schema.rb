@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2024_10_12_102938) do
     t.datetime "next_court_appearance", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "no_bail_required"
+    t.boolean "bail_required"
     t.integer "bond_without_conditions"
     t.integer "cash_without_conditions"
     t.integer "bond_with_conditions"
