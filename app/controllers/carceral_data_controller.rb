@@ -2,7 +2,13 @@ class CarceralDataController < ApplicationController
   def hennepin
     @last_scraped_page_hennepin = LastScrapedPage.last&.page_number
     @jail_bookings_count = JailBooking.count
-    @in_custody_now = JailBooking.where(custody_status: 'Currently in Jail/Custody').count
+    @count_in_custody_now = JailBooking.where(custody_status: 'Currently in Jail/Custody').count
+
+    @in_custody_charges = JailBooking
+                          .where(custody_status: 'Currently in Jail/Custody')
+                          .joins(:holding_cases, :case_charges)
+                          .group(:description)
+                          .count.sort_by { |_key, value| -value }.take(10)
 
     @arrested_by_rankings = JailBooking.group(:arrested_by).count.sort_by { |_key, value| -value }.take(10)
 
@@ -29,5 +35,18 @@ class CarceralDataController < ApplicationController
     not_nbr_amount = all_bookings.count - nbr_amount
 
     @nbr_amount = [['No Bail Required', nbr_amount], ['Bail Required', not_nbr_amount]]
+  end
+
+  def in_jail_now
+    @jail_bookings_count = JailBooking.count
+    @in_custody_now = JailBooking.where(custody_status: 'Currently in Jail/Custody').count
+  end
+
+  def admin
+    @jail_bookings_count = JailBooking.count
+
+    @scrapes = Scrape.all
+
+    @last_scraped_page_hennepin = LastScrapedPage.last&.page_number
   end
 end

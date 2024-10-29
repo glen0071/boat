@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   get 'carceral_data/hennepin'
   get 'carceral_data/hennepin_bail_amounts'
+  get 'carceral_data/in_jail_now'
+  get 'carceral_data/admin'
   resources :jail_bookings
 
   get 'latest/index', as: :latest

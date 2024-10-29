@@ -1,0 +1,35 @@
+h1 Admin
+
+br
+
+p
+  b total jail records: 
+  = @jail_bookings_count
+p 
+  b Next Page: 
+  = @last_scraped_page_hennepin
+
+.row
+  .col-md-6 
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th Scraper
+        th Jurisdiction
+        th url
+        th Records
+        th Last Scraped
+        th created_at
+    tbody
+      - @scrapes.each do |page|
+        tr
+          td = page.scraper
+          td = page.jurisdiction
+          td = page.url
+          td = page.records_scraped
+          td = page.last_scraped
+          td = page.created_at.strftime('%H:%M:%S %m/%d')
+
+= render partial: 'shared/hennepin_links'

@@ -1,6 +1,6 @@
 h1 Hennepin County Jail Data
 
-h3.text-center #{@in_custody_now} in jail today
+h3.text-center #{@count_in_custody_now} in jail today
 
 h3.text-center #{@jail_bookings_count} total jail records
 p.text-center Next Page: #{@last_scraped_page_hennepin}
@@ -21,6 +21,11 @@ p.text-center Next Page: #{@last_scraped_page_hennepin}
   .col-md-6
     h4 Charges
     - @charges.each do |charge|
+      div #{charge[0]} - #{charge[1]}
+.row
+  .col-md-6
+    h4 In Custody Charges
+    - @in_custody_charges.each do |charge|
       div #{charge[0]} - #{charge[1]}
 
   .col-md-6
