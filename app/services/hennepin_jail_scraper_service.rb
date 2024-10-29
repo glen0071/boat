@@ -2,7 +2,13 @@
 
 class HennepinJailScraperService
   def scrape
-    LastScrapedPage.create(page_number: 1) if LastScrapedPage.none?
+    new_scrape = Scrape.create(
+      scraper: 'HennepinJailScraperService',
+      url: 'https://jailroster.hennepin.us/',
+      jurisdiction: 'Hennepin County',
+      records_scraped: 0,
+      last_scraped: nil
+    )
     current_page = LastScrapedPage.last&.page_number || 1
     total_pages = 10_000
 
@@ -74,6 +80,9 @@ class HennepinJailScraperService
         end
 
         jail_booking = JailBooking.find_or_create_by(booking_number:)
+        new_scrape.records_scraped += 1
+        new_scrape.last_scraped = booking_number
+        new_scrape.save
 
         # Parse jail booking info
         age_at_booking = parse_booking_detail('Age: ', /(Age: )(\d+)/).to_i
@@ -164,6 +173,9 @@ class HennepinJailScraperService
       end
       browser.quit
     end
+
+    puts "current_page: #{current_page}"
+    puts 'end of method'
   end
 
   private
